@@ -1,12 +1,12 @@
 # Site settings
-title: Harshavardhan Manohar
+title: Harsh's Portfolio
 description: Portfolio of Harshavardhan M.
 # baseurl: "" # the subpath of your site, e.g. /blog
 # url: "localhost:3000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
 
 # User settings
 username: Harshavardhan M
-user_description: I'm a nomad Software Engineer, always searching for the next challenge; no task is too scary nor too difficult. I've just started programming and I am trying to do as many projects as I can. Check this website again in a few months and expect it to be crammed with my projects.
+user_description: I'm an aspiring Software Engineer, always searching for the next challenge; no task is too scary nor too difficult. The course that I'm undergoing is Btech. in Computer Science with Artificial Intelligence.  I've just started programming and I am trying to do as many projects as I can. Check this website again in a few months and expect it to be crammed with my projects.
 user_title: Undergraduate at Amrita School of Engineering
 email: harsha7vardhan@gmail.com
 # twitter_username: lorem_ipsum
