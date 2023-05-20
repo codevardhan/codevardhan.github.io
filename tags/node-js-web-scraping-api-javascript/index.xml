@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>node-js, web-scraping, api, javascript on My Portfolio</title>
+    <link>/tags/node-js-web-scraping-api-javascript/</link>
+    <description>Recent content in node-js, web-scraping, api, javascript on My Portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 21 Jul 2020 11:34:11 +0530</lastBuildDate><atom:link href="/tags/node-js-web-scraping-api-javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Football Score Updates API with Node.js and Web Scraping</title>
+      <link>/posts/2020-07-21-football-api/</link>
+      <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
+      
+      <guid>/posts/2020-07-21-football-api/</guid>
+      <description>Building a Football Score Updates API with Node.js and Web Scraping # Football Score Updates API # In the world of football, staying up to date with the latest match scores and updates is crucial for fans, sports journalists, and developers alike.</description>
+    </item>
+    
+  </channel>
+</rss>

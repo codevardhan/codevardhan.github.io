@@ -1,2 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>beginnner on My Portfolio</title><link>/tags/beginnner/</link><description>Recent content in beginnner on My Portfolio</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 20 Aug 2019 10:05:55 +0530</lastBuildDate><atom:link href="/tags/beginnner/index.xml" rel="self" type="application/rss+xml"/><item><title>Applying to AMFOSS open source club</title><link>/posts/2019-08-20-amfoss-tasks/</link><pubDate>Tue, 20 Aug 2019 10:05:55 +0530</pubDate><guid>/posts/2019-08-20-amfoss-tasks/</guid><description>AMFOSS TASKS # &amp;ldquo;Success is normally found in a pile of mistakes.&amp;rdquo; - Tim Fargo
-If there was ever a point in my life where I felt this quote, it is after I started doing the tasks required for joining the amFOSS club at Amrita Vishwa Vidyapeetham.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>beginnner on My Portfolio</title>
+    <link>/tags/beginnner/</link>
+    <description>Recent content in beginnner on My Portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 20 Aug 2019 10:05:55 +0530</lastBuildDate><atom:link href="/tags/beginnner/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Applying to AMFOSS open source club</title>
+      <link>/posts/2019-08-20-amfoss-tasks/</link>
+      <pubDate>Tue, 20 Aug 2019 10:05:55 +0530</pubDate>
+      
+      <guid>/posts/2019-08-20-amfoss-tasks/</guid>
+      <description>AMFOSS TASKS # &amp;ldquo;Success is normally found in a pile of mistakes.&amp;rdquo; - Tim Fargo
+If there was ever a point in my life where I felt this quote, it is after I started doing the tasks required for joining the amFOSS club at Amrita Vishwa Vidyapeetham.</description>
+    </item>
+    
+  </channel>
+</rss>
