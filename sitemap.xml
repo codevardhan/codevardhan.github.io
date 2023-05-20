@@ -4,7 +4,52 @@
   
     
       <url>
-            <loc>/posts/2023-02-03-eazypredict-module/</loc>
+            <loc>/about/</loc>
+            <lastmod>2023-05-20T10:10:11+05:30</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>/</loc>
+            <lastmod>2023-05-20T10:10:11+05:30</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>/resume/</loc>
+            <lastmod>2023-05-20T10:10:11+05:30</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>/tags/resume/</loc>
+            <lastmod>2023-05-20T10:10:11+05:30</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>/tags/</loc>
+            <lastmod>2023-05-20T10:10:11+05:30</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>/projects/2023-02-03-eazypredict-module/</loc>
             <lastmod>2023-02-02T12:12:11+05:30</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
@@ -40,16 +85,7 @@
   
     
       <url>
-            <loc>/</loc>
-            <lastmod>2023-02-02T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/posts/</loc>
+            <loc>/projects/</loc>
             <lastmod>2023-02-02T12:12:11+05:30</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
@@ -67,15 +103,6 @@
   
     
       <url>
-            <loc>/tags/</loc>
-            <lastmod>2023-02-02T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
             <loc>/tags/deep-learning/</loc>
             <lastmod>2022-07-21T12:12:11+05:30</lastmod>
             <changefreq>daily</changefreq>
@@ -85,7 +112,7 @@
   
     
       <url>
-            <loc>/posts/2022-07-21-malayalam-scraper/</loc>
+            <loc>/projects/2022-07-21-malayalam-scraper/</loc>
             <lastmod>2022-07-21T12:12:11+05:30</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
@@ -112,7 +139,7 @@
   
     
       <url>
-            <loc>/posts/2022-01-30-knn-algorithm-demystified/</loc>
+            <loc>/projects/2022-01-30-knn-algorithm-demystified/</loc>
             <lastmod>2022-01-30T12:12:11+05:30</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
@@ -121,7 +148,7 @@
   
     
       <url>
-            <loc>/posts/2021-05-31-notblue-chrome-extension/</loc>
+            <loc>/projects/2021-05-31-notblue-chrome-extension/</loc>
             <lastmod>2021-05-31T10:10:11+05:30</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
@@ -139,7 +166,7 @@
   
     
       <url>
-            <loc>/posts/2020-07-21-football-api/</loc>
+            <loc>/projects/2020-07-21-football-api/</loc>
             <lastmod>2020-07-21T11:34:11+05:30</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
@@ -167,6 +194,15 @@
     
       <url>
             <loc>/tags/beginnner/</loc>
+            <lastmod>2019-08-20T10:05:55+05:30</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>/posts/</loc>
             <lastmod>2019-08-20T10:05:55+05:30</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
