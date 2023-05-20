@@ -139,7 +139,16 @@
   
     
       <url>
-            <loc>/projects/2022-01-30-knn-algorithm-demystified/</loc>
+            <loc>/posts/2022-01-30-knn-algorithm-demystified/</loc>
+            <lastmod>2022-01-30T12:12:11+05:30</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>/posts/</loc>
             <lastmod>2022-01-30T12:12:11+05:30</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
@@ -194,15 +203,6 @@
     
       <url>
             <loc>/tags/beginnner/</loc>
-            <lastmod>2019-08-20T10:05:55+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/posts/</loc>
             <lastmod>2019-08-20T10:05:55+05:30</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>

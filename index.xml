@@ -53,13 +53,13 @@ The problem with low resource languages for NLP # When getting started with an N
     
     <item>
       <title>kNN algorithm explained intuitively!</title>
-      <link>/projects/2022-01-30-knn-algorithm-demystified/</link>
+      <link>/posts/2022-01-30-knn-algorithm-demystified/</link>
       <pubDate>Sun, 30 Jan 2022 12:12:11 +0530</pubDate>
       
-      <guid>/projects/2022-01-30-knn-algorithm-demystified/</guid>
+      <guid>/posts/2022-01-30-knn-algorithm-demystified/</guid>
       <description>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
 kNN algorithm explained intuitively! # Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/projects/2022-01-30-knn-algorithm-demystified/featured.jpg" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/posts/2022-01-30-knn-algorithm-demystified/featured.jpg" />
     </item>
     
     <item>
