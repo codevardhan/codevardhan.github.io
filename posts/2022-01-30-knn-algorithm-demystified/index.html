@@ -73,7 +73,7 @@
   
   <meta property="og:title" content="kNN algorithm explained intuitively!" />
 <meta property="og:description" content="In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
-kNN algorithm explained intuitively! # Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression" />
+Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/2022-01-30-knn-algorithm-demystified/" /><meta property="og:image" content="/posts/2022-01-30-knn-algorithm-demystified/featured.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-01-30T12:12:11+05:30" />
@@ -83,7 +83,7 @@ kNN algorithm explained intuitively! # Prerequisites # machine learning, supervi
 <meta name="twitter:image" content="/posts/2022-01-30-knn-algorithm-demystified/featured.jpg"/>
 <meta name="twitter:title" content="kNN algorithm explained intuitively!"/>
 <meta name="twitter:description" content="In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
-kNN algorithm explained intuitively! # Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression"/>
+Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression"/>
 
   
   <script type="application/ld+json">
@@ -94,7 +94,7 @@ kNN algorithm explained intuitively! # Prerequisites # machine learning, supervi
     "name": "kNN algorithm explained intuitively!",
     "headline": "kNN algorithm explained intuitively!",
     
-    "abstract": "In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset\nkNN algorithm explained intuitively! # Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression",
+    "abstract": "In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset\nPrerequisites # machine learning, supervised vs unsupervised ML, classification vs regression",
     "inLanguage": "en",
     "url" : "\/posts\/2022-01-30-knn-algorithm-demystified\/",
     "author" : {
@@ -110,7 +110,7 @@ kNN algorithm explained intuitively! # Prerequisites # machine learning, supervi
     "keywords": ["machine-learning","k-nearest-neighbours","from-scratch","python"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1577"
+    "wordCount": "1660"
   }]
   </script>
 
@@ -721,7 +721,7 @@ if (!doNotTrack) {
 <div class="flex flex-row flex-wrap items-center">
   
   
-  <time datetime="2022-01-30 12:12:11 &#43;0530 IST">30 January 2022</time><span class="px-2 text-primary-500">&middot;</span><span>1577 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span><span class="px-2 text-primary-500">&middot;</span><span id="views_posts/2022-01-30-knn-algorithm-demystified/index.md" title="views">0 views</span><span class="px-2 text-primary-500">&middot;</span><span>
+  <time datetime="2022-01-30 12:12:11 &#43;0530 IST">30 January 2022</time><span class="px-2 text-primary-500">&middot;</span><span>1660 words</span><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">8 mins</span><span class="px-2 text-primary-500">&middot;</span><span id="views_posts/2022-01-30-knn-algorithm-demystified/index.md" title="views">0 views</span><span class="px-2 text-primary-500">&middot;</span><span>
     <span id="likes_posts/2022-01-30-knn-algorithm-demystified/index.md" title="likes">0 likes</span> 
 </span><span class="px-2 text-primary-500">&middot;</span><span>
     <button id="likes_button"
@@ -831,7 +831,6 @@ if (!doNotTrack) {
         
 
 <p>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset</p>
-<h1 id="knn-algorithm-explained-intuitively" class="relative group">kNN algorithm explained intuitively! <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#knn-algorithm-explained-intuitively" aria-label="Anchor">#</a></span></h1>
 <h3 id="prerequisites" class="relative group">Prerequisites <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#prerequisites" aria-label="Anchor">#</a></span></h3>
 <p>machine learning, supervised vs unsupervised ML, classification vs regression</p>
 <h3 id="introduction" class="relative group">Introduction <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#introduction" aria-label="Anchor">#</a></span></h3>
@@ -904,11 +903,11 @@ The data consists of two columns, the first one is called the label column. This
       <img
         class="my-0 rounded-md"
         srcset="
-          /img/knn_scratch/img1_hub26af3b143301f02b3612b1fe5b15859_9839_330x0_resize_box_3.png 330w,
-          /img/knn_scratch/img1_hub26af3b143301f02b3612b1fe5b15859_9839_660x0_resize_box_3.png 660w,
-          /img/knn_scratch/img1_hub26af3b143301f02b3612b1fe5b15859_9839_1024x0_resize_box_3.png 1024w,
-          /img/knn_scratch/img1_hub26af3b143301f02b3612b1fe5b15859_9839_1320x0_resize_box_3.png 2x"
-        src="/img/knn_scratch/img1_hub26af3b143301f02b3612b1fe5b15859_9839_660x0_resize_box_3.png"
+          /img/knn_scratch/img1_hu02e9bf5e5bbea324b58ab8a999374a1f_15974_330x0_resize_box_3.png 330w,
+          /img/knn_scratch/img1_hu02e9bf5e5bbea324b58ab8a999374a1f_15974_660x0_resize_box_3.png 660w,
+          /img/knn_scratch/img1_hu02e9bf5e5bbea324b58ab8a999374a1f_15974_1024x0_resize_box_3.png 1024w,
+          /img/knn_scratch/img1_hu02e9bf5e5bbea324b58ab8a999374a1f_15974_1320x0_resize_box_3.png 2x"
+        src="/img/knn_scratch/img1_hu02e9bf5e5bbea324b58ab8a999374a1f_15974_660x0_resize_box_3.png"
         alt="image of a graph showing the data I described"
       />
       
@@ -930,11 +929,11 @@ The data consists of two columns, the first one is called the label column. This
       <img
         class="my-0 rounded-md"
         srcset="
-          /img/knn_scratch/img2_hucdf535aaec67f6bbc8da883282a0438d_9936_330x0_resize_box_3.png 330w,
-          /img/knn_scratch/img2_hucdf535aaec67f6bbc8da883282a0438d_9936_660x0_resize_box_3.png 660w,
-          /img/knn_scratch/img2_hucdf535aaec67f6bbc8da883282a0438d_9936_1024x0_resize_box_3.png 1024w,
-          /img/knn_scratch/img2_hucdf535aaec67f6bbc8da883282a0438d_9936_1320x0_resize_box_3.png 2x"
-        src="/img/knn_scratch/img2_hucdf535aaec67f6bbc8da883282a0438d_9936_660x0_resize_box_3.png"
+          /img/knn_scratch/img2_hue07d2d85685e391e85c6b6c882bb6286_17482_330x0_resize_box_3.png 330w,
+          /img/knn_scratch/img2_hue07d2d85685e391e85c6b6c882bb6286_17482_660x0_resize_box_3.png 660w,
+          /img/knn_scratch/img2_hue07d2d85685e391e85c6b6c882bb6286_17482_1024x0_resize_box_3.png 1024w,
+          /img/knn_scratch/img2_hue07d2d85685e391e85c6b6c882bb6286_17482_1320x0_resize_box_3.png 2x"
+        src="/img/knn_scratch/img2_hue07d2d85685e391e85c6b6c882bb6286_17482_660x0_resize_box_3.png"
         alt="image of a graph showing the data I described with an unknown quantity"
       />
       
@@ -946,13 +945,37 @@ The data consists of two columns, the first one is called the label column. This
 <p>$$
 d(p,q) = sqrt{\sum_{i=1}^n (q_i - p_i)^2}
 $$</p>
-<p>If we calculate the euclidean distance from all other points and find the shortest distance, we can infer that the closest point to our unknown point is the point (2,4). This point refers to a cat, and so the nearest neighbour algorithm concludes that the unknown point is a cat. However, this method is extremely prone to overfitting, or in other words, if there are a few outliers in our data, the model’s prediction will suffer.</p>
-<p>We overcome this issue by using the K Nearest Neighbour algorithm, which also happens to be the topic of this article :). What changes here is, instead of finding ONE shortest point, we find K points which are sorted in the order of their distance to our unknown point, in ascending order. From these K points, we look at which class value occurs the most, and then that will be the predicted class of the unknown point.</p>
-<!-- <insert image> -->
-<p>Lets take K=3 for our example. This will include the points given below. Since there are 2 points from the class “Cat”, and one point from the class “Dog”, our kNN model will predict (correctly) that our unknown animal is a cat.</p>
-<p>That is the working of the kNN model on a very simple dataset. Now in real world machine learning problems you do not work on such simple datasets, but this example helps build our intuition of what the model does.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>By calculating the Euclidean distance between our unknown point and all the other points, we identify that the point (2,4) is the closest. This particular point corresponds to a cat, leading the nearest neighbor algorithm to conclude that our unknown point is also a cat. However, it&rsquo;s important to recognize that this approach is highly vulnerable to overfitting. To put it simply, if our data contains a few outliers, the accuracy of the model&rsquo;s predictions can be compromised. In our specific scenario, even if the unknown data point is closer to the cluster of cat data points, if the closest point happens to be that of a dog, the model will incorrectly classify the unknown point as a dog.</p>
+<p>To address this concern, we employ the K Nearest Neighbor (KNN) algorithm, which is the focal point of this article. Here, instead of identifying a single closest point, we determine K points that are sorted based on their distance to the unknown point, arranged in ascending order. Among these K points, we observe which class value appears most frequently, and that becomes the predicted class for the unknown point. By considering multiple neighbors rather than just one, the KNN algorithm enhances the accuracy and robustness of our predictions.</p>
+<p>Consider K=3 as an example. In the graph below, the green circle encompasses the points within it. Notably, there are 2 points belonging to the &ldquo;Cat&rdquo; class and 1 point belonging to the &ldquo;Dog&rdquo; class. By applying the k-nearest neighbors (kNN) model, we correctly predict that the unknown animal is a cat. The green circle in this context is commonly known as the &ldquo;decision boundary.&rdquo;</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /img/knn_scratch/img3_hu067fc0f5a9c6adb0b04ad6e4043954bd_22568_330x0_resize_box_3.png 330w,
+          /img/knn_scratch/img3_hu067fc0f5a9c6adb0b04ad6e4043954bd_22568_660x0_resize_box_3.png 660w,
+          /img/knn_scratch/img3_hu067fc0f5a9c6adb0b04ad6e4043954bd_22568_1024x0_resize_box_3.png 1024w,
+          /img/knn_scratch/img3_hu067fc0f5a9c6adb0b04ad6e4043954bd_22568_1320x0_resize_box_3.png 2x"
+        src="/img/knn_scratch/img3_hu067fc0f5a9c6adb0b04ad6e4043954bd_22568_660x0_resize_box_3.png"
+        alt="image of a graph showing the included points"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>The functioning of the kNN model on a simplistic dataset illustrates its mechanics. However, it is essential to recognize that real-world machine learning problems typically involve more complex datasets. Nonetheless, this example serves as a valuable tool for developing our understanding and intuition about how the model operates.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <h3 id="coding-knn-model-from-scratch" class="relative group">Coding kNN model from scratch <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#coding-knn-model-from-scratch" aria-label="Anchor">#</a></span></h3>
-<p>Now let’s create this model from scratch in python. Since it is a lazy learning algortihm, we do not need a training phase. We just need the training data and an un labelled instance for prediction. So the algorithm needs features, labels, and the data instance to be predicted as an input. We&rsquo;ll choose an arbitrary value for K for this example.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> We also need a helper function to calculate the euclidean distance between two vectors.</p>
+<p>Now let’s create this model from scratch in python. Since it is a lazy learning algortihm, we do not need a training phase. We just need the training data and an unlabelled instance for prediction. So the algorithm needs features, labels, and the data instance to be predicted as an input. We&rsquo;ll choose an arbitrary value of K for this example.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> We also need a helper function to calculate the euclidean distance between two vectors.</p>
 <!-- <script type="application/javascript" src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=knn_model.py"></script>
  -->
 <div class="highlight"><div class="chroma">
@@ -981,9 +1004,11 @@ $$</p>
 </span><span class="lnt">22
 </span><span class="lnt">23
 </span><span class="lnt">24
+</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># returns the euclidean distance between two vectors</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">euclidean_distance</span><span class="p">(</span><span class="n">vec1</span><span class="p">,</span> <span class="n">vec2</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">distance</span><span class="o">=</span><span class="mi">0</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vec1</span><span class="p">)):</span>
@@ -994,7 +1019,7 @@ $$</p>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">knn_function</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">test_vector</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">distance</span><span class="o">=</span><span class="p">[]</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># loops through the training dataset, stores the training vector and</span>
-</span></span><span class="line"><span class="cl">    <span class="n">corresponding</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">variable</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># corresponding label in a variable</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)):</span>
 </span></span><span class="line"><span class="cl">        <span class="n">img</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">        <span class="n">label</span><span class="o">=</span><span class="n">y_train</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
@@ -1002,7 +1027,7 @@ $$</p>
 </span></span><span class="line"><span class="cl">        <span class="n">corresponding</span> <span class="n">training</span> <span class="n">vector</span>
 </span></span><span class="line"><span class="cl">        <span class="n">distance</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">euclidean_distance</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">test_vector</span><span class="p">),</span> <span class="n">label</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">     <span class="c1"># sorts the tuples in the list in descending order, according to the</span>
-</span></span><span class="line"><span class="cl">     <span class="n">euclidean</span> <span class="n">distance</span>
+</span></span><span class="line"><span class="cl">     <span class="c1"># euclidean distance</span>
 </span></span><span class="line"><span class="cl">    <span class="n">sorted_dist</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">dist</span><span class="p">:</span><span class="n">dist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl">    <span class="c1"># takes the first k values in the list i.e the k nearest neighbours</span>
 </span></span><span class="line"><span class="cl">    <span class="n">neighbours</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sorted_dist</span><span class="p">[:</span><span class="n">k</span><span class="p">])</span>
@@ -1056,7 +1081,7 @@ $$</p>
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#split into features and labels</span>
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># split into features and labels</span>
 </span></span><span class="line"><span class="cl"><span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_data</span><span class="p">[</span><span class="n">train_data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">)])</span>
 </span></span><span class="line"><span class="cl"><span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_data</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">])</span>
 </span></span><span class="line"><span class="cl"><span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="n">test_data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">)])</span>

@@ -24,7 +24,7 @@
       
       <guid>/posts/2022-01-30-knn-algorithm-demystified/</guid>
       <description>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
-kNN algorithm explained intuitively! # Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression</description>
+Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression</description>
     </item>
     
   </channel>
