@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>circuitry on My portfolio</title>
+    <link>https://codevardhan.github.io/tags/circuitry/</link>
+    <description>Recent content in circuitry on My portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Jun 2020 10:12:55 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/tags/circuitry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DIY Cell Phone Detector Circuit</title>
+      <link>https://codevardhan.github.io/posts/2020-06-12-cellphone-detector/</link>
+      <pubDate>Fri, 12 Jun 2020 10:12:55 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/posts/2020-06-12-cellphone-detector/</guid>
+      <description>DIY Cell Phone Detector Circuit: Stop Unauthorized Mobile Phone Usage Introduction Are you tired of people using their phones when they&amp;rsquo;re not supposed to? Maybe you want to ensure that exam halls, meetings, or other restricted areas remain phone-free. We&amp;rsquo;ve got just the solution for you – a DIY Cell Phone Detector Circuit! In this blog, we&amp;rsquo;ll walk you through the process of building a simple yet effective circuit that can detect the presence of activated cell phones within a one-meter range.</description>
+    </item>
+    
+  </channel>
+</rss>
