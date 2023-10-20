@@ -1,40 +1,42 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on My Portfolio</title>
-    <link>/tags/python/</link>
-    <description>Recent content in python on My Portfolio</description>
+    <title>python on My portfolio</title>
+    <link>https://codevardhan.github.io/tags/python/</link>
+    <description>Recent content in python on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>😄 👍</copyright>
-    <lastBuildDate>Thu, 02 Feb 2023 12:12:11 +0530</lastBuildDate><atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Thu, 02 Feb 2023 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>EazyPredict ML module</title>
-      <link>/projects/2023-02-03-eazypredict-module/</link>
+      <link>https://codevardhan.github.io/projects/2023-02-03-eazypredict-module/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
       
-      <guid>/projects/2023-02-03-eazypredict-module/</guid>
-      <description>EazyPredict - Running and comparing multiple ML models at once # Welcome to the world of &amp;lsquo;EazyPredict&amp;rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible.</description>
+      <guid>https://codevardhan.github.io/projects/2023-02-03-eazypredict-module/</guid>
+      <description>EazyPredict - Running and comparing multiple ML models at once Welcome to the world of &amp;lsquo;EazyPredict&amp;rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible. The module was heavily influenced by the &amp;lsquo;LazyPredict&amp;rsquo; module. I developed this module to address a few shortcomings I identified in LazyPredict.
+Why EazyPredict? Some of its key features are as follows -
+  The &amp;lsquo;EazyPredict&amp;rsquo; module utilizes a limited number of prediction algorithms (10) in order to minimize memory usage and prevent potential issues on platforms such as Kaggle.</description>
     </item>
     
     <item>
       <title>Developing a scraper to get NLP data using Beautiful Soup and python!</title>
-      <link>/projects/2022-07-21-malayalam-scraper/</link>
+      <link>https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/</link>
       <pubDate>Thu, 21 Jul 2022 12:12:11 +0530</pubDate>
       
-      <guid>/projects/2022-07-21-malayalam-scraper/</guid>
+      <guid>https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/</guid>
       <description>The aim of this blog is to guide individuals in comprehending the methodology and tactics required to construct a web scraper.
-The problem with low resource languages for NLP # When getting started with an NLP project, the initial bottleneck is always acquiring relevant data.</description>
+The problem with low resource languages for NLP When getting started with an NLP project, the initial bottleneck is always acquiring relevant data. This issue is magnified when trying to work on an NLP project for Indian languages. Some of the challenges associated with building an NLP project for languages with a low digital presence are as follows.</description>
     </item>
     
     <item>
       <title>kNN algorithm explained intuitively!</title>
-      <link>/posts/2022-01-30-knn-algorithm-demystified/</link>
+      <link>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</link>
       <pubDate>Sun, 30 Jan 2022 12:12:11 +0530</pubDate>
       
-      <guid>/posts/2022-01-30-knn-algorithm-demystified/</guid>
+      <guid>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</guid>
       <description>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
-Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression</description>
+Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression
+Introduction The K Nearest Neighbour classification is a simple and efficient machine learning model that can used for classification. While there are more complex classification models, if establishing a model with some training dataset is proving troublesome, it is likely that a kNN algorithm will provide the best solution.</description>
     </item>
     
   </channel>

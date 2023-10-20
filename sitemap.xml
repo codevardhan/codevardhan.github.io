@@ -1,245 +1,94 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-    
-      <url>
-            <loc>/about/</loc>
-            <lastmod>2023-05-20T10:10:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/</loc>
-            <lastmod>2023-05-20T10:10:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/resume/</loc>
-            <lastmod>2023-05-20T10:10:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/resume/</loc>
-            <lastmod>2023-05-20T10:10:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/</loc>
-            <lastmod>2023-05-20T10:10:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/projects/2023-02-03-eazypredict-module/</loc>
-            <lastmod>2023-02-02T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/from-scratch/</loc>
-            <lastmod>2023-02-02T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/k-nearest-neighbours/</loc>
-            <lastmod>2023-02-02T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/machine-learning/</loc>
-            <lastmod>2023-02-02T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/projects/</loc>
-            <lastmod>2023-02-02T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/python/</loc>
-            <lastmod>2023-02-02T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/deep-learning/</loc>
-            <lastmod>2022-07-21T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/projects/2022-07-21-malayalam-scraper/</loc>
-            <lastmod>2022-07-21T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/malayalam/</loc>
-            <lastmod>2022-07-21T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/natural-language-processing/</loc>
-            <lastmod>2022-07-21T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/posts/2022-01-30-knn-algorithm-demystified/</loc>
-            <lastmod>2022-01-30T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/posts/</loc>
-            <lastmod>2022-01-30T12:12:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/projects/2021-05-31-notblue-chrome-extension/</loc>
-            <lastmod>2021-05-31T10:10:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/machine-learning-natural-language-processing-deep-learning-chrome-extension/</loc>
-            <lastmod>2021-05-31T10:10:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/projects/2020-07-21-football-api/</loc>
-            <lastmod>2020-07-21T11:34:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/node-js-web-scraping-api-javascript/</loc>
-            <lastmod>2020-07-21T11:34:11+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/posts/2019-08-20-amfoss-tasks/</loc>
-            <lastmod>2019-08-20T10:05:55+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/beginnner/</loc>
-            <lastmod>2019-08-20T10:05:55+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/tags/programming/</loc>
-            <lastmod>2019-08-20T10:05:55+05:30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/authors/</loc>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/categories/</loc>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
-    
-      <url>
-            <loc>/series/</loc>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-          </url>
-    
-  
+  <url>
+    <loc>https://codevardhan.github.io/</loc>
+    <lastmod>2023-05-20T10:10:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/resume/</loc>
+    <lastmod>2023-05-20T10:10:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/resume/</loc>
+    <lastmod>2023-05-20T10:10:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/</loc>
+    <lastmod>2023-05-20T10:10:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/projects/2023-02-03-eazypredict-module/</loc>
+    <lastmod>2023-02-02T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/from-scratch/</loc>
+    <lastmod>2023-02-02T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/k-nearest-neighbours/</loc>
+    <lastmod>2023-02-02T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/machine-learning/</loc>
+    <lastmod>2023-02-02T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/projects/</loc>
+    <lastmod>2023-02-02T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/python/</loc>
+    <lastmod>2023-02-02T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/deep-learning/</loc>
+    <lastmod>2022-07-21T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/</loc>
+    <lastmod>2022-07-21T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/malayalam/</loc>
+    <lastmod>2022-07-21T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/natural-language-processing/</loc>
+    <lastmod>2022-07-21T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</loc>
+    <lastmod>2022-01-30T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/posts/</loc>
+    <lastmod>2022-01-30T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/projects/2021-05-31-notblue-chrome-extension/</loc>
+    <lastmod>2021-05-31T10:10:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/chrome-extension/</loc>
+    <lastmod>2021-05-31T10:10:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/api/</loc>
+    <lastmod>2020-07-21T11:34:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/projects/2020-07-21-football-api/</loc>
+    <lastmod>2020-07-21T11:34:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/javascript/</loc>
+    <lastmod>2020-07-21T11:34:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/node-js/</loc>
+    <lastmod>2020-07-21T11:34:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/web-scraping/</loc>
+    <lastmod>2020-07-21T11:34:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/beginnner/</loc>
+    <lastmod>2019-11-10T10:05:55+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/posts/2019-11-10-nand2tetris-linked-list/</loc>
+    <lastmod>2019-11-10T10:05:55+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/hack/</loc>
+    <lastmod>2019-11-10T10:05:55+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/nand2tetris/</loc>
+    <lastmod>2019-11-10T10:05:55+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/programming/</loc>
+    <lastmod>2019-11-10T10:05:55+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/posts/2019-08-20-amfoss-tasks/</loc>
+    <lastmod>2019-08-20T10:05:55+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/categories/</loc>
+  </url>
 </urlset>

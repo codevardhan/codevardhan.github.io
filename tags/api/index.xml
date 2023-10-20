@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>api on My portfolio</title>
+    <link>https://codevardhan.github.io/tags/api/</link>
+    <description>Recent content in api on My portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Jul 2020 11:34:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Football Score Updates API with Node.js and Web Scraping</title>
+      <link>https://codevardhan.github.io/projects/2020-07-21-football-api/</link>
+      <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/projects/2020-07-21-football-api/</guid>
+      <description>Building a Football Score Updates API with Node.js and Web Scraping Football Score Updates API In the world of football, staying up to date with the latest match scores and updates is crucial for fans, sports journalists, and developers alike. In this technical blog post, we&amp;rsquo;ll explore how to build a Football Score Updates API using Node.js and web scraping techniques. Our API will fetch real-time match information from the popular Flash Score website, allowing users to access comprehensive data on matches happening in various countries and leagues.</description>
+    </item>
+    
+  </channel>
+</rss>

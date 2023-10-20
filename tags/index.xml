@@ -1,118 +1,162 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on My Portfolio</title>
-    <link>/tags/</link>
-    <description>Recent content in Tags on My Portfolio</description>
+    <title>Tags on My portfolio</title>
+    <link>https://codevardhan.github.io/tags/</link>
+    <description>Recent content in Tags on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>😄 👍</copyright>
-    <lastBuildDate>Sat, 20 May 2023 10:10:11 +0530</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 May 2023 10:10:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>resume</title>
-      <link>/tags/resume/</link>
+      <link>https://codevardhan.github.io/tags/resume/</link>
       <pubDate>Sat, 20 May 2023 10:10:11 +0530</pubDate>
       
-      <guid>/tags/resume/</guid>
+      <guid>https://codevardhan.github.io/tags/resume/</guid>
       <description></description>
     </item>
     
     <item>
       <title>from-scratch</title>
-      <link>/tags/from-scratch/</link>
+      <link>https://codevardhan.github.io/tags/from-scratch/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
       
-      <guid>/tags/from-scratch/</guid>
+      <guid>https://codevardhan.github.io/tags/from-scratch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>k-nearest-neighbours</title>
-      <link>/tags/k-nearest-neighbours/</link>
+      <link>https://codevardhan.github.io/tags/k-nearest-neighbours/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
       
-      <guid>/tags/k-nearest-neighbours/</guid>
+      <guid>https://codevardhan.github.io/tags/k-nearest-neighbours/</guid>
       <description></description>
     </item>
     
     <item>
       <title>machine-learning</title>
-      <link>/tags/machine-learning/</link>
+      <link>https://codevardhan.github.io/tags/machine-learning/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
       
-      <guid>/tags/machine-learning/</guid>
+      <guid>https://codevardhan.github.io/tags/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>/tags/python/</link>
+      <link>https://codevardhan.github.io/tags/python/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
       
-      <guid>/tags/python/</guid>
+      <guid>https://codevardhan.github.io/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>deep-learning</title>
-      <link>/tags/deep-learning/</link>
+      <link>https://codevardhan.github.io/tags/deep-learning/</link>
       <pubDate>Thu, 21 Jul 2022 12:12:11 +0530</pubDate>
       
-      <guid>/tags/deep-learning/</guid>
+      <guid>https://codevardhan.github.io/tags/deep-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>malayalam</title>
-      <link>/tags/malayalam/</link>
+      <link>https://codevardhan.github.io/tags/malayalam/</link>
       <pubDate>Thu, 21 Jul 2022 12:12:11 +0530</pubDate>
       
-      <guid>/tags/malayalam/</guid>
+      <guid>https://codevardhan.github.io/tags/malayalam/</guid>
       <description></description>
     </item>
     
     <item>
       <title>natural-language-processing</title>
-      <link>/tags/natural-language-processing/</link>
+      <link>https://codevardhan.github.io/tags/natural-language-processing/</link>
       <pubDate>Thu, 21 Jul 2022 12:12:11 +0530</pubDate>
       
-      <guid>/tags/natural-language-processing/</guid>
+      <guid>https://codevardhan.github.io/tags/natural-language-processing/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>machine-learning, natural-language-processing, deep-learning, chrome-extension</title>
-      <link>/tags/machine-learning-natural-language-processing-deep-learning-chrome-extension/</link>
+      <title>chrome-extension</title>
+      <link>https://codevardhan.github.io/tags/chrome-extension/</link>
       <pubDate>Mon, 31 May 2021 10:10:11 +0530</pubDate>
       
-      <guid>/tags/machine-learning-natural-language-processing-deep-learning-chrome-extension/</guid>
+      <guid>https://codevardhan.github.io/tags/chrome-extension/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>node-js, web-scraping, api, javascript</title>
-      <link>/tags/node-js-web-scraping-api-javascript/</link>
+      <title>api</title>
+      <link>https://codevardhan.github.io/tags/api/</link>
       <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
       
-      <guid>/tags/node-js-web-scraping-api-javascript/</guid>
+      <guid>https://codevardhan.github.io/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>javascript</title>
+      <link>https://codevardhan.github.io/tags/javascript/</link>
+      <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>node-js</title>
+      <link>https://codevardhan.github.io/tags/node-js/</link>
+      <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/tags/node-js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>web-scraping</title>
+      <link>https://codevardhan.github.io/tags/web-scraping/</link>
+      <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/tags/web-scraping/</guid>
       <description></description>
     </item>
     
     <item>
       <title>beginnner</title>
-      <link>/tags/beginnner/</link>
-      <pubDate>Tue, 20 Aug 2019 10:05:55 +0530</pubDate>
+      <link>https://codevardhan.github.io/tags/beginnner/</link>
+      <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
       
-      <guid>/tags/beginnner/</guid>
+      <guid>https://codevardhan.github.io/tags/beginnner/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hack</title>
+      <link>https://codevardhan.github.io/tags/hack/</link>
+      <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/tags/hack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nand2tetris</title>
+      <link>https://codevardhan.github.io/tags/nand2tetris/</link>
+      <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/tags/nand2tetris/</guid>
       <description></description>
     </item>
     
     <item>
       <title>programming</title>
-      <link>/tags/programming/</link>
-      <pubDate>Tue, 20 Aug 2019 10:05:55 +0530</pubDate>
+      <link>https://codevardhan.github.io/tags/programming/</link>
+      <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
       
-      <guid>/tags/programming/</guid>
+      <guid>https://codevardhan.github.io/tags/programming/</guid>
       <description></description>
     </item>
     

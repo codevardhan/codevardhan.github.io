@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>natural-language-processing on My Portfolio</title>
-    <link>/tags/natural-language-processing/</link>
-    <description>Recent content in natural-language-processing on My Portfolio</description>
+    <title>natural-language-processing on My portfolio</title>
+    <link>https://codevardhan.github.io/tags/natural-language-processing/</link>
+    <description>Recent content in natural-language-processing on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>😄 👍</copyright>
-    <lastBuildDate>Thu, 21 Jul 2022 12:12:11 +0530</lastBuildDate><atom:link href="/tags/natural-language-processing/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Jul 2022 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/tags/natural-language-processing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Developing a scraper to get NLP data using Beautiful Soup and python!</title>
-      <link>/projects/2022-07-21-malayalam-scraper/</link>
+      <link>https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/</link>
       <pubDate>Thu, 21 Jul 2022 12:12:11 +0530</pubDate>
       
-      <guid>/projects/2022-07-21-malayalam-scraper/</guid>
+      <guid>https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/</guid>
       <description>The aim of this blog is to guide individuals in comprehending the methodology and tactics required to construct a web scraper.
-The problem with low resource languages for NLP # When getting started with an NLP project, the initial bottleneck is always acquiring relevant data.</description>
+The problem with low resource languages for NLP When getting started with an NLP project, the initial bottleneck is always acquiring relevant data. This issue is magnified when trying to work on an NLP project for Indian languages. Some of the challenges associated with building an NLP project for languages with a low digital presence are as follows.</description>
+    </item>
+    
+    <item>
+      <title>Chrome Extension To Monitor Mental Health</title>
+      <link>https://codevardhan.github.io/projects/2021-05-31-notblue-chrome-extension/</link>
+      <pubDate>Mon, 31 May 2021 10:10:11 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/projects/2021-05-31-notblue-chrome-extension/</guid>
+      <description>Chrome Extension To Monitor Mental Health 
+Introduction This project was a really interesting one that I was fortunate enough to be a part of! We made as an entry project to compete in a hackathon organised by HackOn. We did not win the hackathon, but we did create a unique and interesting project. (imo)
+Our project aims to monitor a user&amp;rsquo;s search patterns and use this information to inform their close/loved ones about potential mental health problems the user might be facing.</description>
     </item>
     
   </channel>

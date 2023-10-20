@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kNN algorithm explained intuitively! on My portfolio</title>
+    <link>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</link>
+    <description>Recent content in kNN algorithm explained intuitively! on My portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Jan 2022 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

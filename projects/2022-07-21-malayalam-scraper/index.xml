@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Developing a scraper to get NLP data using Beautiful Soup and python! on My portfolio</title>
+    <link>https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/</link>
+    <description>Recent content in Developing a scraper to get NLP data using Beautiful Soup and python! on My portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 21 Jul 2022 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My Portfolio</title>
-    <link>/posts/</link>
-    <description>Recent content in Posts on My Portfolio</description>
+    <title>Posts on My portfolio</title>
+    <link>https://codevardhan.github.io/posts/</link>
+    <description>Recent content in Posts on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>😄 👍</copyright>
-    <lastBuildDate>Sun, 30 Jan 2022 12:12:11 +0530</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Jan 2022 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>kNN algorithm explained intuitively!</title>
-      <link>/posts/2022-01-30-knn-algorithm-demystified/</link>
+      <link>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</link>
       <pubDate>Sun, 30 Jan 2022 12:12:11 +0530</pubDate>
       
-      <guid>/posts/2022-01-30-knn-algorithm-demystified/</guid>
+      <guid>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</guid>
       <description>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
-Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression</description>
+Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression
+Introduction The K Nearest Neighbour classification is a simple and efficient machine learning model that can used for classification. While there are more complex classification models, if establishing a model with some training dataset is proving troublesome, it is likely that a kNN algorithm will provide the best solution.</description>
+    </item>
+    
+    <item>
+      <title>Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown</title>
+      <link>https://codevardhan.github.io/posts/2019-11-10-nand2tetris-linked-list/</link>
+      <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/posts/2019-11-10-nand2tetris-linked-list/</guid>
+      <description>Creating a Linked List in Hack Language: A Nand2Tetris Project Breakdown If you&amp;rsquo;re fascinated by the intricacies of computer engineering, then you might have stumbled upon the Nand2Tetris course. This comprehensive program takes you through the journey of building a computer from scratch, delving deep into fundamental concepts like boolean logic, sequential logic, and computer architecture, to name a few. One intriguing aspect is working with the Hack computer, a 16-bit Von Neumann system, and its native Hack language.</description>
     </item>
     
     <item>
       <title>Applying to AMFOSS open source club</title>
-      <link>/posts/2019-08-20-amfoss-tasks/</link>
+      <link>https://codevardhan.github.io/posts/2019-08-20-amfoss-tasks/</link>
       <pubDate>Tue, 20 Aug 2019 10:05:55 +0530</pubDate>
       
-      <guid>/posts/2019-08-20-amfoss-tasks/</guid>
-      <description>AMFOSS TASKS # &amp;ldquo;Success is normally found in a pile of mistakes.&amp;rdquo; - Tim Fargo
-If there was ever a point in my life where I felt this quote, it is after I started doing the tasks required for joining the amFOSS club at Amrita Vishwa Vidyapeetham.</description>
+      <guid>https://codevardhan.github.io/posts/2019-08-20-amfoss-tasks/</guid>
+      <description>AMFOSS TASKS &amp;ldquo;Success is normally found in a pile of mistakes.&amp;rdquo; - Tim Fargo
+If there was ever a point in my life where I felt this quote, it is after I started doing the tasks required for joining the amFOSS club at Amrita Vishwa Vidyapeetham.
+AmFOSS is an open source club consisting of a few motivated students promoting and contributing to free and open source software. This helps students to learn out of academics and get introduced to the outside world.</description>
     </item>
     
   </channel>

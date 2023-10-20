@@ -1,97 +1,94 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My Portfolio</title>
-    <link>/</link>
-    <description>Recent content on My Portfolio</description>
+    <title>My portfolio</title>
+    <link>https://codevardhan.github.io/</link>
+    <description>Recent content on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>😄 👍</copyright>
-    <lastBuildDate>Sat, 20 May 2023 10:10:11 +0530</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>About Me</title>
-      <link>/about/</link>
-      <pubDate>Sat, 20 May 2023 10:10:11 +0530</pubDate>
-      
-      <guid>/about/</guid>
-      <description></description>
-      
-    </item>
-    
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 May 2023 10:10:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Resume</title>
-      <link>/resume/</link>
+      <link>https://codevardhan.github.io/resume/</link>
       <pubDate>Sat, 20 May 2023 10:10:11 +0530</pubDate>
       
-      <guid>/resume/</guid>
+      <guid>https://codevardhan.github.io/resume/</guid>
       <description>Harshavardhan M
 B.Tech in Computer Science, specialized in Artificial Intelligence
-Education #    Degree/Certificate Institute/Board CGPA/Percentage Year     B.Tech. Amrita Vishwa Vidyapeetham, Kollam 8.52 2019-2023   Senior Secondary CBSE Board 92.</description>
-      
+Education    Degree/Certificate Institute/Board CGPA/Percentage Year     B.Tech. Amrita Vishwa Vidyapeetham, Kollam 8.52 2019-2023   Senior Secondary CBSE Board 92.0% 2019   Secondary CBSE Board 100% 2017    Experience BeSuperhuman.ai (June 2023 - present, Remote)
+ Lead Machine Learning Engineer Developed the Minimum Viable Product (MVP), overseeing backend infrastructure and AI models utilizing cutting-edge LLMs (Large Language Models), Langchain.</description>
     </item>
     
     <item>
       <title>EazyPredict ML module</title>
-      <link>/projects/2023-02-03-eazypredict-module/</link>
+      <link>https://codevardhan.github.io/projects/2023-02-03-eazypredict-module/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
       
-      <guid>/projects/2023-02-03-eazypredict-module/</guid>
-      <description>EazyPredict - Running and comparing multiple ML models at once # Welcome to the world of &amp;lsquo;EazyPredict&amp;rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/projects/2023-02-03-eazypredict-module/featured.png" />
+      <guid>https://codevardhan.github.io/projects/2023-02-03-eazypredict-module/</guid>
+      <description>EazyPredict - Running and comparing multiple ML models at once Welcome to the world of &amp;lsquo;EazyPredict&amp;rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible. The module was heavily influenced by the &amp;lsquo;LazyPredict&amp;rsquo; module. I developed this module to address a few shortcomings I identified in LazyPredict.
+Why EazyPredict? Some of its key features are as follows -
+  The &amp;lsquo;EazyPredict&amp;rsquo; module utilizes a limited number of prediction algorithms (10) in order to minimize memory usage and prevent potential issues on platforms such as Kaggle.</description>
     </item>
     
     <item>
       <title>Developing a scraper to get NLP data using Beautiful Soup and python!</title>
-      <link>/projects/2022-07-21-malayalam-scraper/</link>
+      <link>https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/</link>
       <pubDate>Thu, 21 Jul 2022 12:12:11 +0530</pubDate>
       
-      <guid>/projects/2022-07-21-malayalam-scraper/</guid>
+      <guid>https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/</guid>
       <description>The aim of this blog is to guide individuals in comprehending the methodology and tactics required to construct a web scraper.
-The problem with low resource languages for NLP # When getting started with an NLP project, the initial bottleneck is always acquiring relevant data.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/projects/2022-07-21-malayalam-scraper/featured.png" />
+The problem with low resource languages for NLP When getting started with an NLP project, the initial bottleneck is always acquiring relevant data. This issue is magnified when trying to work on an NLP project for Indian languages. Some of the challenges associated with building an NLP project for languages with a low digital presence are as follows.</description>
     </item>
     
     <item>
       <title>kNN algorithm explained intuitively!</title>
-      <link>/posts/2022-01-30-knn-algorithm-demystified/</link>
+      <link>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</link>
       <pubDate>Sun, 30 Jan 2022 12:12:11 +0530</pubDate>
       
-      <guid>/posts/2022-01-30-knn-algorithm-demystified/</guid>
+      <guid>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</guid>
       <description>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
-Prerequisites # machine learning, supervised vs unsupervised ML, classification vs regression</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/posts/2022-01-30-knn-algorithm-demystified/featured.jpg" />
+Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression
+Introduction The K Nearest Neighbour classification is a simple and efficient machine learning model that can used for classification. While there are more complex classification models, if establishing a model with some training dataset is proving troublesome, it is likely that a kNN algorithm will provide the best solution.</description>
     </item>
     
     <item>
       <title>Chrome Extension To Monitor Mental Health</title>
-      <link>/projects/2021-05-31-notblue-chrome-extension/</link>
+      <link>https://codevardhan.github.io/projects/2021-05-31-notblue-chrome-extension/</link>
       <pubDate>Mon, 31 May 2021 10:10:11 +0530</pubDate>
       
-      <guid>/projects/2021-05-31-notblue-chrome-extension/</guid>
-      <description>Chrome Extension To Monitor Mental Health # 
-Introduction # This project was a really interesting one that I was fortunate enough to be a part of! We made as an entry project to compete in a hackathon organised by HackOn.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/projects/2021-05-31-notblue-chrome-extension/featured.jpg" />
+      <guid>https://codevardhan.github.io/projects/2021-05-31-notblue-chrome-extension/</guid>
+      <description>Chrome Extension To Monitor Mental Health 
+Introduction This project was a really interesting one that I was fortunate enough to be a part of! We made as an entry project to compete in a hackathon organised by HackOn. We did not win the hackathon, but we did create a unique and interesting project. (imo)
+Our project aims to monitor a user&amp;rsquo;s search patterns and use this information to inform their close/loved ones about potential mental health problems the user might be facing.</description>
     </item>
     
     <item>
       <title>Building a Football Score Updates API with Node.js and Web Scraping</title>
-      <link>/projects/2020-07-21-football-api/</link>
+      <link>https://codevardhan.github.io/projects/2020-07-21-football-api/</link>
       <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
       
-      <guid>/projects/2020-07-21-football-api/</guid>
-      <description>Building a Football Score Updates API with Node.js and Web Scraping # Football Score Updates API # In the world of football, staying up to date with the latest match scores and updates is crucial for fans, sports journalists, and developers alike.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/projects/2020-07-21-football-api/featured.png" />
+      <guid>https://codevardhan.github.io/projects/2020-07-21-football-api/</guid>
+      <description>Building a Football Score Updates API with Node.js and Web Scraping Football Score Updates API In the world of football, staying up to date with the latest match scores and updates is crucial for fans, sports journalists, and developers alike. In this technical blog post, we&amp;rsquo;ll explore how to build a Football Score Updates API using Node.js and web scraping techniques. Our API will fetch real-time match information from the popular Flash Score website, allowing users to access comprehensive data on matches happening in various countries and leagues.</description>
+    </item>
+    
+    <item>
+      <title>Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown</title>
+      <link>https://codevardhan.github.io/posts/2019-11-10-nand2tetris-linked-list/</link>
+      <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/posts/2019-11-10-nand2tetris-linked-list/</guid>
+      <description>Creating a Linked List in Hack Language: A Nand2Tetris Project Breakdown If you&amp;rsquo;re fascinated by the intricacies of computer engineering, then you might have stumbled upon the Nand2Tetris course. This comprehensive program takes you through the journey of building a computer from scratch, delving deep into fundamental concepts like boolean logic, sequential logic, and computer architecture, to name a few. One intriguing aspect is working with the Hack computer, a 16-bit Von Neumann system, and its native Hack language.</description>
     </item>
     
     <item>
       <title>Applying to AMFOSS open source club</title>
-      <link>/posts/2019-08-20-amfoss-tasks/</link>
+      <link>https://codevardhan.github.io/posts/2019-08-20-amfoss-tasks/</link>
       <pubDate>Tue, 20 Aug 2019 10:05:55 +0530</pubDate>
       
-      <guid>/posts/2019-08-20-amfoss-tasks/</guid>
-      <description>AMFOSS TASKS # &amp;ldquo;Success is normally found in a pile of mistakes.&amp;rdquo; - Tim Fargo
-If there was ever a point in my life where I felt this quote, it is after I started doing the tasks required for joining the amFOSS club at Amrita Vishwa Vidyapeetham.</description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/posts/2019-08-20-amfoss-tasks/featured.png" />
+      <guid>https://codevardhan.github.io/posts/2019-08-20-amfoss-tasks/</guid>
+      <description>AMFOSS TASKS &amp;ldquo;Success is normally found in a pile of mistakes.&amp;rdquo; - Tim Fargo
+If there was ever a point in my life where I felt this quote, it is after I started doing the tasks required for joining the amFOSS club at Amrita Vishwa Vidyapeetham.
+AmFOSS is an open source club consisting of a few motivated students promoting and contributing to free and open source software. This helps students to learn out of academics and get introduced to the outside world.</description>
     </item>
     
   </channel>
