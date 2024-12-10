@@ -334,9 +334,9 @@ EazyPredict ML module | My portfolio
 <p>&ldquo;This is the legendary Titanic ML competition – the best, first challenge for you to dive into ML competitions and familiarize yourself with how the Kaggle platform works. The competition is simple: use machine learning to create a model that predicts which passengers survived the Titanic shipwreck.&rdquo;</p>
 </blockquote>
 <p>First, we need to load the dataset:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;data/train.csv&#34;</span>)
-</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>head()
-</span></span></code></pre></div><div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;data/train.csv&#34;</span>)
+df<span style="color:#f92672">.</span>head()
+</code></pre></div><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -454,44 +454,44 @@ EazyPredict ML module | My portfolio
 <li>Scaling the dataset</li>
 <li>Splitting the training and testing data</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Removes null values</span>
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Age&#34;</span>]<span style="color:#f92672">.</span>fillna(method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bfill&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Cabin&#34;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#34;No Room&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Embarked&#34;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#34;S&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Encodes categorical data</span>
-</span></span><span style="display:flex;"><span>ord_enc <span style="color:#f92672">=</span> OrdinalEncoder()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Sex_code&#34;</span>] <span style="color:#f92672">=</span> ord_enc<span style="color:#f92672">.</span>fit_transform(df[[<span style="color:#e6db74">&#34;Sex&#34;</span>]])
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Cabin_code&#34;</span>] <span style="color:#f92672">=</span> ord_enc<span style="color:#f92672">.</span>fit_transform(df[[<span style="color:#e6db74">&#34;Cabin&#34;</span>]])
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Embarked_code&#34;</span>] <span style="color:#f92672">=</span> ord_enc<span style="color:#f92672">.</span>fit_transform(df[[<span style="color:#e6db74">&#34;Embarked&#34;</span>]])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Selects features for X and labels for y</span>
-</span></span><span style="display:flex;"><span>X_feat <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Pclass&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Age&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;SibSp&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Parch&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Fare&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Sex_code&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Cabin_code&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Embarked_code&#34;</span>,
-</span></span><span style="display:flex;"><span>]
-</span></span><span style="display:flex;"><span>y_feat <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Survived&#34;</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> df[X_feat]
-</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> df[y_feat]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Scaling the features</span>
-</span></span><span style="display:flex;"><span>scaler <span style="color:#f92672">=</span> RobustScaler()
-</span></span><span style="display:flex;"><span>X_norm <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(scaler<span style="color:#f92672">.</span>fit_transform(X), columns<span style="color:#f92672">=</span>X<span style="color:#f92672">.</span>columns)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Splitting into train, set </span>
-</span></span><span style="display:flex;"><span>X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(
-</span></span><span style="display:flex;"><span>    X_norm, y, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.33</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X_norm<span style="color:#f92672">.</span>head()
-</span></span></code></pre></div><div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Removes null values</span>
+df[<span style="color:#e6db74">&#34;Age&#34;</span>]<span style="color:#f92672">.</span>fillna(method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bfill&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+df[<span style="color:#e6db74">&#34;Cabin&#34;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#34;No Room&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+df[<span style="color:#e6db74">&#34;Embarked&#34;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#34;S&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+
+<span style="color:#75715e"># Encodes categorical data</span>
+ord_enc <span style="color:#f92672">=</span> OrdinalEncoder()
+
+df[<span style="color:#e6db74">&#34;Sex_code&#34;</span>] <span style="color:#f92672">=</span> ord_enc<span style="color:#f92672">.</span>fit_transform(df[[<span style="color:#e6db74">&#34;Sex&#34;</span>]])
+df[<span style="color:#e6db74">&#34;Cabin_code&#34;</span>] <span style="color:#f92672">=</span> ord_enc<span style="color:#f92672">.</span>fit_transform(df[[<span style="color:#e6db74">&#34;Cabin&#34;</span>]])
+df[<span style="color:#e6db74">&#34;Embarked_code&#34;</span>] <span style="color:#f92672">=</span> ord_enc<span style="color:#f92672">.</span>fit_transform(df[[<span style="color:#e6db74">&#34;Embarked&#34;</span>]])
+
+<span style="color:#75715e"># Selects features for X and labels for y</span>
+X_feat <span style="color:#f92672">=</span> [
+    <span style="color:#e6db74">&#34;Pclass&#34;</span>,
+    <span style="color:#e6db74">&#34;Age&#34;</span>,
+    <span style="color:#e6db74">&#34;SibSp&#34;</span>,
+    <span style="color:#e6db74">&#34;Parch&#34;</span>,
+    <span style="color:#e6db74">&#34;Fare&#34;</span>,
+    <span style="color:#e6db74">&#34;Sex_code&#34;</span>,
+    <span style="color:#e6db74">&#34;Cabin_code&#34;</span>,
+    <span style="color:#e6db74">&#34;Embarked_code&#34;</span>,
+]
+y_feat <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Survived&#34;</span>]
+
+X <span style="color:#f92672">=</span> df[X_feat]
+y <span style="color:#f92672">=</span> df[y_feat]
+
+<span style="color:#75715e"># Scaling the features</span>
+scaler <span style="color:#f92672">=</span> RobustScaler()
+X_norm <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(scaler<span style="color:#f92672">.</span>fit_transform(X), columns<span style="color:#f92672">=</span>X<span style="color:#f92672">.</span>columns)
+
+<span style="color:#75715e"># Splitting into train, set </span>
+X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(
+    X_norm, y, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.33</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>
+)
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">X_norm<span style="color:#f92672">.</span>head()
+</code></pre></div><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -579,12 +579,12 @@ EazyPredict ML module | My portfolio
 </table>
 </div>
 <p>Now we can use eazypredict module to quicly get the predictions of the top classification algorithms.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>clf <span style="color:#f92672">=</span> EazyClassifier()
-</span></span><span style="display:flex;"><span>model_list, prediction_list, model_results <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>fit(X_train, X_test, 
-</span></span><span style="display:flex;"><span>                                                     y_train, y_test)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>model_results
-</span></span></code></pre></div><pre><code>100%|██████████| 10/10 [00:00&lt;00:00, 10.09it/s]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">clf <span style="color:#f92672">=</span> EazyClassifier()
+model_list, prediction_list, model_results <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>fit(X_train, X_test, 
+                                                     y_train, y_test)
+
+model_results
+</code></pre></div><pre><code>100%|██████████| 10/10 [00:00&lt;00:00, 10.09it/s]
 </code></pre>
 <div>
 <style scoped>
@@ -674,18 +674,20 @@ EazyPredict ML module | My portfolio
 </table>
 </div>
 <p>After this you have the ability to select any model and perform hyperparameter tuning on it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>gaussian_clf <span style="color:#f92672">=</span> model_list[<span style="color:#e6db74">&#34;GaussianNB&#34;</span>]
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> GridSearchCV
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>params_NB <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;var_smoothing&#34;</span>: np<span style="color:#f92672">.</span>logspace(<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>, num<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)}
-</span></span><span style="display:flex;"><span>gs_NB <span style="color:#f92672">=</span> GridSearchCV(
-</span></span><span style="display:flex;"><span>    estimator<span style="color:#f92672">=</span>gaussian_clf, param_grid<span style="color:#f92672">=</span>params_NB, verbose<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;accuracy&#34;</span>
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>gs_NB<span style="color:#f92672">.</span>fit(X_train, y_train<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>ravel())
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>gs_NB<span style="color:#f92672">.</span>best_params_
-</span></span></code></pre></div><pre><code>Fitting 5 folds for each of 100 candidates, totalling 500 fits
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">gaussian_clf <span style="color:#f92672">=</span> model_list[<span style="color:#e6db74">&#34;GaussianNB&#34;</span>]
+
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> GridSearchCV
+
+params_NB <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;var_smoothing&#34;</span>: np<span style="color:#f92672">.</span>logspace(<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>, num<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)}
+gs_NB <span style="color:#f92672">=</span> GridSearchCV(
+    estimator<span style="color:#f92672">=</span>gaussian_clf, param_grid<span style="color:#f92672">=</span>params_NB, verbose<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;accuracy&#34;</span>
+)
+
+gs_NB<span style="color:#f92672">.</span>fit(X_train, y_train<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>ravel())
+
+gs_NB<span style="color:#f92672">.</span>best_params_
+
+</code></pre></div><pre><code>Fitting 5 folds for each of 100 candidates, totalling 500 fits
 
 {'var_smoothing': 8.111308307896873e-06}
 </code></pre>
@@ -695,13 +697,13 @@ EazyPredict ML module | My portfolio
 <h2 id="creating-an-ensemble-model">Creating an ensemble model</h2>
 <p>This is the most effective feature of this library as an ensemble model can create a really good model with minimal effort in hyper parameter tuning.</p>
 <p>All you need to do is to pass the results and the model names from the previous &ldquo;fit&rdquo; step to the next one.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>clf <span style="color:#f92672">=</span> EazyClassifier()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>model_list, prediction_list, model_results <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>fit(X_train, X_test, y_train, y_test)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>ensemble_reg, ensemble_results <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>fitVotingEnsemble(model_list, model_results)
-</span></span><span style="display:flex;"><span>ensemble_results
-</span></span></code></pre></div><p>100%|██████████| 10/10 [00:01&lt;00:00,  6.68it/s]</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">clf <span style="color:#f92672">=</span> EazyClassifier()
+
+model_list, prediction_list, model_results <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>fit(X_train, X_test, y_train, y_test)
+
+ensemble_reg, ensemble_results <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>fitVotingEnsemble(model_list, model_results)
+ensemble_results
+</code></pre></div><p>100%|██████████| 10/10 [00:01&lt;00:00,  6.68it/s]</p>
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -813,7 +815,7 @@ EazyPredict ML module | My portfolio
       <div class="col-sm-12 col-md-12 col-lg-9 p-4">
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     
@@ -872,6 +874,91 @@ EazyPredict ML module | My portfolio
   </div><footer>
     
  
+ 
+<div class="container py-3" id="recent-posts">
+    
+    
+    <div class="h3 text-center text-secondary py-3">
+        Recent Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/">
+                        <img src="/images/knn_scratch/visualized_img.png" class="card-img-top" alt="kNN algorithm explained intuitively!">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="kNN algorithm explained intuitively!">kNN algorithm explained …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
+Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression
+Introduction The K Nearest Neighbour classification is a simple and efficient …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jan 30, 2022</span>
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2020-06-12-cellphone-detector/">
+                        <img src="/images/cellphone_detector/featured.png" class="card-img-top" alt="DIY Cell Phone Detector Circuit">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2020-06-12-cellphone-detector/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="DIY Cell Phone Detector Circuit">DIY Cell Phone Detector …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>DIY Cell Phone Detector Circuit: Stop Unauthorized Mobile Phone Usage Introduction Are you tired of people using their phones when they&rsquo;re not supposed to? Maybe you want to ensure that exam halls, meetings, or other restricted areas remain phone-free. We&rsquo;ve got just the solution for you …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jun 12, 2020</span>
+                    <a href="/posts/2020-06-12-cellphone-detector/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/">
+                        <img src="/images/nand2tetris_linked_list/img_main.jpg" class="card-img-top" alt="Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown">Creating a Linked List in …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Creating a Linked List in Hack Language: A Nand2Tetris Project Breakdown If you&rsquo;re fascinated by the intricacies of computer engineering, then you might have stumbled upon the Nand2Tetris course. This comprehensive program takes you through the journey of building a computer from scratch, …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Nov 10, 2019</span>
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
 
 <div class="text-center pt-2">
     
@@ -918,6 +1005,35 @@ EazyPredict ML module | My portfolio
     
 
     
+    <a href="https://instagram.com/h_v_m_" aria-label="instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8ma" cx="19.38" cy="42.035" r="44.899"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#fd5" />
+                <stop offset=".328" stop-color="#ff543f" />
+                <stop offset=".348" stop-color="#fc5245" />
+                <stop offset=".504" stop-color="#e64771" />
+                <stop offset=".643" stop-color="#d53e91" />
+                <stop offset=".761" stop-color="#cc39a4" />
+                <stop offset=".841" stop-color="#c837ab" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8ma)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8mb" cx="11.786" cy="5.54" r="29.813"
+                gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#4168c9" />
+                <stop offset=".999" stop-color="#4168c9" stop-opacity="0" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8mb)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <path fill="#fff"
+                d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z" />
+            <circle cx="31.5" cy="16.5" r="1.5" fill="#fff" />
+            <path fill="#fff"
+                d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z" />
+        </svg>
+    </a>
+    
 
     
 </div><div class="container py-4">
@@ -929,7 +1045,7 @@ EazyPredict ML module | My portfolio
                         height="40px" width="40px">
                 </a>
             </div>
-            &copy; 2023  All rights reserved
+            &copy; 2024  All rights reserved
             <div class="text-secondary">
                 Made with
                 <span class="text-danger">

@@ -40,8 +40,7 @@ if (!doNotTrack) {
 </script>
 
 <meta property="og:title" content="Chrome Extension To Monitor Mental Health" />
-<meta property="og:description" content="Chrome Extension To Monitor Mental Health 
-Introduction This project was a really interesting one that I was fortunate enough to be a part of! We made as an entry project to compete in a hackathon organised by HackOn. We did not win the hackathon, but we did create a unique and interesting project. (imo)
+<meta property="og:description" content="Chrome Extension To Monitor Mental Health Introduction This project was a really interesting one that I was fortunate enough to be a part of! We made as an entry project to compete in a hackathon organised by HackOn. We did not win the hackathon, but we did create a unique and interesting project. (imo)
 Our project aims to monitor a user&rsquo;s search patterns and use this information to inform their close/loved ones about potential mental health problems the user might be facing." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://codevardhan.github.io/projects/2021-05-31-notblue-chrome-extension/" /><meta property="article:section" content="projects" />
@@ -51,8 +50,7 @@ Our project aims to monitor a user&rsquo;s search patterns and use this informat
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Chrome Extension To Monitor Mental Health"/>
-<meta name="twitter:description" content="Chrome Extension To Monitor Mental Health 
-Introduction This project was a really interesting one that I was fortunate enough to be a part of! We made as an entry project to compete in a hackathon organised by HackOn. We did not win the hackathon, but we did create a unique and interesting project. (imo)
+<meta name="twitter:description" content="Chrome Extension To Monitor Mental Health Introduction This project was a really interesting one that I was fortunate enough to be a part of! We made as an entry project to compete in a hackathon organised by HackOn. We did not win the hackathon, but we did create a unique and interesting project. (imo)
 Our project aims to monitor a user&rsquo;s search patterns and use this information to inform their close/loved ones about potential mental health problems the user might be facing."/>
 
 
@@ -310,7 +308,6 @@ Chrome Extension To Monitor Mental Health | My portfolio
           
           <article class="page-content  p-2">
           <h1 id="chrome-extension-to-monitor-mental-health">Chrome Extension To Monitor Mental Health</h1>
-<p><br><br><br><br></p>
 <h3 id="introduction">Introduction</h3>
 <p>This project was a really interesting one that I was fortunate enough to be a part of! We made as an entry project to compete in a hackathon organised by HackOn. We did not win the hackathon, but we did create a unique and interesting project. (imo)</p>
 <p>Our project aims to monitor a user&rsquo;s search patterns and use this information to inform their close/loved ones about potential mental health problems the user might be facing. A recent study showed that most people who are mentally depressed in some form have used the internet in a manner that has worsened their illness. So our goal with this approach is to help in the monitoring of ‘at-risk’ individuals and prevent them from becoming their own worst enemy.</p>
@@ -323,75 +320,77 @@ Chrome Extension To Monitor Mental Health | My portfolio
 <p>We used two different datasets for this model. The problem is a classification question that has to decide whether a person is depressed (true state) or not depressed (false state). I used 2 datasets to train the true and false state.</p>
 <p>The first <a href="https://www.kaggle.com/nikhileswarkomati/suicide-watch">dataset</a> is from kaggle. It is a collection of posts from &ldquo;SuicideWatch&rdquo; and &ldquo;depression&rdquo; subreddits of the Reddit platform. The posts are collected using Pushshift API. All posts that were made to &ldquo;SuicideWatch&rdquo; from Dec 16, 2008 (creation) till Jan 2, 2021, were collected while &ldquo;depression&rdquo; posts were collected from Jan 1, 2009, to Jan 2, 2021. We took the posts that were written by people suffering from depression as the true state.</p>
 <p>The second <a href="https://www.kaggle.com/kazanova/sentiment140">dataset</a> is a sentiment analysis dataset. It contains 1,600,000 tweets extracted using the twitter API. The tweets have been annotated (0 = negative, 2 = neutral, 4 = positive) and they can be used to detect sentiment. We took the dataset that includes neutral and positive flags.</p>
-<p>I did it this way because the &rsquo;negative&rsquo; statements from the twitter sentiment analysis dataset might be some tweet regarding a hate crime, or an angry tweet. It does not necessarily have to be the words of a person undergoing depression. So I overcame this with the Reddit dataset. Going through the subreddit mentioned, it was clear that most of the posts were regarding depression/existential crisis. Any post swaying from these topics would be quickly taken down by the moderators. So, this was most accurate data we would get that could be used to emulate the psyche of a depressed person.</p>
+<p>I did it this way because the &lsquo;negative&rsquo; statements from the twitter sentiment analysis dataset might be some tweet regarding a hate crime, or an angry tweet. It does not necessarily have to be the words of a person undergoing depression. So I overcame this with the Reddit dataset. Going through the subreddit mentioned, it was clear that most of the posts were regarding depression/existential crisis. Any post swaying from these topics would be quickly taken down by the moderators. So, this was most accurate data we would get that could be used to emulate the psyche of a depressed person.</p>
 <h4 id="pre-proccessing-">Pre-proccessing-</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>TEXT_CLEANING_RE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;@\S+|https?:\S+|http?:\S|[^A-Za-z0-9]+&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">preprocess</span>(text, stem<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Remove link,user and special characters</span>
-</span></span><span style="display:flex;"><span>    text <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(TEXT_CLEANING_RE, <span style="color:#e6db74">&#39; &#39;</span>, str(text)<span style="color:#f92672">.</span>lower())<span style="color:#f92672">.</span>strip()
-</span></span><span style="display:flex;"><span>    tokens <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> token <span style="color:#f92672">in</span> text<span style="color:#f92672">.</span>split():
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> token <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> stop_words:
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> stem:
-</span></span><span style="display:flex;"><span>                tokens<span style="color:#f92672">.</span>append(stemmer<span style="color:#f92672">.</span>stem(token))
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>                tokens<span style="color:#f92672">.</span>append(token)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(tokens)
-</span></span></code></pre></div><p>I used packages from word2vec and keras text pre-processing for building the vocabulary and tokenizing the data respectively.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+TEXT_CLEANING_RE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;@\S+|https?:\S+|http?:\S|[^A-Za-z0-9]+&#34;</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">preprocess</span>(text, stem<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+    <span style="color:#75715e"># Remove link,user and special characters</span>
+    text <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(TEXT_CLEANING_RE, <span style="color:#e6db74">&#39; &#39;</span>, str(text)<span style="color:#f92672">.</span>lower())<span style="color:#f92672">.</span>strip()
+    tokens <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> token <span style="color:#f92672">in</span> text<span style="color:#f92672">.</span>split():
+        <span style="color:#66d9ef">if</span> token <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> stop_words:
+            <span style="color:#66d9ef">if</span> stem:
+                tokens<span style="color:#f92672">.</span>append(stemmer<span style="color:#f92672">.</span>stem(token))
+            <span style="color:#66d9ef">else</span>:
+                tokens<span style="color:#f92672">.</span>append(token)
+    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(tokens)
+
+</code></pre></div><p>I used packages from word2vec and keras text pre-processing for building the vocabulary and tokenizing the data respectively.</p>
 <h4 id="building-vocabulary--">Building vocabulary -</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>W2V_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">300</span>
-</span></span><span style="display:flex;"><span>W2V_WINDOW <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
-</span></span><span style="display:flex;"><span>W2V_EPOCH <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>
-</span></span><span style="display:flex;"><span>W2V_MIN_COUNT <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>KERAS_MODEL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;model.h5&#34;</span>
-</span></span><span style="display:flex;"><span>WORD2VEC_MODEL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;model.w2v&#34;</span>
-</span></span><span style="display:flex;"><span>TOKENIZER_MODEL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;tokenizer.pkl&#34;</span>
-</span></span><span style="display:flex;"><span>ENCODER_MODEL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;encoder.pkl&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>w2v_model <span style="color:#f92672">=</span> gensim<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>word2vec<span style="color:#f92672">.</span>Word2Vec(size<span style="color:#f92672">=</span>W2V_SIZE,
-</span></span><span style="display:flex;"><span>                                            window<span style="color:#f92672">=</span>W2V_WINDOW,
-</span></span><span style="display:flex;"><span>                                            min_count<span style="color:#f92672">=</span>W2V_MIN_COUNT,
-</span></span><span style="display:flex;"><span>                                            workers<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>w2v_model<span style="color:#f92672">.</span>build_vocab(documents)
-</span></span><span style="display:flex;"><span>w2v_model<span style="color:#f92672">.</span>train(documents, total_examples<span style="color:#f92672">=</span>len(documents), epochs<span style="color:#f92672">=</span>W2V_EPOCH)
-</span></span></code></pre></div><h4 id="tokenizing--">Tokenizing -</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tokenizer <span style="color:#f92672">=</span> Tokenizer()
-</span></span><span style="display:flex;"><span>tokenizer<span style="color:#f92672">.</span>fit_on_texts(df_train<span style="color:#f92672">.</span>text)
-</span></span><span style="display:flex;"><span>vocab_size <span style="color:#f92672">=</span> len(tokenizer<span style="color:#f92672">.</span>word_index) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Total words&#34;</span>, vocab_size)
-</span></span></code></pre></div><p>Then I used LabelEncoder() from sklearn to encode the tokenized text data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">W2V_SIZE <span style="color:#f92672">=</span> <span style="color:#ae81ff">300</span>
+W2V_WINDOW <span style="color:#f92672">=</span> <span style="color:#ae81ff">7</span>
+W2V_EPOCH <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>
+W2V_MIN_COUNT <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+
+KERAS_MODEL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;model.h5&#34;</span>
+WORD2VEC_MODEL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;model.w2v&#34;</span>
+TOKENIZER_MODEL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;tokenizer.pkl&#34;</span>
+ENCODER_MODEL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;encoder.pkl&#34;</span>
+
+w2v_model <span style="color:#f92672">=</span> gensim<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>word2vec<span style="color:#f92672">.</span>Word2Vec(size<span style="color:#f92672">=</span>W2V_SIZE,
+                                            window<span style="color:#f92672">=</span>W2V_WINDOW,
+                                            min_count<span style="color:#f92672">=</span>W2V_MIN_COUNT,
+                                            workers<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>)
+
+w2v_model<span style="color:#f92672">.</span>build_vocab(documents)
+w2v_model<span style="color:#f92672">.</span>train(documents, total_examples<span style="color:#f92672">=</span>len(documents), epochs<span style="color:#f92672">=</span>W2V_EPOCH)
+
+</code></pre></div><h4 id="tokenizing--">Tokenizing -</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tokenizer <span style="color:#f92672">=</span> Tokenizer()
+tokenizer<span style="color:#f92672">.</span>fit_on_texts(df_train<span style="color:#f92672">.</span>text)
+vocab_size <span style="color:#f92672">=</span> len(tokenizer<span style="color:#f92672">.</span>word_index) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+print(<span style="color:#e6db74">&#34;Total words&#34;</span>, vocab_size)
+</code></pre></div><p>Then I used LabelEncoder() from sklearn to encode the tokenized text data.</p>
 <h4 id="encoding--">Encoding -</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>encoder <span style="color:#f92672">=</span> LabelEncoder()
-</span></span><span style="display:flex;"><span>encoder<span style="color:#f92672">.</span>fit(df_train<span style="color:#f92672">.</span>target<span style="color:#f92672">.</span>tolist())
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>y_train <span style="color:#f92672">=</span> encoder<span style="color:#f92672">.</span>transform(df_train<span style="color:#f92672">.</span>target<span style="color:#f92672">.</span>tolist())
-</span></span><span style="display:flex;"><span>y_test <span style="color:#f92672">=</span> encoder<span style="color:#f92672">.</span>transform(df_test<span style="color:#f92672">.</span>target<span style="color:#f92672">.</span>tolist())
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>y_train <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>y_test <span style="color:#f92672">=</span> y_test<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)
-</span></span></code></pre></div><h4 id="making-the-model">Making the model</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">encoder <span style="color:#f92672">=</span> LabelEncoder()
+encoder<span style="color:#f92672">.</span>fit(df_train<span style="color:#f92672">.</span>target<span style="color:#f92672">.</span>tolist())
+
+y_train <span style="color:#f92672">=</span> encoder<span style="color:#f92672">.</span>transform(df_train<span style="color:#f92672">.</span>target<span style="color:#f92672">.</span>tolist())
+y_test <span style="color:#f92672">=</span> encoder<span style="color:#f92672">.</span>transform(df_test<span style="color:#f92672">.</span>target<span style="color:#f92672">.</span>tolist())
+
+y_train <span style="color:#f92672">=</span> y_train<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)
+y_test <span style="color:#f92672">=</span> y_test<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>)
+</code></pre></div><h4 id="making-the-model">Making the model</h4>
 <p>We defined the neural network as follow and trained it for about 10 epochs. This resulted in an accuracy of 96%.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> Sequential()
-</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(embedding_layer)
-</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.5</span>))
-</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(LSTM(<span style="color:#ae81ff">100</span>, dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, recurrent_dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>))
-</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">1</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sigmoid&#39;</span>))
-</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>summary()
-</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>compile(loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;binary_crossentropy&#39;</span>,
-</span></span><span style="display:flex;"><span>            optimizer<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;adam&#34;</span>,
-</span></span><span style="display:flex;"><span>            metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])
-</span></span></code></pre></div><p><img src="/images/not_blue/model_training.png" alt="plot of training and validation accuracy"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> Sequential()
+model<span style="color:#f92672">.</span>add(embedding_layer)
+model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.5</span>))
+model<span style="color:#f92672">.</span>add(LSTM(<span style="color:#ae81ff">100</span>, dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, recurrent_dropout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>))
+model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">1</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sigmoid&#39;</span>))
+model<span style="color:#f92672">.</span>summary()
+model<span style="color:#f92672">.</span>compile(loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;binary_crossentropy&#39;</span>,
+            optimizer<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;adam&#34;</span>,
+            metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])
+</code></pre></div><p><img src="img/not_blue/model_training.png" alt="plot of training and validation accuracy"></p>
 <p>After the training is done, we can predict if a phrase shows signs of depression or not, in the following way -</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>predict(<span style="color:#e6db74">&#34;painless way to die&#34;</span>, model1)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>{<span style="color:#e6db74">&#39;elapsed_time&#39;</span>: <span style="color:#ae81ff">0.1011207103729248</span>,
-</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;label&#39;</span>: <span style="color:#66d9ef">True</span>,
-</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#39;score&#39;</span>: <span style="color:#ae81ff">0.8831092119216919</span>}
-</span></span></code></pre></div><h3 id="making-the-chrome-extension">Making the chrome extension</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">predict(<span style="color:#e6db74">&#34;painless way to die&#34;</span>, model1)
+
+{<span style="color:#e6db74">&#39;elapsed_time&#39;</span>: <span style="color:#ae81ff">0.1011207103729248</span>,
+ <span style="color:#e6db74">&#39;label&#39;</span>: <span style="color:#66d9ef">True</span>,
+ <span style="color:#e6db74">&#39;score&#39;</span>: <span style="color:#ae81ff">0.8831092119216919</span>}
+</code></pre></div><h3 id="making-the-chrome-extension">Making the chrome extension</h3>
 <p>I was not involved very heavily in this part, but what we did was to design a front end that takes in a users email ID, name and multiple friend&rsquo;s email IDs.
 The extension is built using javascript and closely interacts with Chrome extensions API. This makes it possible to run on any chromium based browser such as
 opera, edge, etc. The extension gets the search query and sends it as a JSON structure to our API endpoint /predict. This endpoint is where our DL model is hosted.
@@ -475,7 +474,7 @@ to the close ones of the user.</p>
       <div class="col-sm-12 col-md-12 col-lg-9 p-4">
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     
@@ -534,6 +533,91 @@ to the close ones of the user.</p>
   </div><footer>
     
  
+ 
+<div class="container py-3" id="recent-posts">
+    
+    
+    <div class="h3 text-center text-secondary py-3">
+        Recent Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/">
+                        <img src="/images/knn_scratch/visualized_img.png" class="card-img-top" alt="kNN algorithm explained intuitively!">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="kNN algorithm explained intuitively!">kNN algorithm explained …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
+Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression
+Introduction The K Nearest Neighbour classification is a simple and efficient …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jan 30, 2022</span>
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2020-06-12-cellphone-detector/">
+                        <img src="/images/cellphone_detector/featured.png" class="card-img-top" alt="DIY Cell Phone Detector Circuit">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2020-06-12-cellphone-detector/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="DIY Cell Phone Detector Circuit">DIY Cell Phone Detector …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>DIY Cell Phone Detector Circuit: Stop Unauthorized Mobile Phone Usage Introduction Are you tired of people using their phones when they&rsquo;re not supposed to? Maybe you want to ensure that exam halls, meetings, or other restricted areas remain phone-free. We&rsquo;ve got just the solution for you …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jun 12, 2020</span>
+                    <a href="/posts/2020-06-12-cellphone-detector/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/">
+                        <img src="/images/nand2tetris_linked_list/img_main.jpg" class="card-img-top" alt="Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown">Creating a Linked List in …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Creating a Linked List in Hack Language: A Nand2Tetris Project Breakdown If you&rsquo;re fascinated by the intricacies of computer engineering, then you might have stumbled upon the Nand2Tetris course. This comprehensive program takes you through the journey of building a computer from scratch, …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Nov 10, 2019</span>
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
 
 <div class="text-center pt-2">
     
@@ -580,6 +664,35 @@ to the close ones of the user.</p>
     
 
     
+    <a href="https://instagram.com/h_v_m_" aria-label="instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8ma" cx="19.38" cy="42.035" r="44.899"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#fd5" />
+                <stop offset=".328" stop-color="#ff543f" />
+                <stop offset=".348" stop-color="#fc5245" />
+                <stop offset=".504" stop-color="#e64771" />
+                <stop offset=".643" stop-color="#d53e91" />
+                <stop offset=".761" stop-color="#cc39a4" />
+                <stop offset=".841" stop-color="#c837ab" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8ma)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8mb" cx="11.786" cy="5.54" r="29.813"
+                gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#4168c9" />
+                <stop offset=".999" stop-color="#4168c9" stop-opacity="0" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8mb)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <path fill="#fff"
+                d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z" />
+            <circle cx="31.5" cy="16.5" r="1.5" fill="#fff" />
+            <path fill="#fff"
+                d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z" />
+        </svg>
+    </a>
+    
 
     
 </div><div class="container py-4">
@@ -591,7 +704,7 @@ to the close ones of the user.</p>
                         height="40px" width="40px">
                 </a>
             </div>
-            &copy; 2023  All rights reserved
+            &copy; 2024  All rights reserved
             <div class="text-secondary">
                 Made with
                 <span class="text-danger">

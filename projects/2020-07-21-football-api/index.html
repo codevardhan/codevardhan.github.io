@@ -325,116 +325,116 @@ Building a Football Score Updates API with Node.js and Web Scraping | My portfol
 <p>Let&rsquo;s start by setting up our project:</p>
 <p>Initialize a new Node.js project by running npm init in your project directory. Follow the prompts to create a package.json file.</p>
 <p>Install the required dependencies by running the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npm install express cors puppeteer
-</span></span></code></pre></div><p>Create an index.js file in your project directory to serve as the entry point for our application.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install express cors puppeteer
+</code></pre></div><p>Create an index.js file in your project directory to serve as the entry point for our application.</p>
 <p>Open index.js and import the required modules:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">express</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;express&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">cors</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;cors&#39;</span>;
-</span></span></code></pre></div><p>Initialize an Express application and set the port:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PORT</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">3000</span>;
-</span></span></code></pre></div><p>Enable CORS middleware to handle Cross-Origin Resource Sharing:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cors</span>());
-</span></span></code></pre></div><p>Define a route in your Express application to handle the match updates request, and relegate the scraping work to another function to maintain code cleanliness.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/:country/:comp&#39;</span>, <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">next</span>) =&gt; {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">country</span>, <span style="color:#a6e22e">comp</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">params</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getDataFromCompName</span>(<span style="color:#a6e22e">country</span>, <span style="color:#a6e22e">comp</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">200</span>).<span style="color:#a6e22e">json</span>(<span style="color:#a6e22e">data</span>);
-</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">next</span>(<span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><p>Start the server by calling app.listen(PORT, &hellip;):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">PORT</span>, () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`🚀 Server ready at http://localhost:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/`</span>));
-</span></span></code></pre></div><p>Now, our Express server is ready to handle incoming requests and fetch match updates using the getDataFromCompName function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">express</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;express&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">cors</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;cors&#39;</span>;
+</code></pre></div><p>Initialize an Express application and set the port:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PORT</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">3000</span>;
+</code></pre></div><p>Enable CORS middleware to handle Cross-Origin Resource Sharing:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cors</span>());
+</code></pre></div><p>Define a route in your Express application to handle the match updates request, and relegate the scraping work to another function to maintain code cleanliness.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/:country/:comp&#39;</span>, <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+  <span style="color:#66d9ef">try</span> {
+    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">country</span>, <span style="color:#a6e22e">comp</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">params</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getDataFromCompName</span>(<span style="color:#a6e22e">country</span>, <span style="color:#a6e22e">comp</span>);
+    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">200</span>).<span style="color:#a6e22e">json</span>(<span style="color:#a6e22e">data</span>);
+  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+    <span style="color:#a6e22e">next</span>(<span style="color:#a6e22e">error</span>);
+  }
+});
+</code></pre></div><p>Start the server by calling app.listen(PORT, &hellip;):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">PORT</span>, () =&gt; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`🚀 Server ready at http://localhost:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/`</span>));
+</code></pre></div><p>Now, our Express server is ready to handle incoming requests and fetch match updates using the getDataFromCompName function.</p>
 <h2 id="web-scraping-the-flash-score-website">Web Scraping the Flash Score Website</h2>
 <p>Next, we&rsquo;ll implement the web scraping logic using Puppeteer to fetch the latest match updates from the Flash Score website.</p>
 <p>Define a route in your Express application to handle the match updates request:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/matches&#39;</span>, <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">country</span>, <span style="color:#a6e22e">league</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getDataFromCompName</span>(<span style="color:#a6e22e">country</span>, <span style="color:#a6e22e">league</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">matches</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span> });
-</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">500</span>).<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;An error occurred&#39;</span> });
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><p>Implement the getDataFromCompName function to perform the web scraping:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getDataFromCompName</span>(<span style="color:#a6e22e">country</span>, <span style="color:#a6e22e">league</span>) {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`https://www.flashscore.in/football/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">country</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">league</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">browser</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">puppeteer</span>.<span style="color:#a6e22e">launch</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">newPage</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">setRequestInterception</span>(<span style="color:#66d9ef">true</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;request&#39;</span>, (<span style="color:#a6e22e">req</span>) =&gt; {
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">resourceType</span>() <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;font&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">resourceType</span>() <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;image&#39;</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">abort</span>();
-</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">req</span>.<span style="color:#66d9ef">continue</span>();
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#66d9ef">goto</span>(<span style="color:#a6e22e">url</span>, { <span style="color:#a6e22e">waitUntil</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;networkidle0&#39;</span> });
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">evaluate</span>(() =&gt; {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sections</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;section.event.event--live.event--summary&#39;</span>);
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">divs</span> <span style="color:#f92672">=</span> Array.<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">sections</span>.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#39;div&#39;</span>));
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">match_info</span> <span style="color:#f92672">=</span> [];
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">divs</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">current</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">divs</span>[<span style="color:#a6e22e">i</span>];
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;&#39;</span>) {
-</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">match_info</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">innerText</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;\n&#39;</span>));
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">match_info</span>;
-</span></span><span style="display:flex;"><span>    });
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">close</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">parseJSON</span>(<span style="color:#a6e22e">data</span>);
-</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [];
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Implement the parseJSON function to process the scraped data:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">parseJSON</span>(<span style="color:#a6e22e">match_info</span>) {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">final_json</span> <span style="color:#f92672">=</span> [];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">match_info</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#39;No matches have taken place in the last 24 hours.&#39;</span>];
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">match_info</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">match</span>) =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">match_info_json</span> <span style="color:#f92672">=</span> {};
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">final_json</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MatchInstance</span>(<span style="color:#a6e22e">match_info_json</span>));
-</span></span><span style="display:flex;"><span>  });
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">final_json</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Define the MatchInstance class to represent a single match instance:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MatchInstance</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">match_info_json</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">status</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">time</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">team_1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">team_1</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">team_2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">team_2</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">score_1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">score_1</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">score_2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">score_2</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">fh_score</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">fh_score</span>;
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="testing-the-api">Testing the API</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#39;/matches&#39;</span>, <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>) =&gt; {
+  <span style="color:#66d9ef">try</span> {
+    <span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">country</span>, <span style="color:#a6e22e">league</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">query</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">getDataFromCompName</span>(<span style="color:#a6e22e">country</span>, <span style="color:#a6e22e">league</span>);
+
+    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">matches</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">data</span> });
+  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
+    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">status</span>(<span style="color:#ae81ff">500</span>).<span style="color:#a6e22e">json</span>({ <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;An error occurred&#39;</span> });
+  }
+});
+</code></pre></div><p>Implement the getDataFromCompName function to perform the web scraping:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getDataFromCompName</span>(<span style="color:#a6e22e">country</span>, <span style="color:#a6e22e">league</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`https://www.flashscore.in/football/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">country</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">league</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+
+  <span style="color:#66d9ef">try</span> {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">browser</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">puppeteer</span>.<span style="color:#a6e22e">launch</span>();
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">newPage</span>();
+    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">setRequestInterception</span>(<span style="color:#66d9ef">true</span>);
+    <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;request&#39;</span>, (<span style="color:#a6e22e">req</span>) =&gt; {
+      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">resourceType</span>() <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;font&#39;</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">resourceType</span>() <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;image&#39;</span>) {
+        <span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">abort</span>();
+      } <span style="color:#66d9ef">else</span> {
+        <span style="color:#a6e22e">req</span>.<span style="color:#66d9ef">continue</span>();
+      }
+    });
+    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#66d9ef">goto</span>(<span style="color:#a6e22e">url</span>, { <span style="color:#a6e22e">waitUntil</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;networkidle0&#39;</span> });
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">evaluate</span>(() =&gt; {
+
+      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sections</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;section.event.event--live.event--summary&#39;</span>);
+      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">divs</span> <span style="color:#f92672">=</span> Array.<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">sections</span>.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#39;div&#39;</span>));
+      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">match_info</span> <span style="color:#f92672">=</span> [];
+      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">divs</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>) {
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">current</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">divs</span>[<span style="color:#a6e22e">i</span>];
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">!==</span> <span style="color:#e6db74">&#39;&#39;</span>) {
+          <span style="color:#a6e22e">match_info</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">innerText</span>.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#39;\n&#39;</span>));
+        }
+      }
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">match_info</span>;
+    });
+    <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">close</span>();
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">parseJSON</span>(<span style="color:#a6e22e">data</span>);
+  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#a6e22e">error</span>);
+    <span style="color:#66d9ef">return</span> [];
+  }
+}
+</code></pre></div><p>Implement the parseJSON function to process the scraped data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">parseJSON</span>(<span style="color:#a6e22e">match_info</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">final_json</span> <span style="color:#f92672">=</span> [];
+
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">match_info</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#66d9ef">return</span> [<span style="color:#e6db74">&#39;No matches have taken place in the last 24 hours.&#39;</span>];
+  }
+
+  <span style="color:#a6e22e">match_info</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">match</span>) =&gt; {
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">match_info_json</span> <span style="color:#f92672">=</span> {};
+    <span style="color:#a6e22e">final_json</span>.<span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">MatchInstance</span>(<span style="color:#a6e22e">match_info_json</span>));
+  });
+
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">final_json</span>;
+}
+</code></pre></div><p>Define the MatchInstance class to represent a single match instance:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MatchInstance</span> {
+  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">match_info_json</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">status</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">status</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">time</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">team_1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">team_1</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">team_2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">team_2</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">score_1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">score_1</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">score_2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">score_2</span>;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">fh_score</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">match_info_json</span>.<span style="color:#a6e22e">fh_score</span>;
+  }
+}
+</code></pre></div><h2 id="testing-the-api">Testing the API</h2>
 <p>Start the Express server by adding the following code to the end of index.js:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">3000</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">port</span>, () =&gt; {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Server listening on port </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
-</span></span><span style="display:flex;"><span>});
-</span></span></code></pre></div><p>Run the API by executing the following command in your terminal:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>node index.js
-</span></span></code></pre></div><p>Open your terminal and provide a curl request to &ldquo;http://localhost:3000/matches?country=your_country&amp;league=your_league&rdquo; to retrieve the latest match updates for your desired country and league.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">||</span> <span style="color:#ae81ff">3000</span>;
+
+<span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">port</span>, () =&gt; {
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Server listening on port </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">port</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+});
+</code></pre></div><p>Run the API by executing the following command in your terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">node index.js
+</code></pre></div><p>Open your terminal and provide a curl request to &ldquo;http://localhost:3000/matches?country=your_country&amp;league=your_league&rdquo; to retrieve the latest match updates for your desired country and league.</p>
 <p>You should receive a JSON response containing the match data.</p>
 <h2 id="customization-and-enhancements">Customization and Enhancements</h2>
 <p>Our basic Football Score Updates API is now up and running. However, there are several customization and enhancement options you can explore:</p>
@@ -523,7 +523,7 @@ Building a Football Score Updates API with Node.js and Web Scraping | My portfol
       <div class="col-sm-12 col-md-12 col-lg-9 p-4">
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     
@@ -582,6 +582,91 @@ Building a Football Score Updates API with Node.js and Web Scraping | My portfol
   </div><footer>
     
  
+ 
+<div class="container py-3" id="recent-posts">
+    
+    
+    <div class="h3 text-center text-secondary py-3">
+        Recent Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/">
+                        <img src="/images/knn_scratch/visualized_img.png" class="card-img-top" alt="kNN algorithm explained intuitively!">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="kNN algorithm explained intuitively!">kNN algorithm explained …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
+Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression
+Introduction The K Nearest Neighbour classification is a simple and efficient …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jan 30, 2022</span>
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2020-06-12-cellphone-detector/">
+                        <img src="/images/cellphone_detector/featured.png" class="card-img-top" alt="DIY Cell Phone Detector Circuit">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2020-06-12-cellphone-detector/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="DIY Cell Phone Detector Circuit">DIY Cell Phone Detector …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>DIY Cell Phone Detector Circuit: Stop Unauthorized Mobile Phone Usage Introduction Are you tired of people using their phones when they&rsquo;re not supposed to? Maybe you want to ensure that exam halls, meetings, or other restricted areas remain phone-free. We&rsquo;ve got just the solution for you …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jun 12, 2020</span>
+                    <a href="/posts/2020-06-12-cellphone-detector/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/">
+                        <img src="/images/nand2tetris_linked_list/img_main.jpg" class="card-img-top" alt="Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown">Creating a Linked List in …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Creating a Linked List in Hack Language: A Nand2Tetris Project Breakdown If you&rsquo;re fascinated by the intricacies of computer engineering, then you might have stumbled upon the Nand2Tetris course. This comprehensive program takes you through the journey of building a computer from scratch, …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Nov 10, 2019</span>
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
 
 <div class="text-center pt-2">
     
@@ -628,6 +713,35 @@ Building a Football Score Updates API with Node.js and Web Scraping | My portfol
     
 
     
+    <a href="https://instagram.com/h_v_m_" aria-label="instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8ma" cx="19.38" cy="42.035" r="44.899"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#fd5" />
+                <stop offset=".328" stop-color="#ff543f" />
+                <stop offset=".348" stop-color="#fc5245" />
+                <stop offset=".504" stop-color="#e64771" />
+                <stop offset=".643" stop-color="#d53e91" />
+                <stop offset=".761" stop-color="#cc39a4" />
+                <stop offset=".841" stop-color="#c837ab" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8ma)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8mb" cx="11.786" cy="5.54" r="29.813"
+                gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#4168c9" />
+                <stop offset=".999" stop-color="#4168c9" stop-opacity="0" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8mb)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <path fill="#fff"
+                d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z" />
+            <circle cx="31.5" cy="16.5" r="1.5" fill="#fff" />
+            <path fill="#fff"
+                d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z" />
+        </svg>
+    </a>
+    
 
     
 </div><div class="container py-4">
@@ -639,7 +753,7 @@ Building a Football Score Updates API with Node.js and Web Scraping | My portfol
                         height="40px" width="40px">
                 </a>
             </div>
-            &copy; 2023  All rights reserved
+            &copy; 2024  All rights reserved
             <div class="text-secondary">
                 Made with
                 <span class="text-danger">

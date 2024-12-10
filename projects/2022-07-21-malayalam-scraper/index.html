@@ -335,54 +335,54 @@ Code-Mixing and Multilingualism: Low resource languages are often spoken in mult
 <p><img src="/images/nlp_scraper/fig2.png" alt="Screenshot of the year view of website">
 <img src="/images/nlp_scraper/fig3.png" alt="Screenshot of the month view of website"></p>
 <p>Notice the changes in the url when we get to the day view. The url “https://malayalam.oneindia.com/2004/01/01/” displays the archived malayalam news data for January 1st 2007. This honestly makes our job so much easier as all we really have to do is loop through all the date combinations from 2000/05/01 to the current date. So our scraping function begins to look like this.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_data</span>(url, lang, save_dir):
-</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> url<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;language&#34;</span>, lang)
-</span></span><span style="display:flex;"><span>    end_date <span style="color:#f92672">=</span> date<span style="color:#f92672">.</span>today()
-</span></span><span style="display:flex;"><span>    start_date <span style="color:#f92672">=</span> date(<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> single_date <span style="color:#f92672">in</span> daterange(start_date, end_date):
-</span></span><span style="display:flex;"><span>        url_end <span style="color:#f92672">=</span> single_date<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;-&#34;</span>, <span style="color:#e6db74">&#34;/&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span>
-</span></span><span style="display:flex;"><span>        page_url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> url_end
-</span></span><span style="display:flex;"><span>       <span style="color:#75715e"># scrape data from page_url and return it</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>get_data(url, args<span style="color:#f92672">.</span>lang, args<span style="color:#f92672">.</span>save_dir)
-</span></span></code></pre></div><p>The next step is to find the url information of each news article in the list. We can use this to navigate to each article and then finally get our data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_data</span>(url, lang, save_dir):
+    url <span style="color:#f92672">=</span> url<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;language&#34;</span>, lang)
+    end_date <span style="color:#f92672">=</span> date<span style="color:#f92672">.</span>today()
+    start_date <span style="color:#f92672">=</span> date(<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>)
+    data <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> single_date <span style="color:#f92672">in</span> daterange(start_date, end_date):
+        url_end <span style="color:#f92672">=</span> single_date<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;-&#34;</span>, <span style="color:#e6db74">&#34;/&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span>
+        page_url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> url_end
+       <span style="color:#75715e"># scrape data from page_url and return it</span>
+
+get_data(url, args<span style="color:#f92672">.</span>lang, args<span style="color:#f92672">.</span>save_dir)
+</code></pre></div><p>The next step is to find the url information of each news article in the list. We can use this to navigate to each article and then finally get our data.</p>
 <p><img src="/images/nlp_scraper/fig4.png" alt="Screenshot of the dev tools in browser"></p>
 <p>The built-in tools of our browser can help us in achieving this goal. Open developer tools to get a view of the html code displayed by the browser. Then using the inspect element tool, click on the news article. This highlights the code snippet relevant to the url.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>page_html <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(page_url)<span style="color:#f92672">.</span>content
-</span></span><span style="display:flex;"><span>main_soup <span style="color:#f92672">=</span> BeautifulSoup(page_html, features<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;html5lib&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> main_soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#34;ul&#34;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;class&#34;</span>: <span style="color:#e6db74">&#34;dayindexTitles&#34;</span>}):
-</span></span><span style="display:flex;"><span>  news_url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> elem<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>attrs[<span style="color:#e6db74">&#34;href&#34;</span>]
-</span></span></code></pre></div><p>Our initial step involves invoking an HTML request to the previously acquired URL. The resultant HTML content is subsequently passed to the BeautifulSoup wrapper, which utilizes the &lsquo;html5lib&rsquo; parser to construct a representation of the Document Object Model (DOM) of the page.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">page_html <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(page_url)<span style="color:#f92672">.</span>content
+main_soup <span style="color:#f92672">=</span> BeautifulSoup(page_html, features<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;html5lib&#34;</span>)
+<span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> main_soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#34;ul&#34;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;class&#34;</span>: <span style="color:#e6db74">&#34;dayindexTitles&#34;</span>}):
+  news_url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> elem<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>attrs[<span style="color:#e6db74">&#34;href&#34;</span>]
+</code></pre></div><p>Our initial step involves invoking an HTML request to the previously acquired URL. The resultant HTML content is subsequently passed to the BeautifulSoup wrapper, which utilizes the &lsquo;html5lib&rsquo; parser to construct a representation of the Document Object Model (DOM) of the page.</p>
 <p>Then we use the findAll function of beautifulSoup to find all ul elements with the class value of “dayIndexTitles”. The url can be accessed through the link element, with the href attribute.</p>
 <p>Finally to extract the main data, analyze the final page again.</p>
 <p><img src="/images/nlp_scraper/fig5.png" alt="Screenshot of the dev tools in browser 2"></p>
 <p>The main data is in the &lt;p&gt; tags of the article. So we can utilize the following code to extract the necessary information and save them to a local file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>news_html <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(news_url)<span style="color:#f92672">.</span>content
-</span></span><span style="display:flex;"><span>news_soup <span style="color:#f92672">=</span> BeautifulSoup(news_html, features<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;html5lib&#34;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> news_soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#34;p&#34;</span>):
-</span></span><span style="display:flex;"><span>   doc_data <span style="color:#f92672">+=</span> str(elem)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
-</span></span><span style="display:flex;"><span>   data<span style="color:#f92672">.</span>append(doc_data)
-</span></span></code></pre></div><p>Finally put together the whole thing together and create a function as follows.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_data</span>(url, lang, save_dir):
-</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> url<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;language&#34;</span>, lang)
-</span></span><span style="display:flex;"><span>    end_date <span style="color:#f92672">=</span> date<span style="color:#f92672">.</span>today()
-</span></span><span style="display:flex;"><span>    start_date <span style="color:#f92672">=</span> date(<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> single_date <span style="color:#f92672">in</span> daterange(start_date, end_date):
-</span></span><span style="display:flex;"><span>        url_end <span style="color:#f92672">=</span> single_date<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;-&#34;</span>, <span style="color:#e6db74">&#34;/&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span>
-</span></span><span style="display:flex;"><span>        page_url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> url_end
-</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> main_soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#34;ul&#34;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;class&#34;</span>: <span style="color:#e6db74">&#34;dayindexTitles&#34;</span>}):
-</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span> elem<span style="color:#f92672">.</span>a:
-</span></span><span style="display:flex;"><span>                  doc_data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>                  news_url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> elem<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>attrs[<span style="color:#e6db74">&#34;href&#34;</span>]
-</span></span><span style="display:flex;"><span>                  news_soup <span style="color:#f92672">=</span> BeautifulSoup(
-</span></span><span style="display:flex;"><span>                      requests<span style="color:#f92672">.</span>get(news_url, headers<span style="color:#f92672">=</span>header)<span style="color:#f92672">.</span>content, features<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;html5lib&#34;</span>
-</span></span><span style="display:flex;"><span>                  )
-</span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> news_soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#34;p&#34;</span>):
-</span></span><span style="display:flex;"><span>                      doc_data <span style="color:#f92672">+=</span> str(elem)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
-</span></span><span style="display:flex;"><span>                  data<span style="color:#f92672">.</span>append(doc_data)
-</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">news_html <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(news_url)<span style="color:#f92672">.</span>content
+news_soup <span style="color:#f92672">=</span> BeautifulSoup(news_html, features<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;html5lib&#34;</span>)
+<span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> news_soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#34;p&#34;</span>):
+   doc_data <span style="color:#f92672">+=</span> str(elem)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+   data<span style="color:#f92672">.</span>append(doc_data)
+</code></pre></div><p>Finally put together the whole thing together and create a function as follows.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_data</span>(url, lang, save_dir):
+    url <span style="color:#f92672">=</span> url<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;language&#34;</span>, lang)
+    end_date <span style="color:#f92672">=</span> date<span style="color:#f92672">.</span>today()
+    start_date <span style="color:#f92672">=</span> date(<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>)
+    data <span style="color:#f92672">=</span> []
+    <span style="color:#66d9ef">for</span> single_date <span style="color:#f92672">in</span> daterange(start_date, end_date):
+        url_end <span style="color:#f92672">=</span> single_date<span style="color:#f92672">.</span>strftime(<span style="color:#e6db74">&#34;%Y-%m-</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;-&#34;</span>, <span style="color:#e6db74">&#34;/&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span>
+        page_url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> url_end
+          <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> main_soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#34;ul&#34;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;class&#34;</span>: <span style="color:#e6db74">&#34;dayindexTitles&#34;</span>}):
+              <span style="color:#66d9ef">if</span> elem<span style="color:#f92672">.</span>a:
+                  doc_data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+                  news_url <span style="color:#f92672">=</span> url <span style="color:#f92672">+</span> elem<span style="color:#f92672">.</span>a<span style="color:#f92672">.</span>attrs[<span style="color:#e6db74">&#34;href&#34;</span>]
+                  news_soup <span style="color:#f92672">=</span> BeautifulSoup(
+                      requests<span style="color:#f92672">.</span>get(news_url, headers<span style="color:#f92672">=</span>header)<span style="color:#f92672">.</span>content, features<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;html5lib&#34;</span>
+                  )
+                  <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> news_soup<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#34;p&#34;</span>):
+                      doc_data <span style="color:#f92672">+=</span> str(elem)<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)
+                  data<span style="color:#f92672">.</span>append(doc_data)
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>Therefore our code is capable of extracting data from this website. The entire project code is available on <a href="https://github.com/codevardhan/simple-indic-languages-scraper">GitHub</a>. In the entire project, I have added some sanity checks and extended the functionality to a CLI, but the base logic of the scraping part remains the same.</p>
 
           </article>
@@ -456,7 +456,7 @@ Code-Mixing and Multilingualism: Low resource languages are often spoken in mult
       <div class="col-sm-12 col-md-12 col-lg-9 p-4">
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     
@@ -515,6 +515,91 @@ Code-Mixing and Multilingualism: Low resource languages are often spoken in mult
   </div><footer>
     
  
+ 
+<div class="container py-3" id="recent-posts">
+    
+    
+    <div class="h3 text-center text-secondary py-3">
+        Recent Posts
+    </div>
+    <div class="row justify-content-center">
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/">
+                        <img src="/images/knn_scratch/visualized_img.png" class="card-img-top" alt="kNN algorithm explained intuitively!">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="kNN algorithm explained intuitively!">kNN algorithm explained …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
+Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression
+Introduction The K Nearest Neighbour classification is a simple and efficient …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jan 30, 2022</span>
+                    <a href="/posts/2022-01-30-knn-algorithm-demystified/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2020-06-12-cellphone-detector/">
+                        <img src="/images/cellphone_detector/featured.png" class="card-img-top" alt="DIY Cell Phone Detector Circuit">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2020-06-12-cellphone-detector/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="DIY Cell Phone Detector Circuit">DIY Cell Phone Detector …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>DIY Cell Phone Detector Circuit: Stop Unauthorized Mobile Phone Usage Introduction Are you tired of people using their phones when they&rsquo;re not supposed to? Maybe you want to ensure that exam halls, meetings, or other restricted areas remain phone-free. We&rsquo;ve got just the solution for you …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Jun 12, 2020</span>
+                    <a href="/posts/2020-06-12-cellphone-detector/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/">
+                        <img src="/images/nand2tetris_linked_list/img_main.jpg" class="card-img-top" alt="Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown">Creating a Linked List in …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>Creating a Linked List in Hack Language: A Nand2Tetris Project Breakdown If you&rsquo;re fascinated by the intricacies of computer engineering, then you might have stumbled upon the Nand2Tetris course. This comprehensive program takes you through the journey of building a computer from scratch, …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Nov 10, 2019</span>
+                    <a href="/posts/2019-11-10-nand2tetris-linked-list/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
 
 <div class="text-center pt-2">
     
@@ -561,6 +646,35 @@ Code-Mixing and Multilingualism: Low resource languages are often spoken in mult
     
 
     
+    <a href="https://instagram.com/h_v_m_" aria-label="instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px">
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8ma" cx="19.38" cy="42.035" r="44.899"
+                gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#fd5" />
+                <stop offset=".328" stop-color="#ff543f" />
+                <stop offset=".348" stop-color="#fc5245" />
+                <stop offset=".504" stop-color="#e64771" />
+                <stop offset=".643" stop-color="#d53e91" />
+                <stop offset=".761" stop-color="#cc39a4" />
+                <stop offset=".841" stop-color="#c837ab" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8ma)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <radialGradient id="yOrnnhliCrdS2gy~4tD8mb" cx="11.786" cy="5.54" r="29.813"
+                gradientTransform="matrix(1 0 0 .6663 0 1.849)" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#4168c9" />
+                <stop offset=".999" stop-color="#4168c9" stop-opacity="0" />
+            </radialGradient>
+            <path fill="url(#yOrnnhliCrdS2gy~4tD8mb)"
+                d="M34.017,41.99l-20,0.019c-4.4,0.004-8.003-3.592-8.008-7.992l-0.019-20	c-0.004-4.4,3.592-8.003,7.992-8.008l20-0.019c4.4-0.004,8.003,3.592,8.008,7.992l0.019,20	C42.014,38.383,38.417,41.986,34.017,41.99z" />
+            <path fill="#fff"
+                d="M24,31c-3.859,0-7-3.14-7-7s3.141-7,7-7s7,3.14,7,7S27.859,31,24,31z M24,19c-2.757,0-5,2.243-5,5	s2.243,5,5,5s5-2.243,5-5S26.757,19,24,19z" />
+            <circle cx="31.5" cy="16.5" r="1.5" fill="#fff" />
+            <path fill="#fff"
+                d="M30,37H18c-3.859,0-7-3.14-7-7V18c0-3.86,3.141-7,7-7h12c3.859,0,7,3.14,7,7v12	C37,33.86,33.859,37,30,37z M18,13c-2.757,0-5,2.243-5,5v12c0,2.757,2.243,5,5,5h12c2.757,0,5-2.243,5-5V18c0-2.757-2.243-5-5-5H18z" />
+        </svg>
+    </a>
+    
 
     
 </div><div class="container py-4">
@@ -572,7 +686,7 @@ Code-Mixing and Multilingualism: Low resource languages are often spoken in mult
                         height="40px" width="40px">
                 </a>
             </div>
-            &copy; 2023  All rights reserved
+            &copy; 2024  All rights reserved
             <div class="text-secondary">
                 Made with
                 <span class="text-danger">
