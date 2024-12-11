@@ -6,7 +6,17 @@
     <description>Recent content in Posts on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 30 Jan 2022 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Dec 2024 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Developing a chess plugin for Manim!</title>
+      <link>https://codevardhan.github.io/posts/2024-12-10-developing-chess-plugin-manim/</link>
+      <pubDate>Tue, 10 Dec 2024 12:12:11 +0530</pubDate>
+      
+      <guid>https://codevardhan.github.io/posts/2024-12-10-developing-chess-plugin-manim/</guid>
+      <description>Introduction I first came across Manim while watching 3blue1brown His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: Manim.
+While working with Manim is rewarding, the framework’s steep learning curve and its general-purpose nature can make implementing specific use cases challenging.</description>
+    </item>
+    
     <item>
       <title>kNN algorithm explained intuitively!</title>
       <link>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</link>
