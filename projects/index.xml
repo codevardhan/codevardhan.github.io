@@ -6,46 +6,35 @@
     <description>Recent content in Projects on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Feb 2023 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Feb 2023 12:12:11 +0530</lastBuildDate>
+    <atom:link href="https://codevardhan.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>EazyPredict ML module</title>
       <link>https://codevardhan.github.io/projects/2023-02-03-eazypredict-module/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/projects/2023-02-03-eazypredict-module/</guid>
-      <description>EazyPredict - Running and comparing multiple ML models at once Welcome to the world of &amp;lsquo;EazyPredict&amp;rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible. The module was heavily influenced by the &amp;lsquo;LazyPredict&amp;rsquo; module. I developed this module to address a few shortcomings I identified in LazyPredict.
-Why EazyPredict? Some of its key features are as follows -
-  The &amp;lsquo;EazyPredict&amp;rsquo; module utilizes a limited number of prediction algorithms (10) in order to minimize memory usage and prevent potential issues on platforms such as Kaggle.</description>
+      <description>EazyPredict - Running and comparing multiple ML models at once Welcome to the world of &amp;lsquo;EazyPredict&amp;rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible. The module was heavily influenced by the &amp;lsquo;LazyPredict&amp;rsquo; module. I developed this module to address a few shortcomings I identified in LazyPredict.&#xA;Why EazyPredict? Some of its key features are as follows -&#xA;The &amp;lsquo;EazyPredict&amp;rsquo; module utilizes a limited number of prediction algorithms (10) in order to minimize memory usage and prevent potential issues on platforms such as Kaggle.</description>
     </item>
-    
     <item>
       <title>Developing a scraper to get NLP data using Beautiful Soup and python!</title>
       <link>https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/</link>
       <pubDate>Thu, 21 Jul 2022 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/projects/2022-07-21-malayalam-scraper/</guid>
-      <description>The aim of this blog is to guide individuals in comprehending the methodology and tactics required to construct a web scraper.
-The problem with low resource languages for NLP When getting started with an NLP project, the initial bottleneck is always acquiring relevant data. This issue is magnified when trying to work on an NLP project for Indian languages. Some of the challenges associated with building an NLP project for languages with a low digital presence are as follows.</description>
+      <description>The aim of this blog is to guide individuals in comprehending the methodology and tactics required to construct a web scraper.&#xA;The problem with low resource languages for NLP When getting started with an NLP project, the initial bottleneck is always acquiring relevant data. This issue is magnified when trying to work on an NLP project for Indian languages. Some of the challenges associated with building an NLP project for languages with a low digital presence are as follows.</description>
     </item>
-    
     <item>
       <title>Chrome Extension To Monitor Mental Health</title>
       <link>https://codevardhan.github.io/projects/2021-05-31-notblue-chrome-extension/</link>
       <pubDate>Mon, 31 May 2021 10:10:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/projects/2021-05-31-notblue-chrome-extension/</guid>
-      <description>Chrome Extension To Monitor Mental Health Introduction This project was a really interesting one that I was fortunate enough to be a part of! We made as an entry project to compete in a hackathon organised by HackOn. We did not win the hackathon, but we did create a unique and interesting project. (imo)
-Our project aims to monitor a user&amp;rsquo;s search patterns and use this information to inform their close/loved ones about potential mental health problems the user might be facing.</description>
+      <description>Chrome Extension To Monitor Mental Health Introduction This project was a really interesting one that I was fortunate enough to be a part of! We made as an entry project to compete in a hackathon organised by HackOn. We did not win the hackathon, but we did create a unique and interesting project. (imo)&#xA;Our project aims to monitor a user&amp;rsquo;s search patterns and use this information to inform their close/loved ones about potential mental health problems the user might be facing.</description>
     </item>
-    
     <item>
       <title>Building a Football Score Updates API with Node.js and Web Scraping</title>
       <link>https://codevardhan.github.io/projects/2020-07-21-football-api/</link>
       <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/projects/2020-07-21-football-api/</guid>
       <description>Building a Football Score Updates API with Node.js and Web Scraping Football Score Updates API In the world of football, staying up to date with the latest match scores and updates is crucial for fans, sports journalists, and developers alike. In this technical blog post, we&amp;rsquo;ll explore how to build a Football Score Updates API using Node.js and web scraping techniques. Our API will fetch real-time match information from the popular Flash Score website, allowing users to access comprehensive data on matches happening in various countries and leagues.</description>
     </item>
-    
   </channel>
 </rss>

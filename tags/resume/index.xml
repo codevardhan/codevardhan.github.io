@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>resume on My portfolio</title>
+    <title>Resume on My portfolio</title>
     <link>https://codevardhan.github.io/tags/resume/</link>
-    <description>Recent content in resume on My portfolio</description>
+    <description>Recent content in Resume on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 May 2023 10:10:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/tags/resume/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 May 2023 10:10:11 +0530</lastBuildDate>
+    <atom:link href="https://codevardhan.github.io/tags/resume/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Resume</title>
       <link>https://codevardhan.github.io/resume/</link>
       <pubDate>Sat, 20 May 2023 10:10:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/resume/</guid>
-      <description>Harshavardhan M
-B.Tech in Computer Science, specialized in Artificial Intelligence
-Masters in Artificial Intelligence
-Education    Degree/Certificate Institute/Board CGPA/Percentage Year     Masters Northeastern University, Boston TBD 2024-2026   B.Tech Amrita Vishwa Vidyapeetham, Kollam 8.52 2019-2023   Senior Secondary CBSE Board 92.0% 2019   Secondary CBSE Board 100% 2017    Experience BeSuperhuman.ai (June 2023 - August 2026, London, UK. Remote)
- Lead Machine Learning Engineer Developed the Minimum Viable Product (MVP), overseeing backend infrastructure and AI models utilizing cutting-edge LLMs (Large Language Models), Langchain.</description>
+      <description>Harshavardhan M&#xA;B.Tech in Computer Science, specialized in Artificial Intelligence&#xA;Masters in Artificial Intelligence&#xA;Education Degree/Certificate Institute/Board CGPA/Percentage Year Masters Northeastern University, Boston TBD 2024-2026 B.Tech Amrita Vishwa Vidyapeetham, Kollam 8.52 2019-2023 Senior Secondary CBSE Board 92.0% 2019 Secondary CBSE Board 100% 2017 Experience BeSuperhuman.ai (June 2023 - August 2026, London, UK. Remote)&#xA;Lead Machine Learning Engineer Developed the Minimum Viable Product (MVP), overseeing backend infrastructure and AI models utilizing cutting-edge LLMs (Large Language Models), Langchain.</description>
     </item>
-    
   </channel>
 </rss>

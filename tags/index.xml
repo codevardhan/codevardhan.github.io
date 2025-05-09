@@ -6,204 +6,175 @@
     <description>Recent content in Tags on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Dec 2024 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Apr 2025 12:12:11 +0530</lastBuildDate>
+    <atom:link href="https://codevardhan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>animation</title>
-      <link>https://codevardhan.github.io/tags/animation/</link>
-      <pubDate>Tue, 10 Dec 2024 12:12:11 +0530</pubDate>
-      
-      <guid>https://codevardhan.github.io/tags/animation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>chess</title>
-      <link>https://codevardhan.github.io/tags/chess/</link>
-      <pubDate>Tue, 10 Dec 2024 12:12:11 +0530</pubDate>
-      
-      <guid>https://codevardhan.github.io/tags/chess/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>manim</title>
-      <link>https://codevardhan.github.io/tags/manim/</link>
-      <pubDate>Tue, 10 Dec 2024 12:12:11 +0530</pubDate>
-      
-      <guid>https://codevardhan.github.io/tags/manim/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>python</title>
+      <title>Python</title>
       <link>https://codevardhan.github.io/tags/python/</link>
-      <pubDate>Tue, 10 Dec 2024 12:12:11 +0530</pubDate>
-      
+      <pubDate>Mon, 28 Apr 2025 12:12:11 +0530</pubDate>
       <guid>https://codevardhan.github.io/tags/python/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>resume</title>
+      <title>Reinforcement-Learning</title>
+      <link>https://codevardhan.github.io/tags/reinforcement-learning/</link>
+      <pubDate>Mon, 28 Apr 2025 12:12:11 +0530</pubDate>
+      <guid>https://codevardhan.github.io/tags/reinforcement-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rocket</title>
+      <link>https://codevardhan.github.io/tags/rocket/</link>
+      <pubDate>Mon, 28 Apr 2025 12:12:11 +0530</pubDate>
+      <guid>https://codevardhan.github.io/tags/rocket/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Animation</title>
+      <link>https://codevardhan.github.io/tags/animation/</link>
+      <pubDate>Tue, 10 Dec 2024 12:12:11 +0530</pubDate>
+      <guid>https://codevardhan.github.io/tags/animation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Chess</title>
+      <link>https://codevardhan.github.io/tags/chess/</link>
+      <pubDate>Tue, 10 Dec 2024 12:12:11 +0530</pubDate>
+      <guid>https://codevardhan.github.io/tags/chess/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Manim</title>
+      <link>https://codevardhan.github.io/tags/manim/</link>
+      <pubDate>Tue, 10 Dec 2024 12:12:11 +0530</pubDate>
+      <guid>https://codevardhan.github.io/tags/manim/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Resume</title>
       <link>https://codevardhan.github.io/tags/resume/</link>
       <pubDate>Sat, 20 May 2023 10:10:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/resume/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>from-scratch</title>
+      <title>From-Scratch</title>
       <link>https://codevardhan.github.io/tags/from-scratch/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/from-scratch/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>k-nearest-neighbours</title>
+      <title>K-Nearest-Neighbours</title>
       <link>https://codevardhan.github.io/tags/k-nearest-neighbours/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/k-nearest-neighbours/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>machine-learning</title>
+      <title>Machine-Learning</title>
       <link>https://codevardhan.github.io/tags/machine-learning/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/machine-learning/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>deep-learning</title>
+      <title>Deep-Learning</title>
       <link>https://codevardhan.github.io/tags/deep-learning/</link>
       <pubDate>Thu, 21 Jul 2022 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/deep-learning/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>malayalam</title>
+      <title>Malayalam</title>
       <link>https://codevardhan.github.io/tags/malayalam/</link>
       <pubDate>Thu, 21 Jul 2022 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/malayalam/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>natural-language-processing</title>
+      <title>Natural-Language-Processing</title>
       <link>https://codevardhan.github.io/tags/natural-language-processing/</link>
       <pubDate>Thu, 21 Jul 2022 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/natural-language-processing/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>chrome-extension</title>
+      <title>Chrome-Extension</title>
       <link>https://codevardhan.github.io/tags/chrome-extension/</link>
       <pubDate>Mon, 31 May 2021 10:10:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/chrome-extension/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>api</title>
+      <title>Api</title>
       <link>https://codevardhan.github.io/tags/api/</link>
       <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/api/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>javascript</title>
+      <title>Javascript</title>
       <link>https://codevardhan.github.io/tags/javascript/</link>
       <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/javascript/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>node-js</title>
+      <title>Node-Js</title>
       <link>https://codevardhan.github.io/tags/node-js/</link>
       <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/node-js/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>web-scraping</title>
+      <title>Web-Scraping</title>
       <link>https://codevardhan.github.io/tags/web-scraping/</link>
       <pubDate>Tue, 21 Jul 2020 11:34:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/web-scraping/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>circuitry</title>
+      <title>Circuitry</title>
       <link>https://codevardhan.github.io/tags/circuitry/</link>
       <pubDate>Fri, 12 Jun 2020 10:12:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/circuitry/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>electronics</title>
+      <title>Electronics</title>
       <link>https://codevardhan.github.io/tags/electronics/</link>
       <pubDate>Fri, 12 Jun 2020 10:12:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/electronics/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>beginnner</title>
+      <title>Beginnner</title>
       <link>https://codevardhan.github.io/tags/beginnner/</link>
       <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/beginnner/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>hack</title>
+      <title>Hack</title>
       <link>https://codevardhan.github.io/tags/hack/</link>
       <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/hack/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>nand2tetris</title>
+      <title>Nand2tetris</title>
       <link>https://codevardhan.github.io/tags/nand2tetris/</link>
       <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/nand2tetris/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>programming</title>
+      <title>Programming</title>
       <link>https://codevardhan.github.io/tags/programming/</link>
       <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/tags/programming/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

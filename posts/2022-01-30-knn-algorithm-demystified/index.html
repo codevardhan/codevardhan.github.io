@@ -49,8 +49,7 @@ Introduction The K Nearest Neighbour classification is a simple and efficient ma
 <meta property="article:modified_time" content="2022-01-30T12:12:11+05:30" /><meta property="og:site_name" content="My Portfolio" />
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="kNN algorithm explained intuitively!"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="kNN algorithm explained intuitively!"/>
 <meta name="twitter:description" content="In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
 Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression
 Introduction The K Nearest Neighbour classification is a simple and efficient machine learning model that can used for classification. While there are more complex classification models, if establishing a model with some training dataset is proving troublesome, it is likely that a kNN algorithm will provide the best solution."/>
@@ -383,80 +382,80 @@ $$</p>
 <p>The functioning of the kNN model on a simplistic dataset illustrates its mechanics. However, it is essential to recognize that real-world machine learning problems typically involve more complex datasets. Nonetheless, this example serves as a valuable tool for developing our understanding and intuition about how the model operates.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <h3 id="coding-knn-model-from-scratch">Coding kNN model from scratch</h3>
 <p>Now let’s create this model from scratch in python. Since it is a lazy learning algortihm, we do not need a training phase. We just need the training data and an unlabelled instance for prediction. So the algorithm needs features, labels, and the data instance to be predicted as an input. We&rsquo;ll choose an arbitrary value of K for this example.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> We also need a helper function to calculate the euclidean distance between two vectors.</p>
-<!-- <script type="application/javascript" src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=knn_model.py"></script>
+<!-- <script src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=knn_model.py"></script>
  -->
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># returns the euclidean distance between two vectors</span>
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">euclidean_distance</span>(vec1, vec2):
-    distance<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(vec1)):
-        distance<span style="color:#f92672">+=</span>(vec1[i]<span style="color:#f92672">-</span>vec2[i])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
-    <span style="color:#66d9ef">return</span> math<span style="color:#f92672">.</span>sqrt(distance)
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">knn_function</span>(X_train, y_train, test_vector, k):
-    distance<span style="color:#f92672">=</span>[]
-    <span style="color:#75715e"># loops through the training dataset, stores the training vector and</span>
-    <span style="color:#75715e"># corresponding label in a variable</span>
-    <span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> range(len(X_train)):
-        img<span style="color:#f92672">=</span>X_train[idx]
-        label<span style="color:#f92672">=</span>y_train[idx]
-        <span style="color:#75715e"># appends a tuple containing euclidean distance and label of the</span>
-        corresponding training vector
-        distance<span style="color:#f92672">.</span>append((euclidean_distance(img, test_vector), label))
-     <span style="color:#75715e"># sorts the tuples in the list in descending order, according to the</span>
-     <span style="color:#75715e"># euclidean distance</span>
-    sorted_dist<span style="color:#f92672">=</span>sorted(distance, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> dist:dist[<span style="color:#ae81ff">0</span>])
-    <span style="color:#75715e"># takes the first k values in the list i.e the k nearest neighbours</span>
-    neighbours<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>array(sorted_dist[:k])
-    <span style="color:#66d9ef">return</span> neighbours</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># returns the euclidean distance between two vectors</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">euclidean_distance</span>(vec1, vec2):
+</span></span><span style="display:flex;"><span>    distance<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(vec1)):
+</span></span><span style="display:flex;"><span>        distance<span style="color:#f92672">+=</span>(vec1[i]<span style="color:#f92672">-</span>vec2[i])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> math<span style="color:#f92672">.</span>sqrt(distance)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">knn_function</span>(X_train, y_train, test_vector, k):
+</span></span><span style="display:flex;"><span>    distance<span style="color:#f92672">=</span>[]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># loops through the training dataset, stores the training vector and</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># corresponding label in a variable</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> range(len(X_train)):
+</span></span><span style="display:flex;"><span>        img<span style="color:#f92672">=</span>X_train[idx]
+</span></span><span style="display:flex;"><span>        label<span style="color:#f92672">=</span>y_train[idx]
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># appends a tuple containing euclidean distance and label of the</span>
+</span></span><span style="display:flex;"><span>        corresponding training vector
+</span></span><span style="display:flex;"><span>        distance<span style="color:#f92672">.</span>append((euclidean_distance(img, test_vector), label))
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># sorts the tuples in the list in descending order, according to the</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e"># euclidean distance</span>
+</span></span><span style="display:flex;"><span>    sorted_dist<span style="color:#f92672">=</span>sorted(distance, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> dist:dist[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># takes the first k values in the list i.e the k nearest neighbours</span>
+</span></span><span style="display:flex;"><span>    neighbours<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>array(sorted_dist[:k])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> neighbours</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>That&rsquo;s the whole code! It really is a pretty simple learning algorithm. Now all we need a wrapper function to accept the input and return the prediction to the user.</p>
 <!-- {% gist 67ce27ad2bf0da958ce517e2dab7a30b predict_class.py %} -->
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># this returns the predicted label i.e. the label that occurs the most</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict_class</span>(test_vector, k<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>):
-    neighbours<span style="color:#f92672">=</span>knn_function(X_train, y_train, test_vector, k)
-    labels, counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>unique(neighbours[:,<span style="color:#ae81ff">1</span>], return_counts<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-    <span style="color:#66d9ef">return</span> labels[counts<span style="color:#f92672">.</span>argmax()]</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># this returns the predicted label i.e. the label that occurs the most</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict_class</span>(test_vector, k<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>):
+</span></span><span style="display:flex;"><span>    neighbours<span style="color:#f92672">=</span>knn_function(X_train, y_train, test_vector, k)
+</span></span><span style="display:flex;"><span>    labels, counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>unique(neighbours[:,<span style="color:#ae81ff">1</span>], return_counts<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> labels[counts<span style="color:#f92672">.</span>argmax()]</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Please not that our implementation is not very optimized and really should be only used to learn how the model works. <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
@@ -466,88 +465,88 @@ $$</p>
 <p>&ldquo;MNIST (&ldquo;Modified National Institute of Standards and Technology&rdquo;) is the de facto “hello world” dataset of computer vision. Since its release in 1999, this classic dataset of handwritten images has served as the basis for benchmarking classification algorithms. As new machine learning techniques emerge, MNIST remains a reliable resource for researchers and learners alike.&rdquo;</p>
 </blockquote>
 <p>So it&rsquo;s a pretty standard dataset! Let&rsquo;s use this to evaluate our model&rsquo;s performance! First let&rsquo;s get the dataset from <a href="https://www.kaggle.com/c/digit-recognizer">kaggle</a> and read it using pandas!</p>
-<script type="application/javascript" src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=data.ipynb"></script>
+<script src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=data.ipynb"></script>
 
 <p>The shape of this data is (60000, 785). This means that each row is a vector containing a digit representation. That comes out to a total of 60000 images in the training dataset. The digit is represented as a 1x784 vector. So then why is the shape 785? This is because the last column is a label that stores what digit is represented by that particular row.</p>
 <p>Then we use numpy to store the data into train, test datasets.</p>
-<!-- <script type="application/javascript" src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=read_data.py"></script>
+<!-- <script src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=read_data.py"></script>
  -->
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># split into features and labels</span>
-X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(train_data[train_data<span style="color:#f92672">.</span>columns<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#39;label&#39;</span>)])
-y_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(train_data[<span style="color:#e6db74">&#39;label&#39;</span>])
-X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(test_data[test_data<span style="color:#f92672">.</span>columns<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#39;label&#39;</span>)])
-y_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(test_data[<span style="color:#e6db74">&#39;label&#39;</span>])
-
-<span style="color:#75715e"># shuffle the data randomly</span>
-rand_idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>permutation(X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
-X_train <span style="color:#f92672">=</span> X_train[rand_idx]
-y_train <span style="color:#f92672">=</span> y_train[rand_idx]</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># split into features and labels</span>
+</span></span><span style="display:flex;"><span>X_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(train_data[train_data<span style="color:#f92672">.</span>columns<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#39;label&#39;</span>)])
+</span></span><span style="display:flex;"><span>y_train <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(train_data[<span style="color:#e6db74">&#39;label&#39;</span>])
+</span></span><span style="display:flex;"><span>X_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(test_data[test_data<span style="color:#f92672">.</span>columns<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#39;label&#39;</span>)])
+</span></span><span style="display:flex;"><span>y_test <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(test_data[<span style="color:#e6db74">&#39;label&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># shuffle the data randomly</span>
+</span></span><span style="display:flex;"><span>rand_idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>permutation(X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>X_train <span style="color:#f92672">=</span> X_train[rand_idx]
+</span></span><span style="display:flex;"><span>y_train <span style="color:#f92672">=</span> y_train[rand_idx]</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Now let&rsquo;s see what an image from this dataset looks like, and print the label.</p>
-<!-- <script type="application/javascript" src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=visualize.py"></script>
+<!-- <script src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=visualize.py"></script>
  -->
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">img<span style="color:#f92672">=</span>X_test[<span style="color:#ae81ff">31</span>]
-img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>)
-plt<span style="color:#f92672">.</span>imshow(img, cmap<span style="color:#f92672">=</span>matplotlib<span style="color:#f92672">.</span>cm<span style="color:#f92672">.</span>binary)
-plt<span style="color:#f92672">.</span>axis(<span style="color:#e6db74">&#39;off&#39;</span>)
-plt<span style="color:#f92672">.</span>show()
-
-print(y_test[<span style="color:#ae81ff">31</span>])
-img<span style="color:#f92672">.</span>shape</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>img<span style="color:#f92672">=</span>X_test[<span style="color:#ae81ff">31</span>]
+</span></span><span style="display:flex;"><span>img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">28</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>imshow(img, cmap<span style="color:#f92672">=</span>matplotlib<span style="color:#f92672">.</span>cm<span style="color:#f92672">.</span>binary)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>axis(<span style="color:#e6db74">&#39;off&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(y_test[<span style="color:#ae81ff">31</span>])
+</span></span><span style="display:flex;"><span>img<span style="color:#f92672">.</span>shape</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <pre tabindex="0"><code>OUTPUT:
 1.0
 </code></pre><p><img src="//images/knn_scratch/visualized_img.png" alt="image of a digit"></p>
 <p>That looks pretty good! This means that the 31st vector stored in out test dataset corresponds to this image of the digit &lsquo;1&rsquo;. So now we have confirmed that the data is indeed stored and labelled properly. It&rsquo;s time to unleash our kNN model on this dataset! Let us try to predict the result we get for the same test input. If everything goes well, we should get &lsquo;1&rsquo; as the predicted output.</p>
-<script type="application/javascript" src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=predict.ipynb"></script>
+<script src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=predict.ipynb"></script>
 
 <p>And we do! Our predict function predicted correctly that the image shown was that of a 1. Here also, the k value that we passed to the function was completely arbitrary. Now let&rsquo;s properly evaluate the model on the entire test set.</p>
-<script type="application/javascript" src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=accuracy.ipynb"></script>
+<script src="https://gist.github.com/codevardhan/67ce27ad2bf0da958ce517e2dab7a30b.js?file=accuracy.ipynb"></script>
 
 <p>The accuracy comes out to about 90%. Now I should say that this accuracy can be improved by selecting a better value of k, but it&rsquo;s not bad for a model without any hyperparameter tuning.</p>
 <h4 id="footnotes">Footnotes</h4>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>You could extend the same principles to higher dimensions. Here we have 2 features, so we only have to visualize 2 dimensions. But for most problems, it&rsquo;s common for there to be a lot of dimensions, millions even. It’s difficult to imagine problems in a higher dimension, so working on them in lower dimensions while learning is a good idea! Quick detour on this topic <a href="http://www.ams.org/notices/200210/comm-morin.pdf">here</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>It should be noted that there does exist algorithms for choosing an ideal value of K based on the training dataset. You can learn more <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4916348/">here</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
+<li id="fn:3">
 <p>Optimizations can be made to the algorithm such that some of the computation can be skipped, but this discussion is out of the scope of this article. Feel free to read up on it <a href="https://www.sciencedirect.com/science/article/pii/S1877050918301376">here</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
           </article>
         </div>
@@ -624,8 +623,8 @@ img<span style="color:#f92672">.</span>shape</code></pre></td></tr></table>
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-9 p-4">
         <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -697,6 +696,32 @@ img<span style="color:#f92672">.</span>shape</code></pre></td></tr></table>
             <div class="card h-100">
                 
                 <div class="card-header">
+                    <a href="/posts/2025-04-28-rocket-landing/">
+                        <img src="/images/rocket_landing/cover.png" class="card-img-top" alt="Rocket Landing using Reinforcement Learning!">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2025-04-28-rocket-landing/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Rocket Landing using Reinforcement Learning!">Rocket Landing using …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>“A crash is just a high-speed landing&hellip; in the wrong place.” – Unknown RL Agent
+🚀 Landing Rockets and Losing Our Minds: A Reinforcement Learning Journey By Harshavardhan Manohar &amp; Nivedita Shainaj Nair
+🧠 Prologue: It Started With a Rocket We wanted to land a rocket. Not in real life, of …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Apr 28, 2025</span>
+                    <a href="/posts/2025-04-28-rocket-landing/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
                     <a href="/posts/2024-12-10-developing-chess-plugin-manim/">
                         <img src="/images/chess_render_manim/manim-logo-sidebar-dark.svg" class="card-img-top" alt="Developing a chess plugin for Manim!">
                     </a>
@@ -707,7 +732,7 @@ img<span style="color:#f92672">.</span>shape</code></pre></td></tr></table>
                         <h5 class="card-title bg-transparent" title="Developing a chess plugin for Manim!">Developing a chess plugin …</h5>
                     </a>
                     <div class="card-text secondary-font">
-                        <p>Introduction I first came across Manim while watching 3blue1brown His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain …</p>
+                        <p>Introduction I first came across Manim while watching 3blue1brown. His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain …</p>
                     </div>
                 </div>
                 <div class="mt-auto card-footer">
@@ -739,30 +764,6 @@ Introduction The K Nearest Neighbour classification is a simple and efficient �
                 <div class="mt-auto card-footer">
                     <span class="float-start">Jan 30, 2022</span>
                     <a href="/posts/2022-01-30-knn-algorithm-demystified/" class="float-end btn btn-outline-info btn-sm">Read</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-lg-4 col-md-6 pt-2">
-            <div class="card h-100">
-                
-                <div class="card-header">
-                    <a href="/posts/2020-06-12-cellphone-detector/">
-                        <img src="/images/cellphone_detector/featured.png" class="card-img-top" alt="DIY Cell Phone Detector Circuit">
-                    </a>
-                </div>
-                
-                <div class="card-body bg-transparent p-3 shadow-sm">
-                    <a href="/posts/2020-06-12-cellphone-detector/" class="primary-font card-title">
-                        <h5 class="card-title bg-transparent" title="DIY Cell Phone Detector Circuit">DIY Cell Phone Detector …</h5>
-                    </a>
-                    <div class="card-text secondary-font">
-                        <p>DIY Cell Phone Detector Circuit: Stop Unauthorized Mobile Phone Usage Introduction Are you tired of people using their phones when they&rsquo;re not supposed to? Maybe you want to ensure that exam halls, meetings, or other restricted areas remain phone-free. We&rsquo;ve got just the solution for you …</p>
-                    </div>
-                </div>
-                <div class="mt-auto card-footer">
-                    <span class="float-start">Jun 12, 2020</span>
-                    <a href="/posts/2020-06-12-cellphone-detector/" class="float-end btn btn-outline-info btn-sm">Read</a>
                 </div>
             </div>
         </div>
@@ -850,12 +851,12 @@ Introduction The K Nearest Neighbour classification is a simple and efficient �
     <div class="row justify-content-center">
         <div class="col-md-4 text-center">
             <div class="pb-2">
-                <a href="https://codevardhan.github.io" title="My portfolio">
+                <a href="https://codevardhan.github.io/" title="My portfolio">
                     <img alt="Footer logo" src="/images/favicon.png"
                         height="40px" width="40px">
                 </a>
             </div>
-            &copy; 2024  All rights reserved
+            &copy; 2025  All rights reserved
             <div class="text-secondary">
                 Made with
                 <span class="text-danger">

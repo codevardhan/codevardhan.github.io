@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>k-nearest-neighbours on My portfolio</title>
+    <title>K-Nearest-Neighbours on My portfolio</title>
     <link>https://codevardhan.github.io/tags/k-nearest-neighbours/</link>
-    <description>Recent content in k-nearest-neighbours on My portfolio</description>
+    <description>Recent content in K-Nearest-Neighbours on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 02 Feb 2023 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/tags/k-nearest-neighbours/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Feb 2023 12:12:11 +0530</lastBuildDate>
+    <atom:link href="https://codevardhan.github.io/tags/k-nearest-neighbours/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>EazyPredict ML module</title>
       <link>https://codevardhan.github.io/projects/2023-02-03-eazypredict-module/</link>
       <pubDate>Thu, 02 Feb 2023 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/projects/2023-02-03-eazypredict-module/</guid>
-      <description>EazyPredict - Running and comparing multiple ML models at once Welcome to the world of &amp;lsquo;EazyPredict&amp;rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible. The module was heavily influenced by the &amp;lsquo;LazyPredict&amp;rsquo; module. I developed this module to address a few shortcomings I identified in LazyPredict.
-Why EazyPredict? Some of its key features are as follows -
-  The &amp;lsquo;EazyPredict&amp;rsquo; module utilizes a limited number of prediction algorithms (10) in order to minimize memory usage and prevent potential issues on platforms such as Kaggle.</description>
+      <description>EazyPredict - Running and comparing multiple ML models at once Welcome to the world of &amp;lsquo;EazyPredict&amp;rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible. The module was heavily influenced by the &amp;lsquo;LazyPredict&amp;rsquo; module. I developed this module to address a few shortcomings I identified in LazyPredict.&#xA;Why EazyPredict? Some of its key features are as follows -&#xA;The &amp;lsquo;EazyPredict&amp;rsquo; module utilizes a limited number of prediction algorithms (10) in order to minimize memory usage and prevent potential issues on platforms such as Kaggle.</description>
     </item>
-    
     <item>
       <title>kNN algorithm explained intuitively!</title>
       <link>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</link>
       <pubDate>Sun, 30 Jan 2022 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</guid>
-      <description>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
-Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression
-Introduction The K Nearest Neighbour classification is a simple and efficient machine learning model that can used for classification. While there are more complex classification models, if establishing a model with some training dataset is proving troublesome, it is likely that a kNN algorithm will provide the best solution.</description>
+      <description>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset&#xA;Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression&#xA;Introduction The K Nearest Neighbour classification is a simple and efficient machine learning model that can used for classification. While there are more complex classification models, if establishing a model with some training dataset is proving troublesome, it is likely that a kNN algorithm will provide the best solution.</description>
     </item>
-    
   </channel>
 </rss>

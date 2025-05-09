@@ -40,7 +40,7 @@ if (!doNotTrack) {
 </script>
 
 <meta property="og:title" content="Developing a chess plugin for Manim!" />
-<meta property="og:description" content="Introduction I first came across Manim while watching 3blue1brown His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: Manim.
+<meta property="og:description" content="Introduction I first came across Manim while watching 3blue1brown. His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: Manim.
 While working with Manim is rewarding, the framework’s steep learning curve and its general-purpose nature can make implementing specific use cases challenging." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://codevardhan.github.io/posts/2024-12-10-developing-chess-plugin-manim/" /><meta property="article:section" content="posts" />
@@ -48,9 +48,8 @@ While working with Manim is rewarding, the framework’s steep learning curve an
 <meta property="article:modified_time" content="2024-12-10T12:12:11+05:30" /><meta property="og:site_name" content="My Portfolio" />
 
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Developing a chess plugin for Manim!"/>
-<meta name="twitter:description" content="Introduction I first came across Manim while watching 3blue1brown His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: Manim.
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Developing a chess plugin for Manim!"/>
+<meta name="twitter:description" content="Introduction I first came across Manim while watching 3blue1brown. His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: Manim.
 While working with Manim is rewarding, the framework’s steep learning curve and its general-purpose nature can make implementing specific use cases challenging."/>
 
 
@@ -308,7 +307,7 @@ Developing a chess plugin for Manim! | My portfolio
           
           <article class="page-content  p-2">
           <h2 id="introduction">Introduction</h2>
-<p>I first came across Manim while watching <a href="https://www.youtube.com/@3blue1brown">3blue1brown</a> His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: <a href="https://github.com/ManimCommunity/manim">Manim</a>.</p>
+<p>I first came across Manim while watching <a href="https://www.youtube.com/@3blue1brown">3blue1brown</a>. His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: <a href="https://github.com/ManimCommunity/manim">Manim</a>.</p>
 <p>While working with Manim is rewarding, the framework’s steep learning curve and its general-purpose nature can make implementing specific use cases challenging. One such niche is animating chess games—an endeavor that led to the creation of the <strong>Manim Chess Plugin</strong></p>
 <p>This article explores the journey of developing the <strong>Manim Chess Plugin</strong>, the challenges faced, and how it serves as both a tool and a case study for working with Manim.</p>
 <h2 id="the-inspiration-behind-the-plugin">The Inspiration Behind the Plugin</h2>
@@ -324,48 +323,48 @@ Developing a chess plugin for Manim! | My portfolio
 <h2 id="core-manim-concepts-in-the-chess-plugin"><strong>Core Manim Concepts in the Chess Plugin</strong></h2>
 <h3 id="1-grouping-and-organizing-elements"><strong>1. Grouping and Organizing Elements</strong></h3>
 <p>Manim’s <code>Group</code> class is used extensively in the plugin to manage collections of objects, like squares, labels, and pieces. This allows for operations to be applied collectively, simplifying the process of managing the chessboard.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">self<span style="color:#f92672">.</span>board <span style="color:#f92672">=</span> Group(<span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>squares<span style="color:#f92672">.</span>values(), <span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>labels, <span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>elements) self<span style="color:#f92672">.</span>add(self<span style="color:#f92672">.</span>board)
-</code></pre></div><p>This code combines all the chessboard components into a single <code>Group</code> and adds it to the scene. The use of <code>Group</code> ensures that transformations or animations applied to <code>self.board</code> will propagate to all its child elements.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">&#39;e5&#39;</span>]<span style="color:#f92672">.</span>move_to(UP <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">+</span> RIGHT <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span>)
-self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>row<span style="color:#e6db74">}{</span>col<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>]<span style="color:#f92672">.</span>next_to(self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>row<span style="color:#e6db74">}{</span>col <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>], UP, buff<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-</code></pre></div><h3 id="2-positioning-squares-and-pieces"><strong>2. Positioning Squares and Pieces</strong></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>self<span style="color:#f92672">.</span>board <span style="color:#f92672">=</span> Group(<span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>squares<span style="color:#f92672">.</span>values(), <span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>labels, <span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>elements) self<span style="color:#f92672">.</span>add(self<span style="color:#f92672">.</span>board)
+</span></span></code></pre></div><p>This code combines all the chessboard components into a single <code>Group</code> and adds it to the scene. The use of <code>Group</code> ensures that transformations or animations applied to <code>self.board</code> will propagate to all its child elements.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">&#39;e5&#39;</span>]<span style="color:#f92672">.</span>move_to(UP <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">+</span> RIGHT <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span>)
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>row<span style="color:#e6db74">}{</span>col<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>]<span style="color:#f92672">.</span>next_to(self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>row<span style="color:#e6db74">}{</span>col <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>], UP, buff<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><h3 id="2-positioning-squares-and-pieces"><strong>2. Positioning Squares and Pieces</strong></h3>
 <p>Manim provides precise control over object positioning using methods like <code>move_to</code> and <code>next_to</code>. For example, when laying out the squares on the board:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">&#39;e5&#39;</span>]<span style="color:#f92672">.</span>move_to(UP <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">+</span> RIGHT <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span>)
-self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>row<span style="color:#e6db74">}{</span>col<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>]<span style="color:#f92672">.</span>next_to(self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>row<span style="color:#e6db74">}{</span>col <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>], UP, buff<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">&#39;e5&#39;</span>]<span style="color:#f92672">.</span>move_to(UP <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span> <span style="color:#f92672">+</span> RIGHT <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.5</span>)
+</span></span><span style="display:flex;"><span>self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>row<span style="color:#e6db74">}{</span>col<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>]<span style="color:#f92672">.</span>next_to(self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>row<span style="color:#e6db74">}{</span>col <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>], UP, buff<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><ul>
 <li><code>move_to</code>: Places the square at a specific coordinate relative to the center of the scene.</li>
 <li><code>next_to</code>: Positions squares relative to their neighbors, ensuring proper alignment and spacing.</li>
 </ul>
 <h3 id="3-coloring-squares"><strong>3. Coloring Squares</strong></h3>
 <p>Manim&rsquo;s <code>set_fill</code> method is used to apply colors to the squares, enabling the checkerboard pattern. Here’s the implementation:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>row<span style="color:#e6db74">}{</span>col<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>]<span style="color:#f92672">.</span>set_fill(color, opacity<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>row<span style="color:#e6db74">}{</span>col<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>]<span style="color:#f92672">.</span>set_fill(color, opacity<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>)
+</span></span></code></pre></div><ul>
 <li><code>color</code>: Sets the fill color of the square.</li>
 <li><code>opacity</code>: Controls the transparency of the fill, adding visual depth to the board.</li>
 </ul>
 <p>The alternation of colors is achieved through a simple toggle mechanism within nested loops.</p>
 <h3 id="4-animating-chess-moves"><strong>4. Animating Chess Moves</strong></h3>
 <p>Animating piece movements is central to the plugin. The <code>animate</code> property of Manim objects allows for smooth transitions. For example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">move_animation <span style="color:#f92672">=</span> piece<span style="color:#f92672">.</span>animate<span style="color:#f92672">.</span>move_to(end_square)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>move_animation <span style="color:#f92672">=</span> piece<span style="color:#f92672">.</span>animate<span style="color:#f92672">.</span>move_to(end_square)
+</span></span></code></pre></div><ul>
 <li><code>animate</code>: Creates an animation for the specified transformation.</li>
 <li><code>move_to</code>: Moves the piece to the target square.</li>
 </ul>
 <p>To handle complex animations, like castling or pawn promotion, these basic animations are combined into <code>AnimationGroup</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">return</span> AnimationGroup(<span style="color:#f92672">*</span>animations)
-</code></pre></div><p>This groups multiple animations together, ensuring they execute simultaneously or sequentially as needed.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">return</span> AnimationGroup(<span style="color:#f92672">*</span>animations)
+</span></span></code></pre></div><p>This groups multiple animations together, ensuring they execute simultaneously or sequentially as needed.</p>
 <h3 id="5-handling-special-moves"><strong>5. Handling Special Moves</strong></h3>
 <p>Special moves like castling and en-passant require careful coordination of multiple animations. For instance, in castling:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">rook_move_animation <span style="color:#f92672">=</span> rook<span style="color:#f92672">.</span>animate<span style="color:#f92672">.</span>move_to(rook_end_square)
-king_move_animation <span style="color:#f92672">=</span> king<span style="color:#f92672">.</span>animate<span style="color:#f92672">.</span>move_to(king_end_square) animations<span style="color:#f92672">.</span>append(rook_move_animation)
-animations<span style="color:#f92672">.</span>append(king_move_animation)
-</code></pre></div><p>The <code>animate</code> property is applied to both the rook and king, creating independent animations that are then combined into an <code>AnimationGroup</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>rook_move_animation <span style="color:#f92672">=</span> rook<span style="color:#f92672">.</span>animate<span style="color:#f92672">.</span>move_to(rook_end_square)
+</span></span><span style="display:flex;"><span>king_move_animation <span style="color:#f92672">=</span> king<span style="color:#f92672">.</span>animate<span style="color:#f92672">.</span>move_to(king_end_square) animations<span style="color:#f92672">.</span>append(rook_move_animation)
+</span></span><span style="display:flex;"><span>animations<span style="color:#f92672">.</span>append(king_move_animation)
+</span></span></code></pre></div><p>The <code>animate</code> property is applied to both the rook and king, creating independent animations that are then combined into an <code>AnimationGroup</code>.</p>
 <h3 id="6-text-and-labels"><strong>6. Text and Labels</strong></h3>
 <p>Labels for ranks and files are added using Manim’s <code>Text</code> class. For example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Text(letter, font<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Ubuntu Mono&#34;</span>, color<span style="color:#f92672">=</span>color)<span style="color:#f92672">.</span>move_to(
-    self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>letter<span style="color:#e6db74">}</span><span style="color:#e6db74">1&#39;</span>]<span style="color:#f92672">.</span>get_center() <span style="color:#f92672">+</span> DOWN <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.35</span> <span style="color:#f92672">+</span> RIGHT <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.35</span>
-)<span style="color:#f92672">.</span>scale(<span style="color:#ae81ff">0.3</span>)
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Text(letter, font<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Ubuntu Mono&#34;</span>, color<span style="color:#f92672">=</span>color)<span style="color:#f92672">.</span>move_to(
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>squares[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>letter<span style="color:#e6db74">}</span><span style="color:#e6db74">1&#39;</span>]<span style="color:#f92672">.</span>get_center() <span style="color:#f92672">+</span> DOWN <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.35</span> <span style="color:#f92672">+</span> RIGHT <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.35</span>
+</span></span><span style="display:flex;"><span>)<span style="color:#f92672">.</span>scale(<span style="color:#ae81ff">0.3</span>)
+</span></span></code></pre></div><ul>
 <li><code>Text</code>: Creates text objects for display.</li>
 <li><code>move_to</code>: Positions the labels near the squares.</li>
 <li><code>scale</code>: Adjusts the size of the text for visual clarity.</li>
@@ -473,8 +472,8 @@ animations<span style="color:#f92672">.</span>append(king_move_animation)
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-9 p-4">
         <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+<script>
+    window.disqus_config = function () {
     
     
     
@@ -546,6 +545,32 @@ animations<span style="color:#f92672">.</span>append(king_move_animation)
             <div class="card h-100">
                 
                 <div class="card-header">
+                    <a href="/posts/2025-04-28-rocket-landing/">
+                        <img src="/images/rocket_landing/cover.png" class="card-img-top" alt="Rocket Landing using Reinforcement Learning!">
+                    </a>
+                </div>
+                
+                <div class="card-body bg-transparent p-3 shadow-sm">
+                    <a href="/posts/2025-04-28-rocket-landing/" class="primary-font card-title">
+                        <h5 class="card-title bg-transparent" title="Rocket Landing using Reinforcement Learning!">Rocket Landing using …</h5>
+                    </a>
+                    <div class="card-text secondary-font">
+                        <p>“A crash is just a high-speed landing&hellip; in the wrong place.” – Unknown RL Agent
+🚀 Landing Rockets and Losing Our Minds: A Reinforcement Learning Journey By Harshavardhan Manohar &amp; Nivedita Shainaj Nair
+🧠 Prologue: It Started With a Rocket We wanted to land a rocket. Not in real life, of …</p>
+                    </div>
+                </div>
+                <div class="mt-auto card-footer">
+                    <span class="float-start">Apr 28, 2025</span>
+                    <a href="/posts/2025-04-28-rocket-landing/" class="float-end btn btn-outline-info btn-sm">Read</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 pt-2">
+            <div class="card h-100">
+                
+                <div class="card-header">
                     <a href="/posts/2024-12-10-developing-chess-plugin-manim/">
                         <img src="/images/chess_render_manim/manim-logo-sidebar-dark.svg" class="card-img-top" alt="Developing a chess plugin for Manim!">
                     </a>
@@ -556,7 +581,7 @@ animations<span style="color:#f92672">.</span>append(king_move_animation)
                         <h5 class="card-title bg-transparent" title="Developing a chess plugin for Manim!">Developing a chess plugin …</h5>
                     </a>
                     <div class="card-text secondary-font">
-                        <p>Introduction I first came across Manim while watching 3blue1brown His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain …</p>
+                        <p>Introduction I first came across Manim while watching 3blue1brown. His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain …</p>
                     </div>
                 </div>
                 <div class="mt-auto card-footer">
@@ -588,30 +613,6 @@ Introduction The K Nearest Neighbour classification is a simple and efficient �
                 <div class="mt-auto card-footer">
                     <span class="float-start">Jan 30, 2022</span>
                     <a href="/posts/2022-01-30-knn-algorithm-demystified/" class="float-end btn btn-outline-info btn-sm">Read</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-lg-4 col-md-6 pt-2">
-            <div class="card h-100">
-                
-                <div class="card-header">
-                    <a href="/posts/2020-06-12-cellphone-detector/">
-                        <img src="/images/cellphone_detector/featured.png" class="card-img-top" alt="DIY Cell Phone Detector Circuit">
-                    </a>
-                </div>
-                
-                <div class="card-body bg-transparent p-3 shadow-sm">
-                    <a href="/posts/2020-06-12-cellphone-detector/" class="primary-font card-title">
-                        <h5 class="card-title bg-transparent" title="DIY Cell Phone Detector Circuit">DIY Cell Phone Detector …</h5>
-                    </a>
-                    <div class="card-text secondary-font">
-                        <p>DIY Cell Phone Detector Circuit: Stop Unauthorized Mobile Phone Usage Introduction Are you tired of people using their phones when they&rsquo;re not supposed to? Maybe you want to ensure that exam halls, meetings, or other restricted areas remain phone-free. We&rsquo;ve got just the solution for you …</p>
-                    </div>
-                </div>
-                <div class="mt-auto card-footer">
-                    <span class="float-start">Jun 12, 2020</span>
-                    <a href="/posts/2020-06-12-cellphone-detector/" class="float-end btn btn-outline-info btn-sm">Read</a>
                 </div>
             </div>
         </div>
@@ -699,12 +700,12 @@ Introduction The K Nearest Neighbour classification is a simple and efficient �
     <div class="row justify-content-center">
         <div class="col-md-4 text-center">
             <div class="pb-2">
-                <a href="https://codevardhan.github.io" title="My portfolio">
+                <a href="https://codevardhan.github.io/" title="My portfolio">
                     <img alt="Footer logo" src="/images/favicon.png"
                         height="40px" width="40px">
                 </a>
             </div>
-            &copy; 2024  All rights reserved
+            &copy; 2025  All rights reserved
             <div class="text-secondary">
                 Made with
                 <span class="text-danger">

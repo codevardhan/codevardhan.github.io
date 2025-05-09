@@ -6,56 +6,49 @@
     <description>Recent content in Posts on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Dec 2024 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Apr 2025 12:12:11 +0530</lastBuildDate>
+    <atom:link href="https://codevardhan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rocket Landing using Reinforcement Learning!</title>
+      <link>https://codevardhan.github.io/posts/2025-04-28-rocket-landing/</link>
+      <pubDate>Mon, 28 Apr 2025 12:12:11 +0530</pubDate>
+      <guid>https://codevardhan.github.io/posts/2025-04-28-rocket-landing/</guid>
+      <description>“A crash is just a high-speed landing&amp;hellip; in the wrong place.” – Unknown RL Agent&#xA;🚀 Landing Rockets and Losing Our Minds: A Reinforcement Learning Journey By Harshavardhan Manohar &amp;amp; Nivedita Shainaj Nair&#xA;🧠 Prologue: It Started With a Rocket We wanted to land a rocket. Not in real life, of course, that would’ve been wildly over budget for two grad students, but in a 2D simulation. Our project was supposed to be a &amp;ldquo;standard&amp;rdquo; application of reinforcement learning, something nice and contained.</description>
+    </item>
     <item>
       <title>Developing a chess plugin for Manim!</title>
       <link>https://codevardhan.github.io/posts/2024-12-10-developing-chess-plugin-manim/</link>
       <pubDate>Tue, 10 Dec 2024 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/posts/2024-12-10-developing-chess-plugin-manim/</guid>
-      <description>Introduction I first came across Manim while watching 3blue1brown His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: Manim.
-While working with Manim is rewarding, the framework’s steep learning curve and its general-purpose nature can make implementing specific use cases challenging.</description>
+      <description>Introduction I first came across Manim while watching 3blue1brown. His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: Manim.&#xA;While working with Manim is rewarding, the framework’s steep learning curve and its general-purpose nature can make implementing specific use cases challenging.</description>
     </item>
-    
     <item>
       <title>kNN algorithm explained intuitively!</title>
       <link>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</link>
       <pubDate>Sun, 30 Jan 2022 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/posts/2022-01-30-knn-algorithm-demystified/</guid>
-      <description>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset
-Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression
-Introduction The K Nearest Neighbour classification is a simple and efficient machine learning model that can used for classification. While there are more complex classification models, if establishing a model with some training dataset is proving troublesome, it is likely that a kNN algorithm will provide the best solution.</description>
+      <description>In this blog we go through the kNN algorithm logic, implement it from scratch in python and apply it on the MNIST digit dataset&#xA;Prerequisites machine learning, supervised vs unsupervised ML, classification vs regression&#xA;Introduction The K Nearest Neighbour classification is a simple and efficient machine learning model that can used for classification. While there are more complex classification models, if establishing a model with some training dataset is proving troublesome, it is likely that a kNN algorithm will provide the best solution.</description>
     </item>
-    
     <item>
       <title>DIY Cell Phone Detector Circuit</title>
       <link>https://codevardhan.github.io/posts/2020-06-12-cellphone-detector/</link>
       <pubDate>Fri, 12 Jun 2020 10:12:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/posts/2020-06-12-cellphone-detector/</guid>
       <description>DIY Cell Phone Detector Circuit: Stop Unauthorized Mobile Phone Usage Introduction Are you tired of people using their phones when they&amp;rsquo;re not supposed to? Maybe you want to ensure that exam halls, meetings, or other restricted areas remain phone-free. We&amp;rsquo;ve got just the solution for you – a DIY Cell Phone Detector Circuit! In this blog, we&amp;rsquo;ll walk you through the process of building a simple yet effective circuit that can detect the presence of activated cell phones within a one-meter range.</description>
     </item>
-    
     <item>
       <title>Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown</title>
       <link>https://codevardhan.github.io/posts/2019-11-10-nand2tetris-linked-list/</link>
       <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/posts/2019-11-10-nand2tetris-linked-list/</guid>
       <description>Creating a Linked List in Hack Language: A Nand2Tetris Project Breakdown If you&amp;rsquo;re fascinated by the intricacies of computer engineering, then you might have stumbled upon the Nand2Tetris course. This comprehensive program takes you through the journey of building a computer from scratch, delving deep into fundamental concepts like boolean logic, sequential logic, and computer architecture, to name a few. One intriguing aspect is working with the Hack computer, a 16-bit Von Neumann system, and its native Hack language.</description>
     </item>
-    
     <item>
       <title>Applying to AMFOSS open source club</title>
       <link>https://codevardhan.github.io/posts/2019-08-20-amfoss-tasks/</link>
       <pubDate>Tue, 20 Aug 2019 10:05:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/posts/2019-08-20-amfoss-tasks/</guid>
-      <description>AMFOSS TASKS &amp;ldquo;Success is normally found in a pile of mistakes.&amp;rdquo; - Tim Fargo
-If there was ever a point in my life where I felt this quote, it is after I started doing the tasks required for joining the amFOSS club at Amrita Vishwa Vidyapeetham.
-AmFOSS is an open source club consisting of a few motivated students promoting and contributing to free and open source software. This helps students to learn out of academics and get introduced to the outside world.</description>
+      <description>AMFOSS TASKS &amp;ldquo;Success is normally found in a pile of mistakes.&amp;rdquo; - Tim Fargo&#xA;If there was ever a point in my life where I felt this quote, it is after I started doing the tasks required for joining the amFOSS club at Amrita Vishwa Vidyapeetham.&#xA;AmFOSS is an open source club consisting of a few motivated students promoting and contributing to free and open source software. This helps students to learn out of academics and get introduced to the outside world.</description>
     </item>
-    
   </channel>
 </rss>

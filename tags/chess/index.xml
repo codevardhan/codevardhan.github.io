@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>chess on My portfolio</title>
+    <title>Chess on My portfolio</title>
     <link>https://codevardhan.github.io/tags/chess/</link>
-    <description>Recent content in chess on My portfolio</description>
+    <description>Recent content in Chess on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Dec 2024 12:12:11 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/tags/chess/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 10 Dec 2024 12:12:11 +0530</lastBuildDate>
+    <atom:link href="https://codevardhan.github.io/tags/chess/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Developing a chess plugin for Manim!</title>
       <link>https://codevardhan.github.io/posts/2024-12-10-developing-chess-plugin-manim/</link>
       <pubDate>Tue, 10 Dec 2024 12:12:11 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/posts/2024-12-10-developing-chess-plugin-manim/</guid>
-      <description>Introduction I first came across Manim while watching 3blue1brown His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: Manim.
-While working with Manim is rewarding, the framework’s steep learning curve and its general-purpose nature can make implementing specific use cases challenging.</description>
+      <description>Introduction I first came across Manim while watching 3blue1brown. His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: Manim.&#xA;While working with Manim is rewarding, the framework’s steep learning curve and its general-purpose nature can make implementing specific use cases challenging.</description>
     </item>
-    
   </channel>
 </rss>

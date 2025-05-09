@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>beginnner on My portfolio</title>
+    <title>Beginnner on My portfolio</title>
     <link>https://codevardhan.github.io/tags/beginnner/</link>
-    <description>Recent content in beginnner on My portfolio</description>
+    <description>Recent content in Beginnner on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 10 Nov 2019 10:05:55 +0530</lastBuildDate><atom:link href="https://codevardhan.github.io/tags/beginnner/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Nov 2019 10:05:55 +0530</lastBuildDate>
+    <atom:link href="https://codevardhan.github.io/tags/beginnner/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown</title>
       <link>https://codevardhan.github.io/posts/2019-11-10-nand2tetris-linked-list/</link>
       <pubDate>Sun, 10 Nov 2019 10:05:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/posts/2019-11-10-nand2tetris-linked-list/</guid>
       <description>Creating a Linked List in Hack Language: A Nand2Tetris Project Breakdown If you&amp;rsquo;re fascinated by the intricacies of computer engineering, then you might have stumbled upon the Nand2Tetris course. This comprehensive program takes you through the journey of building a computer from scratch, delving deep into fundamental concepts like boolean logic, sequential logic, and computer architecture, to name a few. One intriguing aspect is working with the Hack computer, a 16-bit Von Neumann system, and its native Hack language.</description>
     </item>
-    
     <item>
       <title>Applying to AMFOSS open source club</title>
       <link>https://codevardhan.github.io/posts/2019-08-20-amfoss-tasks/</link>
       <pubDate>Tue, 20 Aug 2019 10:05:55 +0530</pubDate>
-      
       <guid>https://codevardhan.github.io/posts/2019-08-20-amfoss-tasks/</guid>
-      <description>AMFOSS TASKS &amp;ldquo;Success is normally found in a pile of mistakes.&amp;rdquo; - Tim Fargo
-If there was ever a point in my life where I felt this quote, it is after I started doing the tasks required for joining the amFOSS club at Amrita Vishwa Vidyapeetham.
-AmFOSS is an open source club consisting of a few motivated students promoting and contributing to free and open source software. This helps students to learn out of academics and get introduced to the outside world.</description>
+      <description>AMFOSS TASKS &amp;ldquo;Success is normally found in a pile of mistakes.&amp;rdquo; - Tim Fargo&#xA;If there was ever a point in my life where I felt this quote, it is after I started doing the tasks required for joining the amFOSS club at Amrita Vishwa Vidyapeetham.&#xA;AmFOSS is an open source club consisting of a few motivated students promoting and contributing to free and open source software. This helps students to learn out of academics and get introduced to the outside world.</description>
     </item>
-    
   </channel>
 </rss>

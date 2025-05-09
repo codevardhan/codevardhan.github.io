@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://codevardhan.github.io/</loc>
+    <lastmod>2025-04-28T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/posts/</loc>
+    <lastmod>2025-04-28T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/python/</loc>
+    <lastmod>2025-04-28T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/reinforcement-learning/</loc>
+    <lastmod>2025-04-28T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/rocket/</loc>
+    <lastmod>2025-04-28T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/posts/2025-04-28-rocket-landing/</loc>
+    <lastmod>2025-04-28T12:12:11+05:30</lastmod>
+  </url><url>
+    <loc>https://codevardhan.github.io/tags/</loc>
+    <lastmod>2025-04-28T12:12:11+05:30</lastmod>
+  </url><url>
     <loc>https://codevardhan.github.io/tags/animation/</loc>
     <lastmod>2024-12-10T12:12:11+05:30</lastmod>
   </url><url>
@@ -12,18 +33,6 @@
     <lastmod>2024-12-10T12:12:11+05:30</lastmod>
   </url><url>
     <loc>https://codevardhan.github.io/tags/manim/</loc>
-    <lastmod>2024-12-10T12:12:11+05:30</lastmod>
-  </url><url>
-    <loc>https://codevardhan.github.io/</loc>
-    <lastmod>2024-12-10T12:12:11+05:30</lastmod>
-  </url><url>
-    <loc>https://codevardhan.github.io/posts/</loc>
-    <lastmod>2024-12-10T12:12:11+05:30</lastmod>
-  </url><url>
-    <loc>https://codevardhan.github.io/tags/python/</loc>
-    <lastmod>2024-12-10T12:12:11+05:30</lastmod>
-  </url><url>
-    <loc>https://codevardhan.github.io/tags/</loc>
     <lastmod>2024-12-10T12:12:11+05:30</lastmod>
   </url><url>
     <loc>https://codevardhan.github.io/resume/</loc>
