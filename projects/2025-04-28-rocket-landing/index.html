@@ -39,20 +39,20 @@ if (!doNotTrack) {
 }
 </script>
 
-<meta property="og:title" content="EazyPredict ML module" />
-<meta property="og:description" content="EazyPredict - Running and comparing multiple ML models at once Welcome to the world of &lsquo;EazyPredict&rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible. The module was heavily influenced by the &lsquo;LazyPredict&rsquo; module. I developed this module to address a few shortcomings I identified in LazyPredict.
-Why EazyPredict? Some of its key features are as follows -
-The &lsquo;EazyPredict&rsquo; module utilizes a limited number of prediction algorithms (10) in order to minimize memory usage and prevent potential issues on platforms such as Kaggle." />
+<meta property="og:title" content="Rocket Landing using Reinforcement Learning!" />
+<meta property="og:description" content="“A crash is just a high-speed landing&hellip; in the wrong place.” – Unknown RL Agent
+🚀 Landing Rockets and Losing Our Minds: A Reinforcement Learning Journey By Harshavardhan Manohar &amp; Nivedita Shainaj Nair
+🧠 Prologue: It Started With a Rocket We wanted to land a rocket. Not in real life, of course, that would’ve been wildly over budget for two grad students, but in a 2D simulation. Our project was supposed to be a &ldquo;standard&rdquo; application of reinforcement learning, something nice and contained." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://codevardhan.github.io/projects/2023-02-03-eazypredict-module/" /><meta property="article:section" content="projects" />
-<meta property="article:published_time" content="2023-02-02T12:12:11+05:30" />
-<meta property="article:modified_time" content="2023-02-02T12:12:11+05:30" /><meta property="og:site_name" content="My Portfolio" />
+<meta property="og:url" content="https://codevardhan.github.io/projects/2025-04-28-rocket-landing/" /><meta property="article:section" content="projects" />
+<meta property="article:published_time" content="2025-04-28T12:12:11+05:30" />
+<meta property="article:modified_time" content="2025-04-28T12:12:11+05:30" /><meta property="og:site_name" content="My Portfolio" />
 
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="EazyPredict ML module"/>
-<meta name="twitter:description" content="EazyPredict - Running and comparing multiple ML models at once Welcome to the world of &lsquo;EazyPredict&rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible. The module was heavily influenced by the &lsquo;LazyPredict&rsquo; module. I developed this module to address a few shortcomings I identified in LazyPredict.
-Why EazyPredict? Some of its key features are as follows -
-The &lsquo;EazyPredict&rsquo; module utilizes a limited number of prediction algorithms (10) in order to minimize memory usage and prevent potential issues on platforms such as Kaggle."/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Rocket Landing using Reinforcement Learning!"/>
+<meta name="twitter:description" content="“A crash is just a high-speed landing&hellip; in the wrong place.” – Unknown RL Agent
+🚀 Landing Rockets and Losing Our Minds: A Reinforcement Learning Journey By Harshavardhan Manohar &amp; Nivedita Shainaj Nair
+🧠 Prologue: It Started With a Rocket We wanted to land a rocket. Not in real life, of course, that would’ve been wildly over budget for two grad students, but in a 2D simulation. Our project was supposed to be a &ldquo;standard&rdquo; application of reinforcement learning, something nice and contained."/>
 
 
 <link rel="stylesheet" href="/bootstrap-5/css/bootstrap.min.css" media="all"><link rel="stylesheet" href="/css/header.css" media="all">
@@ -123,7 +123,7 @@ The &lsquo;EazyPredict&rsquo; module utilizes a limited number of prediction alg
 <script defer src="/fontawesome-5/all-5.15.4.js"></script>
 
   <title>
-EazyPredict ML module | My portfolio
+Rocket Landing using Reinforcement Learning! | My portfolio
 
   </title>
 </head>
@@ -289,11 +289,11 @@ EazyPredict ML module | My portfolio
       <div class="col-sm-12 col-md-12 col-lg-9">
         <div class="pr-lg-4">
           <div class="title mb-5">
-            <h1 class="text-center mb-4">EazyPredict ML module</h1>
+            <h1 class="text-center mb-4">Rocket Landing using Reinforcement Learning!</h1>
             <div class="text-center">
               codevardhan 
               <small>|</small>
-              Feb 2, 2023
+              Apr 28, 2025
 
               
               <span id="readingTime">
@@ -304,441 +304,119 @@ EazyPredict ML module | My portfolio
           </div>
           
           <div class="featured-image">
-            <img class="img-fluid" src="/images/eazypredict/featured.png" alt="EazyPredict ML module">
+            <img class="img-fluid" src="/images/rocket_landing/cover.png" alt="Rocket Landing using Reinforcement Learning!">
           </div>
           
           <article class="page-content  p-2">
-          <h1 id="eazypredict---running-and-comparing-multiple-ml-models-at-once">EazyPredict - Running and comparing multiple ML models at once</h1>
-<p>Welcome to the world of &lsquo;EazyPredict&rsquo;, a Python module that aims to make trying out multiple prediction algorithms as simple and efficient as possible. The module was heavily influenced by the &lsquo;LazyPredict&rsquo; module. I developed this module to address a few shortcomings I identified in LazyPredict.</p>
-<h2 id="why-eazypredict">Why EazyPredict?</h2>
-<p>Some of its key features are as follows -</p>
-<ul>
-<li>
-<p>The &lsquo;EazyPredict&rsquo; module utilizes a limited number of prediction algorithms (10) in order to minimize memory usage and prevent potential issues on platforms such as Kaggle.</p>
-</li>
-<li>
-<p>Users have the option to input a custom list of prediction algorithms (as demonstrated in the example provided) in order to perform personalized comparisons with estimators of their choosing.</p>
-</li>
-<li>
-<p>The models can be saved to an output folder at the user&rsquo;s discretion and are returned as a dictionary, allowing for easy addition of custom hyperparameters.</p>
-</li>
-<li>
-<p>The top N models can be selected to create an ensemble using a voting classifier.</p>
-</li>
-</ul>
-<h2 id="using-it-for-classification">Using it for classification</h2>
-<p>Let&rsquo;s try it on <a href="https://www.kaggle.com/c/titanic">this introductory problem</a> on kaggle.</p>
-<p>As written on kaggle -</p>
-<blockquote>
-<p>&ldquo;This is the legendary Titanic ML competition – the best, first challenge for you to dive into ML competitions and familiarize yourself with how the Kaggle platform works. The competition is simple: use machine learning to create a model that predicts which passengers survived the Titanic shipwreck.&rdquo;</p>
+          <blockquote>
+<p>“A crash is just a high-speed landing&hellip; in the wrong place.” – Unknown RL Agent</p>
 </blockquote>
-<p>First, we need to load the dataset:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;data/train.csv&#34;</span>)
-</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>head()
-</span></span></code></pre></div><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
+<h1 id="-landing-rockets-and-losing-our-minds-a-reinforcement-learning-journey">🚀 Landing Rockets and Losing Our Minds: A Reinforcement Learning Journey</h1>
+<p><em>By Harshavardhan Manohar &amp; <a href="https://www.linkedin.com/in/nivedita-nair15/">Nivedita Shainaj Nair</a></em></p>
+<hr>
+<h2 id="-prologue-it-started-with-a-rocket">🧠 Prologue: It Started With a Rocket</h2>
+<p>We wanted to land a rocket. Not in real life, of course, that would’ve been wildly over budget for two grad students, but in a 2D simulation. Our project was supposed to be a &ldquo;standard&rdquo; application of reinforcement learning, something nice and contained.</p>
+<p>What we got was a crash course in chaos.</p>
+<p>The environment we used was borrowed from this amazing <a href="https://github.com/taherfattahi/ppo-rocket-landing">repo</a></p>
+<hr>
+<h2 id="-chapter-one-dqn--our-shaky-firstborn">🎮 Chapter One: DQN – Our Shaky Firstborn</h2>
+<p>We began with Deep Q-Networks (DQN). It seemed logical: value-based methods had conquered Atari, so surely they could handle a rocket in two dimensions. We gave our agent dueling networks, prioritized experience replay, and every other method we learned in our RL class.</p>
+<p>At first, things were promising. The rocket jittered, learned, wobbled its way down… and then it would just nosedive into the virtual ground.</p>
+<p>Over hundreds of episodes, DQN learned, slowly. And not always in the ways we wanted. Sometimes it hovered, sometimes it pirouetted mid-air like a confused ballerina.</p>
+<p>We blamed hyperparameters. Then the replay buffer. Then ourselves.</p>
+<p>Anyway, here&rsquo;s the end result.</p>
 
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PassengerId</th>
-      <th>Survived</th>
-      <th>Pclass</th>
-      <th>Name</th>
-      <th>Sex</th>
-      <th>Age</th>
-      <th>SibSp</th>
-      <th>Parch</th>
-      <th>Ticket</th>
-      <th>Fare</th>
-      <th>Cabin</th>
-      <th>Embarked</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Braund, Mr. Owen Harris</td>
-      <td>male</td>
-      <td>22.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>A/5 21171</td>
-      <td>7.2500</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
-      <td>female</td>
-      <td>38.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>PC 17599</td>
-      <td>71.2833</td>
-      <td>C85</td>
-      <td>C</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>1</td>
-      <td>3</td>
-      <td>Heikkinen, Miss. Laina</td>
-      <td>female</td>
-      <td>26.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>STON/O2. 3101282</td>
-      <td>7.9250</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
-      <td>female</td>
-      <td>35.0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>113803</td>
-      <td>53.1000</td>
-      <td>C123</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Allen, Mr. William Henry</td>
-      <td>male</td>
-      <td>35.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>373450</td>
-      <td>8.0500</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-  </tbody>
+ 
+
+<video width=100% controls autoplay>
+    <source src="/videos/DQN.mp4" type="video/mp4">
+    Your browser does not support the video tag.  
+</video>
+
+
+<hr>
+<h2 id="-chapter-two-who-ordered-wind">🌬️ Chapter Two: Who Ordered Wind?</h2>
+<p>Since things were obviously going well according to plan, we had the genius idea of adding <strong>wind</strong> to make it more realistic.</p>
+<p><strong>Mistake.</strong></p>
+<p>Imagine trying to teach a child to ride a bike… and then you fire a leaf blower at their face every 0.05 seconds.</p>
+<p>That&rsquo;s what our DQN agent experienced. Even the modest breeze we added, random accelerations in both x and y directions, turned our learning curves into wild mountain ranges.</p>
+<p>DQN, poor thing, couldn’t keep up.</p>
+<hr>
+<h2 id="-chapter-three-ppo--the-calm-strategist">🧘 Chapter Three: PPO – The Calm Strategist</h2>
+<p>We decided to switch strategies. Enter Proximal Policy Optimization (PPO), the algorithm everyone online swears by.</p>
+<p>This was a turning point.</p>
+<p>PPO handled the wind like a zen monk in a hurricane. With <strong>Generalized Advantage Estimation (GAE)</strong>, the learning became smoother. The rocket stopped thrashing and started <em>gliding</em>.</p>
+<p>Sure, it still crashed. But now, it was <em>learning</em> from it.</p>
+<p>We watched our agent figure out how to compensate for the wind, just slightly tilting left to counter a push to the right. It was… beautiful.</p>
+<p>And then we asked: what if we cared about <em>how</em> it landed, not just <em>whether</em> it did?</p>
+<hr>
+<h2 id="-chapter-four-safe-ppo--rocket-science-meets-ethics">🛡️ Chapter Four: Safe PPO – Rocket Science Meets Ethics</h2>
+<p>Enter <strong>Safe PPO</strong>, our agent with a conscience.</p>
+<p>We gave it a cost function: if you land too hard, tilt too far, or spin too wildly, you pay the price. Literally.</p>
+<p>Safe PPO didn&rsquo;t aim for the highest rewards, it aimed for the safest ones. While PPO with GAE often chased scoreboards, Safe PPO quietly mastered soft landings. Episode lengths stabilized. Explosions reduced. It didn’t always <em>win</em>, but it never killed its passengers, maybe they suffered minor injuries at worst.</p>
+<p>The average episode length increased, and so did our hopes.</p>
+<video width=100% controls autoplay>
+    <source src="/videos/PPO.mp4" type="video/mp4">
+    Your browser does not support the video tag.  
+</video>
+<hr>
+<h2 id="-chapter-five-experiments-burnout-and-breakthroughs">🧪 Chapter Five: Experiments, Burnout, and Breakthroughs</h2>
+<p>We ran thousands of episodes. DQN trained for <strong>10+ hours</strong> and still acted confused. PPO and Safe PPO finished in <strong>1 hour</strong> and looked wise beyond their steps.</p>
+<p>We tweaked learning rates, added <strong>decay schedules</strong>, balanced exploration vs exploitation, and watched as Safe PPO converged steadily, even if it never quite reached the flamboyant peaks of PPO with GAE.</p>
+<hr>
+<h2 id="-results-what-we-learned">📊 Results: What We Learned</h2>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Best Episode Reward</th>
+<th>Stability</th>
+<th>Safety</th>
+<th>Training Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DQN</td>
+<td>⭐️⭐️⭐️</td>
+<td>❌</td>
+<td>❌</td>
+<td>10+ hours</td>
+</tr>
+<tr>
+<td>PPO + GAE</td>
+<td>⭐️⭐️⭐️⭐️⭐️</td>
+<td>⚠️</td>
+<td>⚠️</td>
+<td>~1 hour</td>
+</tr>
+<tr>
+<td>Safe PPO</td>
+<td>⭐️⭐️⭐️⭐️</td>
+<td>✅</td>
+<td>✅</td>
+<td>~1 hour</td>
+</tr>
+</tbody>
 </table>
-</div>
-<p>So before using eazypredict, we need to pre-process the dataset. This includes the following steps -</p>
 <ul>
-<li>Removing null values</li>
-<li>Encoding categorical data</li>
-<li>Scaling the dataset</li>
-<li>Splitting the training and testing data</li>
+<li><strong>DQN</strong> taught us patience.</li>
+<li><strong>PPO-GAE</strong> taught us power.</li>
+<li><strong>Safe PPO</strong> taught us responsibility.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Removes null values</span>
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Age&#34;</span>]<span style="color:#f92672">.</span>fillna(method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bfill&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Cabin&#34;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#34;No Room&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Embarked&#34;</span>]<span style="color:#f92672">.</span>fillna(<span style="color:#e6db74">&#34;S&#34;</span>, inplace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Encodes categorical data</span>
-</span></span><span style="display:flex;"><span>ord_enc <span style="color:#f92672">=</span> OrdinalEncoder()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Sex_code&#34;</span>] <span style="color:#f92672">=</span> ord_enc<span style="color:#f92672">.</span>fit_transform(df[[<span style="color:#e6db74">&#34;Sex&#34;</span>]])
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Cabin_code&#34;</span>] <span style="color:#f92672">=</span> ord_enc<span style="color:#f92672">.</span>fit_transform(df[[<span style="color:#e6db74">&#34;Cabin&#34;</span>]])
-</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#34;Embarked_code&#34;</span>] <span style="color:#f92672">=</span> ord_enc<span style="color:#f92672">.</span>fit_transform(df[[<span style="color:#e6db74">&#34;Embarked&#34;</span>]])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Selects features for X and labels for y</span>
-</span></span><span style="display:flex;"><span>X_feat <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Pclass&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Age&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;SibSp&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Parch&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Fare&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Sex_code&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Cabin_code&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Embarked_code&#34;</span>,
-</span></span><span style="display:flex;"><span>]
-</span></span><span style="display:flex;"><span>y_feat <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Survived&#34;</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> df[X_feat]
-</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> df[y_feat]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Scaling the features</span>
-</span></span><span style="display:flex;"><span>scaler <span style="color:#f92672">=</span> RobustScaler()
-</span></span><span style="display:flex;"><span>X_norm <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(scaler<span style="color:#f92672">.</span>fit_transform(X), columns<span style="color:#f92672">=</span>X<span style="color:#f92672">.</span>columns)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Splitting into train, set </span>
-</span></span><span style="display:flex;"><span>X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(
-</span></span><span style="display:flex;"><span>    X_norm, y, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.33</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>
-</span></span><span style="display:flex;"><span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X_norm<span style="color:#f92672">.</span>head()
-</span></span></code></pre></div><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Pclass</th>
-      <th>Age</th>
-      <th>SibSp</th>
-      <th>Parch</th>
-      <th>Fare</th>
-      <th>Sex_code</th>
-      <th>Cabin_code</th>
-      <th>Embarked_code</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.0</td>
-      <td>-0.388889</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>-0.312011</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-2.0</td>
-      <td>0.500000</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>2.461242</td>
-      <td>-1.0</td>
-      <td>-65.0</td>
-      <td>-2.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.0</td>
-      <td>-0.166667</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>-0.282777</td>
-      <td>-1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>-2.0</td>
-      <td>0.333333</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>1.673732</td>
-      <td>-1.0</td>
-      <td>-91.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.0</td>
-      <td>0.333333</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>-0.277363</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<p>Now we can use eazypredict module to quicly get the predictions of the top classification algorithms.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>clf <span style="color:#f92672">=</span> EazyClassifier()
-</span></span><span style="display:flex;"><span>model_list, prediction_list, model_results <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>fit(X_train, X_test, 
-</span></span><span style="display:flex;"><span>                                                     y_train, y_test)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>model_results
-</span></span></code></pre></div><pre><code>100%|██████████| 10/10 [00:00&lt;00:00, 10.09it/s]
-</code></pre>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Accuracy</th>
-      <th>f1 score</th>
-      <th>ROC AUC score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>GaussianNB</th>
-      <td>0.803390</td>
-      <td>0.803637</td>
-      <td>0.797619</td>
-    </tr>
-    <tr>
-      <th>MLPClassifier</th>
-      <td>0.803390</td>
-      <td>0.800228</td>
-      <td>0.784524</td>
-    </tr>
-    <tr>
-      <th>RandomForestClassifier</th>
-      <td>0.800000</td>
-      <td>0.798956</td>
-      <td>0.788214</td>
-    </tr>
-    <tr>
-      <th>LGBMClassifier</th>
-      <td>0.800000</td>
-      <td>0.798244</td>
-      <td>0.785595</td>
-    </tr>
-    <tr>
-      <th>RidgeClassifier</th>
-      <td>0.796610</td>
-      <td>0.794629</td>
-      <td>0.781429</td>
-    </tr>
-    <tr>
-      <th>XGBClassifier</th>
-      <td>0.779661</td>
-      <td>0.779203</td>
-      <td>0.769762</td>
-    </tr>
-    <tr>
-      <th>DecisionTreeClassifier</th>
-      <td>0.779661</td>
-      <td>0.778869</td>
-      <td>0.768452</td>
-    </tr>
-    <tr>
-      <th>KNeighborsClassifier</th>
-      <td>0.769492</td>
-      <td>0.766785</td>
-      <td>0.752024</td>
-    </tr>
-    <tr>
-      <th>SVC</th>
-      <td>0.688136</td>
-      <td>0.662186</td>
-      <td>0.640238</td>
-    </tr>
-    <tr>
-      <th>SGDClassifier</th>
-      <td>0.681356</td>
-      <td>0.669167</td>
-      <td>0.647619</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<p>After this you have the ability to select any model and perform hyperparameter tuning on it.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>gaussian_clf <span style="color:#f92672">=</span> model_list[<span style="color:#e6db74">&#34;GaussianNB&#34;</span>]
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> GridSearchCV
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>params_NB <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;var_smoothing&#34;</span>: np<span style="color:#f92672">.</span>logspace(<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>, num<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)}
-</span></span><span style="display:flex;"><span>gs_NB <span style="color:#f92672">=</span> GridSearchCV(
-</span></span><span style="display:flex;"><span>    estimator<span style="color:#f92672">=</span>gaussian_clf, param_grid<span style="color:#f92672">=</span>params_NB, verbose<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;accuracy&#34;</span>
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>gs_NB<span style="color:#f92672">.</span>fit(X_train, y_train<span style="color:#f92672">.</span>values<span style="color:#f92672">.</span>ravel())
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>gs_NB<span style="color:#f92672">.</span>best_params_
-</span></span></code></pre></div><pre><code>Fitting 5 folds for each of 100 candidates, totalling 500 fits
-
-{'var_smoothing': 8.111308307896873e-06}
-</code></pre>
-<h2 id="using-it-for-regression">Using it for regression</h2>
-<p>It can be used for regression in pretty much the same way as above. You just need to import the EazyRegressor estimator.</p>
-<p>More details can be found <a href="https://github.com/codevardhan/EazyPredict/tree/main#for-regression">here</a>.</p>
-<h2 id="creating-an-ensemble-model">Creating an ensemble model</h2>
-<p>This is the most effective feature of this library as an ensemble model can create a really good model with minimal effort in hyper parameter tuning.</p>
-<p>All you need to do is to pass the results and the model names from the previous &ldquo;fit&rdquo; step to the next one.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>clf <span style="color:#f92672">=</span> EazyClassifier()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>model_list, prediction_list, model_results <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>fit(X_train, X_test, y_train, y_test)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>ensemble_reg, ensemble_results <span style="color:#f92672">=</span> clf<span style="color:#f92672">.</span>fitVotingEnsemble(model_list, model_results)
-</span></span><span style="display:flex;"><span>ensemble_results
-</span></span></code></pre></div><p>100%|██████████| 10/10 [00:01&lt;00:00,  6.68it/s]</p>
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-<pre><code>.dataframe tbody tr th {
-    vertical-align: top;
-}
-
-.dataframe thead th {
-    text-align: right;
-}
-</code></pre>
-<p></style></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Models</th>
-      <th>Accuracy</th>
-      <th>F1 score</th>
-      <th>ROC AUC score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>GaussianNB LGBMClassifier RidgeClassifier MLPC...</td>
-      <td>0.816949</td>
-      <td>0.758929</td>
-      <td>0.799881</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<h2 id="conclusion">Conclusion</h2>
-<p>In conclusion, &lsquo;EazyPredict&rsquo; is an efficient and user-friendly Python module that makes trying out multiple prediction algorithms a breeze. Its memory-efficient design and customizable options make it a valuable tool for any data scientist or machine learning enthusiast. I hope you enjoy using &lsquo;EazyPredict&rsquo; as much as I enjoyed creating it.</p>
-<p>Check out the entire project on <a href="https://github.com/codevardhan/EazyPredict">Github</a> or <a href="https://pypi.org/project/eazypredict/">PyPI</a>.</p>
+<hr>
+<h2 id="-epilogue-would-we-do-it-again">🧭 Epilogue: Would We Do It Again?</h2>
+<p>Ask us on a good day.</p>
+<p>Despite the crashes, of rockets and our sanity, we came out stronger. We built something from scratch, wrestled it into functionality, and even gave it ethics. Reinforcement learning isn’t magic. It&rsquo;s messy, beautiful trial-and-error.</p>
+<p>This project wasn’t just about landing a rocket.</p>
+<p>It was about landing <strong>ourselves</strong> into the wild world of RL. Anyway do checkout the repo and the technical report below if you prefer math and code over whatever this was.</p>
+<hr>
+<h2 id="-code-and-report">📂 Code and Report</h2>
+<ul>
+<li>🔗 <a href="https://github.com/shainajnairn/Reinforcement-Learning-Project---CS5180">GitHub Repository</a></li>
+<li>📄 <a href="https://1drv.ms/b/c/2086135d5589e708/EZrjp0kuSG9CqiGB9NCa8bsBe20cn9xNxv5xEE5lhhy5KA?e=uT11Sr">Final Report (PDF)</a></li>
+</ul>
+<hr>
 
           </article>
         </div>
@@ -753,11 +431,15 @@ EazyPredict ML module | My portfolio
               <div class="toc-content">
                 <nav id="TableOfContents">
   <ul>
-    <li><a href="#why-eazypredict">Why EazyPredict?</a></li>
-    <li><a href="#using-it-for-classification">Using it for classification</a></li>
-    <li><a href="#using-it-for-regression">Using it for regression</a></li>
-    <li><a href="#creating-an-ensemble-model">Creating an ensemble model</a></li>
-    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#-prologue-it-started-with-a-rocket">🧠 Prologue: It Started With a Rocket</a></li>
+    <li><a href="#-chapter-one-dqn--our-shaky-firstborn">🎮 Chapter One: DQN – Our Shaky Firstborn</a></li>
+    <li><a href="#-chapter-two-who-ordered-wind">🌬️ Chapter Two: Who Ordered Wind?</a></li>
+    <li><a href="#-chapter-three-ppo--the-calm-strategist">🧘 Chapter Three: PPO – The Calm Strategist</a></li>
+    <li><a href="#-chapter-four-safe-ppo--rocket-science-meets-ethics">🛡️ Chapter Four: Safe PPO – Rocket Science Meets Ethics</a></li>
+    <li><a href="#-chapter-five-experiments-burnout-and-breakthroughs">🧪 Chapter Five: Experiments, Burnout, and Breakthroughs</a></li>
+    <li><a href="#-results-what-we-learned">📊 Results: What We Learned</a></li>
+    <li><a href="#-epilogue-would-we-do-it-again">🧭 Epilogue: Would We Do It Again?</a></li>
+    <li><a href="#-code-and-report">📂 Code and Report</a></li>
   </ul>
 </nav>
               </div>
@@ -769,11 +451,9 @@ EazyPredict ML module | My portfolio
             <h5>Tags</h5>
             <ul class="tags-ul list-unstyled list-inline">
               
-              <li class="list-inline-item"><a href="https://codevardhan.github.io/tags/machine-learning" target="_blank">machine-learning</a></li>
+              <li class="list-inline-item"><a href="https://codevardhan.github.io/tags/reinforcement-learning" target="_blank">reinforcement-learning</a></li>
               
-              <li class="list-inline-item"><a href="https://codevardhan.github.io/tags/k-nearest-neighbours" target="_blank">k-nearest-neighbours</a></li>
-              
-              <li class="list-inline-item"><a href="https://codevardhan.github.io/tags/from-scratch" target="_blank">from-scratch</a></li>
+              <li class="list-inline-item"><a href="https://codevardhan.github.io/tags/rocket" target="_blank">rocket</a></li>
               
               <li class="list-inline-item"><a href="https://codevardhan.github.io/tags/python" target="_blank">python</a></li>
               
@@ -787,17 +467,17 @@ EazyPredict ML module | My portfolio
             <div class="social-content">
               <ul class="list-inline">
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://twitter.com/share?text=EazyPredict%20ML%20module&url=https%3a%2f%2fcodevardhan.github.io%2fprojects%2f2023-02-03-eazypredict-module%2f">
+                  <a target="_blank" href="https://twitter.com/share?text=Rocket%20Landing%20using%20Reinforcement%20Learning%21&url=https%3a%2f%2fcodevardhan.github.io%2fprojects%2f2025-04-28-rocket-landing%2f">
                     <i class="fab fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href="https://api.whatsapp.com/send?text=EazyPredict%20ML%20module: https%3a%2f%2fcodevardhan.github.io%2fprojects%2f2023-02-03-eazypredict-module%2f">
+                  <a target="_blank" href="https://api.whatsapp.com/send?text=Rocket%20Landing%20using%20Reinforcement%20Learning%21: https%3a%2f%2fcodevardhan.github.io%2fprojects%2f2025-04-28-rocket-landing%2f">
                     <i class="fab fa-whatsapp"></i>
                   </a>
                 </li>
                 <li class="list-inline-item text-center">
-                  <a target="_blank" href='mailto:?subject=EazyPredict%20ML%20module&amp;body=Check%20out%20this%20site https%3a%2f%2fcodevardhan.github.io%2fprojects%2f2023-02-03-eazypredict-module%2f'>
+                  <a target="_blank" href='mailto:?subject=Rocket%20Landing%20using%20Reinforcement%20Learning%21&amp;body=Check%20out%20this%20site https%3a%2f%2fcodevardhan.github.io%2fprojects%2f2025-04-28-rocket-landing%2f'>
                     <i class="fa fa-envelope"></i>
                   </a>
                 </li>

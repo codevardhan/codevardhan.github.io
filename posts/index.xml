@@ -6,15 +6,8 @@
     <description>Recent content in Posts on My portfolio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Apr 2025 12:12:11 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2024 12:12:11 +0530</lastBuildDate>
     <atom:link href="https://codevardhan.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Rocket Landing using Reinforcement Learning!</title>
-      <link>https://codevardhan.github.io/posts/2025-04-28-rocket-landing/</link>
-      <pubDate>Mon, 28 Apr 2025 12:12:11 +0530</pubDate>
-      <guid>https://codevardhan.github.io/posts/2025-04-28-rocket-landing/</guid>
-      <description>“A crash is just a high-speed landing&amp;hellip; in the wrong place.” – Unknown RL Agent&#xA;🚀 Landing Rockets and Losing Our Minds: A Reinforcement Learning Journey By Harshavardhan Manohar &amp;amp; Nivedita Shainaj Nair&#xA;🧠 Prologue: It Started With a Rocket We wanted to land a rocket. Not in real life, of course, that would’ve been wildly over budget for two grad students, but in a 2D simulation. Our project was supposed to be a &amp;ldquo;standard&amp;rdquo; application of reinforcement learning, something nice and contained.</description>
-    </item>
     <item>
       <title>Developing a chess plugin for Manim!</title>
       <link>https://codevardhan.github.io/posts/2024-12-10-developing-chess-plugin-manim/</link>
