@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout>
+  <div class="max-w-5xl mx-auto px-6">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="py-24 md:py-32">
+      <p class="text-accent font-mono text-sm mb-3">Hi, my name is</p>
+      <h1 class="text-5xl md:text-7xl font-bold text-gray-100">Harsh.</h1>
+      <h2 class="text-3xl md:text-5xl font-bold text-gray-500 mt-2">I build AI, and stuff</h2>
+      <p class="text-gray-400 max-w-xl mt-6 text-lg leading-relaxed">
+        A passionate software engineer who dabbles in Machine Learning. 🤖
+      </p>
+      <div class="flex gap-4 mt-8">
+        <a href="/posts" class="inline-flex items-center px-6 py-3 bg-accent/10 text-accent border border-accent/30 rounded-lg hover:bg-accent/20 transition no-underline text-sm font-medium">
+          Read my blogs!
+        </a>
+      </div>
+      <div class="flex gap-4 mt-6">
+        <a href="https://github.com/codevardhan" class="text-gray-500 hover:text-gray-200 text-xl"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/codevardhan" class="text-gray-500 hover:text-gray-200 text-xl"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </section>
+
+    <!-- ═══ ABOUT ═══ -->
+    <section id="about" class="py-16 border-t border-gray-800">
+      <h2 class="text-2xl font-bold mb-8 text-gray-100">About Me</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="md:col-span-2 text-gray-400 leading-relaxed space-y-4">
+          <p>I'm a software engineer whose passion lies in the realms of machine learning, deep learning, and web and app development. During my leisure time, I indulge in the immersive world of video games, with a particular fondness for Rainbow Six Siege.</p>
+          <p>I'm totally hooked on the idea of Artificial Intelligence — it's like the coolest thing ever in my academic adventure! Just think about it: we're trying to give consciousness to machine. It's like we're on a quest to copy the brain's amazing abilities, and I find that incredible!</p>
+          <div class="mt-6">
+            <p class="text-gray-300 font-medium mb-3">Technologies I've been working with recently 🚀💡</p>
+            <div class="grid grid-cols-2 gap-1 text-sm">
+              {['CUDA/C++', 'PyTorch', 'LLM Agents', 'TypeScript', 'Docker', 'Flask/FastAPI', 'Flutter', 'SQL'].map(s => (
+                <span class="flex items-center gap-2 text-gray-400"><span class="text-accent text-xs">▹</span> {s}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <img src="/images/dp.jpg" alt="Harsh" class="w-48 h-48 rounded-xl object-cover border-2 border-gray-800" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ EXPERIENCE ═══ -->
+    <section id="experience" class="py-16 border-t border-gray-800">
+      <h2 class="text-2xl font-bold mb-8 text-gray-100">Experience</h2>
+      <div class="space-y-10">
+        <!-- BeSuperhuman -->
+        <div class="relative pl-6 border-l-2 border-gray-800">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-accent"></div>
+          <h3 class="text-lg font-semibold text-gray-100">Lead Machine Learning Engineer</h3>
+          <p class="text-accent text-sm"><a href="https://www.besuperhuman.ai/" class="no-underline">BeSuperhuman.ai</a> &middot; June 2023 – August 2024</p>
+          <ul class="mt-3 text-gray-400 text-sm space-y-2 list-disc pl-4">
+            <li>Built an LLM-driven agent system from 0→1 with the founder: tool-calling orchestration that generates and executes browser actions with guardrails, validation, and structured error handling.</li>
+            <li>Reduced LLM inference and ops costs by 88% through caching layers, pipeline optimization, and SQL tuning.</li>
+            <li>Shipped cross-platform desktop app (Electron) and backend services (Python/Flask) with monitoring hooks and run analytics.</li>
+          </ul>
+        </div>
+        <!-- MGH / Harvard -->
+        <div class="relative pl-6 border-l-2 border-gray-800">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-accent"></div>
+          <h3 class="text-lg font-semibold text-gray-100">AI Research Assistant</h3>
+          <p class="text-accent text-sm">Massachusetts General Hospital / Harvard Medical School &middot; May 2025 – Aug 2025</p>
+          <ul class="mt-3 text-gray-400 text-sm space-y-2 list-disc pl-4">
+            <li>Built an end-to-end deep learning pipeline for CT radiation dose estimation on ~12k DICOM scans — from raw data ingestion through preprocessing, training, and evaluation.</li>
+            <li>Achieved 12.3% error reduction vs. baseline through model iteration, experiment tracking, and reproducible evaluation for clinical stakeholders.</li>
+          </ul>
+        </div>
+        <!-- AmritaCREATE -->
+        <div class="relative pl-6 border-l-2 border-gray-800">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-700"></div>
+          <h3 class="text-lg font-semibold text-gray-100">Deep Learning Research Intern</h3>
+          <p class="text-gray-500 text-sm"><a href="https://www.amrita.edu/" class="no-underline text-gray-400">AmritaCREATE Labs</a> &middot; June 2022 – January 2023</p>
+          <ul class="mt-3 text-gray-400 text-sm space-y-2 list-disc pl-4">
+            <li>Developed a PyTorch transformer-based system for continuous sign language recognition from noisy, unstructured video.</li>
+            <li>Iterated on preprocessing and architecture to improve robustness to low-fidelity inputs across e-governance teams.</li>
+          </ul>
+        </div>
+        <!-- Agrisoft -->
+        <div class="relative pl-6 border-l-2 border-gray-800">
+          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-700"></div>
+          <h3 class="text-lg font-semibold text-gray-100">Full Stack Developer Intern</h3>
+          <p class="text-gray-500 text-sm">Agrisoft Dairy &middot; Jan 2022 – April 2022</p>
+          <ul class="mt-3 text-gray-400 text-sm space-y-2 list-disc pl-4">
+            <li>Built mobile and backend features using Flutter and REST APIs in a fast-moving small team.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROJECTS (from content collection) ═══ -->
+    <section id="projects" class="py-16 border-t border-gray-800">
+      <h2 class="text-2xl font-bold mb-8 text-gray-100">Projects</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {projects.map(project => (
+          <a href={`/projects/${project.slug}`} class="group block bg-gray-900 border border-gray-800 rounded-xl overflow-hidden hover:border-accent/40 transition no-underline">
+            {project.data.image && (
+              <img src={project.data.image} alt={project.data.title} class="w-full h-40 object-cover" />
+            )}
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-gray-100 group-hover:text-accent transition">{project.data.title}</h3>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                {(project.data.tags || []).map(tag => (
+                  <span class="px-2 py-0.5 text-xs bg-gray-800 text-gray-400 rounded">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ═══ RECENT POSTS ═══ -->
+    <section class="py-16 border-t border-gray-800">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-gray-100">Recent Posts</h2>
+        <a href="/posts" class="text-sm text-accent no-underline">View all &rarr;</a>
+      </div>
+      <div class="space-y-6">
+        {posts.map(post => (
+          <a href={`/posts/${post.slug}`} class="group flex gap-6 items-start p-4 -mx-4 rounded-lg hover:bg-gray-900/50 transition no-underline">
+            {post.data.image && (
+              <img src={post.data.image} alt={post.data.title} class="w-24 h-24 object-cover rounded-lg flex-shrink-0 hidden sm:block" />
+            )}
+            <div>
+              <h3 class="text-gray-100 font-medium group-hover:text-accent transition">{post.data.title}</h3>
+              <time class="text-sm text-gray-500" datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+              </time>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                {(post.data.tags || []).slice(0, 3).map(tag => (
+                  <span class="px-2 py-0.5 text-xs bg-gray-800 text-gray-500 rounded">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact" class="py-16 border-t border-gray-800 text-center">
+      <h2 class="text-2xl font-bold mb-4 text-gray-100">Get In Touch</h2>
+      <p class="text-gray-400 max-w-md mx-auto mb-6">
+        My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+      </p>
+      <a href="mailto:harsha7vardhan@gmail.com" class="inline-flex items-center px-6 py-3 bg-accent/10 text-accent border border-accent/30 rounded-lg hover:bg-accent/20 transition no-underline text-sm font-medium">
+        Mail me
+      </a>
+    </section>
+
+  </div>
+</BaseLayout>

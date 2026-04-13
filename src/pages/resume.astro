@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Resume — Harsh">
+  <article class="max-w-3xl mx-auto px-6 py-12 prose">
+    <h1>Resume</h1>
+    <p class="text-lg">
+      <strong>Harshavardhan Manohar</strong><br/>
+      <span class="text-sm text-gray-500">857-308-7212 · m.h@northeastern.edu · <a href="https://linkedin.com/in/codevardhan">linkedin.com/in/codevardhan</a> · <a href="https://github.com/codevardhan">github.com/codevardhan</a> · Boston, MA</span>
+    </p>
+
+    <blockquote>
+      AI Engineer (M.S. AI, Northeastern) who builds and ships production LLM/agent systems end-to-end. Built an LLM-driven agent from scratch alongside a founder — tool-calling orchestration, eval, guardrails, and deployment — cutting inference costs 88% at scale. Experience across the full AI lifecycle: data acquisition, model training, real-time pipeline design, and user-facing product. Background in processing noisy, unstructured real-world signals (medical imaging, continuous sign language video) where clean data doesn't exist and robustness is everything.
+    </blockquote>
+
+    <h2>Education</h2>
+    <table>
+      <thead><tr><th>Degree</th><th>Institute</th><th>GPA</th><th>Year</th></tr></thead>
+      <tbody>
+        <tr><td>M.S. Artificial Intelligence</td><td>Northeastern University, Boston</td><td>4.00/4.00</td><td>2024–2026</td></tr>
+        <tr><td>B.Tech Computer Science (AI)</td><td>Amrita Vishwa Vidyapeetham</td><td>8.52/10</td><td>2019–2023</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Experience</h2>
+
+    <h3>Lead Machine Learning Engineer <span class="text-sm font-normal text-gray-500">— June 2023 – August 2024</span></h3>
+    <p><a href="https://www.besuperhuman.ai/">BeSuperhuman.ai</a> · London, UK (Remote)</p>
+    <ul>
+      <li>Built an LLM-driven agent system from 0→1 with the founder: designed tool-calling orchestration that generates and executes browser actions (click/type/navigate) with guardrails, validation, and structured error handling.</li>
+      <li>Developed the full eval and reliability stack: prompt + tool execution pipelines, structured logging, success/failure taxonomy, deterministic replay for debugging, and retry logic for production resilience.</li>
+      <li>Reduced LLM inference and ops costs by 88% through caching layers, pipeline optimization, and SQL/stored procedure tuning — enabling high-volume runs without scaling spend linearly.</li>
+      <li>Shipped cross-platform desktop app (Electron) and backend services (Python/Flask), with monitoring hooks and run analytics to close the loop between deployment telemetry and product iteration.</li>
+    </ul>
+
+    <h3>AI Research Assistant <span class="text-sm font-normal text-gray-500">— May 2025 – August 2025</span></h3>
+    <p>Massachusetts General Hospital / Harvard Medical School · Boston, MA</p>
+    <ul>
+      <li>Built an end-to-end deep learning pipeline for CT radiation dose estimation on ~12k DICOM scans — from raw data ingestion through preprocessing, model training, and structured evaluation reporting.</li>
+      <li>Designed automated data acquisition and QC: ingestion from messy clinical sources, de-identification-safe preprocessing, normalization, and validation gates to catch distribution shifts and label issues before training.</li>
+      <li>Achieved 12.3% error reduction vs. baseline through model iteration, experiment tracking, and reproducible evaluation — delivering structured results for non-technical clinical stakeholders.</li>
+    </ul>
+
+    <h3>Deep Learning Research Intern <span class="text-sm font-normal text-gray-500">— June 2022 – January 2023</span></h3>
+    <p><a href="https://www.amrita.edu/">AmritaCREATE Labs</a> · Amritapuri, India</p>
+    <ul>
+      <li>Developed a PyTorch transformer-based system for continuous sign language recognition from noisy, unstructured video — processing real-world signals where input quality varies wildly and clean data doesn't exist.</li>
+      <li>Iterated on preprocessing and model architecture to improve robustness to low-fidelity inputs; communicated tradeoffs and experimental findings to non-technical stakeholders across e-governance teams.</li>
+    </ul>
+
+    <h3>Full Stack Developer Intern <span class="text-sm font-normal text-gray-500">— January 2022 – April 2022</span></h3>
+    <p>Agrisoft Dairy · Kollam, India</p>
+    <ul>
+      <li>Built mobile and backend features using Flutter and REST APIs; resolved integration issues across app and server components in a fast-moving small team.</li>
+    </ul>
+
+    <h2>Projects</h2>
+    <ul>
+      <li><strong>ParaGrad</strong> — From-scratch autograd engine &amp; deep learning framework in C++17/CUDA. 19-op pluggable backend architecture, 886 tests, 500–1039× GPU speedup. <a href="/projects/paragrad-engine">Read more →</a></li>
+      <li><strong>KeepUp</strong> — LLM-powered relationship assistant with human-in-the-loop design: generates outreach suggestions, tracks user edits/rejections, feeds outcomes back into prompt and ranking iteration.</li>
+      <li><strong>Procedural Personalization via RL</strong> — RL-driven personalization loop (PPO) with telemetry-first design: per-second event logging, reward ablations, offline analysis pipelines for rapid iteration.</li>
+      <li><strong>Rocket Landing RL</strong> — DQN, PPO, and Safe PPO agents for 2D rocket landing with wind dynamics. <a href="/projects/rocket-landing">Read more →</a></li>
+      <li><strong>EazyPredict</strong> — Python module for running &amp; comparing multiple ML models at once with automated ensemble creation. <a href="/projects/eazypredict-module">Read more →</a></li>
+    </ul>
+
+    <h2>Technical Skills</h2>
+    <ul>
+      <li><strong>Languages:</strong> Python, TypeScript/JavaScript, SQL, Rust, C++, CUDA, Java, Dart</li>
+      <li><strong>AI/LLM:</strong> PyTorch, LLM agent orchestration (tool-calling, guardrails, retries), prompt engineering, eval frameworks, structured output parsing</li>
+      <li><strong>Data &amp; Pipelines:</strong> ETL/data pipelines, feature engineering, EDA, dataset QC, SQL optimization; Pandas, NumPy</li>
+      <li><strong>Search &amp; Retrieval:</strong> Embeddings, vector similarity search, ranking/recommendation signals, structured logging for RAG-style systems</li>
+      <li><strong>Infrastructure:</strong> Docker, CI/CD, experiment tracking, model monitoring, AWS (familiar)</li>
+      <li><strong>Backend &amp; Apps:</strong> Flask, FastAPI, Django, Node.js/Express, REST APIs; Electron, Flutter</li>
+    </ul>
+  </article>
+</BaseLayout>

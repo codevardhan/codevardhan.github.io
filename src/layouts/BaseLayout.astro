@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  usemathjax?: boolean;
+}
+const { title = "Harsh's Portfolio", description = "Portfolio website", usemathjax = false } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  {usemathjax && (
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" is:inline></script>
+  )}
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-gray-800">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-gray-100 hover:text-accent no-underline">Harsh.</a>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="/#about" class="text-gray-400 hover:text-gray-100 no-underline">About</a>
+        <a href="/#experience" class="text-gray-400 hover:text-gray-100 no-underline">Experience</a>
+        <a href="/#projects" class="text-gray-400 hover:text-gray-100 no-underline">Projects</a>
+        <a href="/posts" class="text-gray-400 hover:text-gray-100 no-underline">Blog</a>
+        <a href="/resume" class="text-gray-400 hover:text-gray-100 no-underline">Resume</a>
+        <a href="/#contact" class="text-gray-400 hover:text-gray-100 no-underline">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-800 mt-20">
+    <div class="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-gray-500">
+      <span>&copy; {new Date().getFullYear()} Harshavardhan Manohar. All rights reserved.</span>
+      <div class="flex gap-4">
+        <a href="https://github.com/codevardhan" class="hover:text-gray-300"><i class="fab fa-github text-lg"></i></a>
+        <a href="https://linkedin.com/in/codevardhan" class="hover:text-gray-300"><i class="fab fa-linkedin text-lg"></i></a>
+        <a href="https://instagram.com/h_v_m_" class="hover:text-gray-300"><i class="fab fa-instagram text-lg"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mermaid (lazy-load on pages that have diagrams) -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      var KW = /^\s*(graph |flowchart |sequenceDiagram|classDiagram|stateDiagram|erDiagram|gantt|pie |quadrantChart|xychart|mindmap|timeline|gitGraph|sankey)/;
+      var pres = document.querySelectorAll('pre');
+      var targets = [];
+      pres.forEach(function(pre) {
+        if (KW.test(pre.textContent)) targets.push(pre);
+      });
+      if (targets.length === 0) return;
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
+      s.onload = function() {
+        targets.forEach(function(pre) {
+          var div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = pre.textContent;
+          pre.replaceWith(div);
+        });
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', themeVariables: { primaryColor: '#6d28d9', primaryTextColor: '#e5e7eb', lineColor: '#6b7280', secondaryColor: '#1f2937' }});
+        mermaid.run();
+      };
+      document.head.appendChild(s);
+    });
+  </script>
+</body>
+</html>
