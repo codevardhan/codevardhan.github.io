@@ -6,77 +6,55 @@ image: /images/cellphone_detector/featured.png
 tags: [electronics, circuitry]
 ---
 
+This was one of my first electronics projects - built it in 2020 when I was curious about RF signals and wanted to understand how passive detection actually works without a microcontroller in the loop. The circuit detects the RF burst a mobile phone emits when it communicates with a cell tower: during a call setup, SMS, or data ping.
 
-# DIY Cell Phone Detector Circuit: Stop Unauthorized Mobile Phone Usage
+## How it actually works
 
-## Introduction
+Mobile phones don't emit a constant signal. They transmit in short bursts - TDMA/GSM phones in particular fire at ~217 Hz when on a call, which is why they used to cause that characteristic buzzing in nearby speakers. This circuit exploits that.
 
-Are you tired of people using their phones when they're not supposed to? Maybe you want to ensure that exam halls, meetings, or other restricted areas remain phone-free. We've got just the solution for you – a DIY Cell Phone Detector Circuit! In this blog, we'll walk you through the process of building a simple yet effective circuit that can detect the presence of activated cell phones within a one-meter range. It's a fun and educational project that can help you enforce no-phone zones.
+The core is a **CA3130 op-amp wired as a current-to-voltage converter**. Two 100nF capacitors act as a crude loop antenna - they pick up the changing electric field from nearby RF transmission and feed a tiny fluctuating current into the op-amp's inverting input. The op-amp amplifies this into a usable voltage swing.
 
-## Circuit Diagram
+That swing drives an NPN BC547 transistor, which blinks an LED at the burst frequency. A PNP BC557 in the output stage drives the buzzer. The two transistor types aren't arbitrary. The NPN handles the LED (current sinking), the PNP handles the buzzer (current sourcing from the supply rail), which keeps the load management clean without extra circuitry.
 
 ![Circuit diagram](/images/cellphone_detector/circuit.png)
 
-## Working Principle of Cell Phone Detector Circuit
+## Components
 
-This cell phone detector circuit works by sensing the radio frequency (RF) signals emitted by activated mobile phones. It uses an op-amp as a Frequency Detector or Current to Voltage Converter, and when it detects a phone in operation, it triggers a LED and buzzer to indicate its presence. The circuit consists of various components, including capacitors and transistors, that help in the detection process.
+| Component | Value | Qty |
+|-----------|-------|-----|
+| Op-Amp | CA3130 | 1 |
+| Resistor | 2.2MΩ | 2 |
+| Resistor | 100KΩ | 1 |
+| Resistor | 1KΩ | 3 |
+| Capacitor | 100nF | 4 |
+| Capacitor | 22pF | 2 |
+| Capacitor | 100µF | 1 |
+| Transistor | BC547 (NPN) | 1 |
+| Transistor | BC557 (PNP) | 1 |
+| LED | any | 1 |
+| Buzzer | 5V | 1 |
+| Power | 9V battery | 1 |
 
-## Components Required
+## Building it
 
-Before we dive into building the circuit, let's gather the components you'll need:
-- Op-Amp CA3130
-- 2.2M resistor (2)
-- 100K resistor (1)
-- 1K resistor (3)
-- 100nF capacitor (4)
-- 22pF capacitor (2)
-- 100uF capacitor
-- Breadboard
-- 9 Volt Battery
-- Battery Connector
-- LED
-- Transistor BC547
-- Transistor BC557
-- Connecting wires
-- Buzzer
-- Antenna
+A few things worth knowing before you breadboard this:
 
-## Working of Cell Phone Detector Circuit
+**Antenna placement matters more than you'd expect.** The 100nF caps are doing all the sensing work. Keep the leads long and unshielded, they're literally your antenna. Tucking them flat against the board kills sensitivity.
 
-Here's how the circuit works:
-1. The op-amp is connected as a Frequency Detector or Current to Voltage Converter.
-2. Two 100nF capacitors function as loop antennas to detect RF signals.
-3. When a call or SMS is transmitted, these capacitors pick up the RF signal, causing fluctuations in the op-amp's output.
-4. The LED, connected through an NPN transistor, blinks according to the signal's frequency.
-5. A PNP transistor activates the buzzer, generating a beeping sound while the signal is present.
+**The 2.2MΩ feedback resistors set the gain.** If you're getting false triggers from ambient noise, increase them slightly. If you're not detecting anything, decrease them. The CA3130 has very high input impedance, so it's sensitive to stray coupling.
 
-## Advantages and Disadvantages
+**CA3130 specifically.** This op-amp is chosen because it can operate with inputs down to the negative rail and has MOSFET inputs. These are critical for sensing the tiny currents the capacitors generate. A standard 741 won't work here.
 
-Before you start building the circuit, it's essential to understand its pros and cons:
+**Power supply noise.** Add a 100µF cap across the supply rails close to the IC. Without it, the buzzer switching can inject noise back into the op-amp and cause false triggers.
 
-**Advantages**
-1. Fast response time.
-2. Low overall cost.
-3. Minimal power consumption.
-4. Requires only a few components.
+## What it can and can't detect
 
-**Disadvantages**
-1. Limited detecting radius.
-2. Cannot detect Bluetooth and 3G network frequencies.
+It reliably detects GSM (2G) transmissions, the 217 Hz burst frequency falls right in the detection range and the signal is strong. 3G and 4G use different modulation schemes (WCDMA, OFDM) that don't produce the same characteristic burst pattern, so detection is inconsistent. 5G and WiFi: don't bother, completely different frequency ranges.
 
-## Applications
+Effective range is roughly 1–1.5 meters with a well-tuned antenna, less in noisy RF environments.
 
-Once your cell phone detector circuit is ready, you can use it in various scenarios where mobile phone usage needs to be restricted, including:
-- Petrol pumps
-- Gas stations
-- Historical and religious places
-- Examination halls
-- Security-sensitive areas like military bases and embassies
-- Hospitals
-- Theatres and conference rooms
+## What I'd do differently now
 
-## Conclusion
+The CA3130 approach is elegant but fragile, sensitivity varies a lot with component tolerances and physical layout. A more robust version would use a dedicated RF detector IC (like the AD8313 log detector) with a proper tuned antenna, which would give you consistent detection across a wider frequency range and an actual signal strength reading instead of a binary trigger.
 
-Building a cell phone detector circuit is a fun and educational project with practical applications. It allows you to detect unauthorized phone usage within a specific range, making it an excellent choice for enforcing no-phone zones. The circuit's quick response time ensures that even if a phone is on silent mode, you'll know if it's in use. Whenever a cell phone comes within a 1.5-meter range, the LED blinks rapidly, and the buzzer sounds continuously until the signal disappears.
-
-So, if you're looking to prevent unauthorized mobile phone usage in specific areas, gather your components and get ready to build your DIY cell phone detector circuit!
+Still, for understanding the basics of RF detection without any digital components, it's a good circuit to build once.

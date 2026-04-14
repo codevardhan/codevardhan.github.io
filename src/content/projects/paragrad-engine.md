@@ -26,8 +26,8 @@ The idea comes from [tinygrad](https://github.com/tinygrad/tinygrad): if you shr
 
 ```mermaid
 graph TB
-    subgraph portable["Hardware-Agnostic - Pure C++17"]
-        style portable fill:#e8f4e8,stroke:#2d7d2d,stroke-width:2px
+    subgraph portable["Pure C++17 - Hardware-Agnostic"]
+        style portable fill:#e8f4e8,stroke:#2d7d2d,stroke-width:2px,color:#1a1a1a
         TL["Training Loop / Optimizer<br/><i>SGD, Adam</i>"]
         AE["Autograd Engine<br/><i>Tape-based reverse-mode AD</i>"]
         GS["Graph Scheduler<br/><i>Op fusion, memory planning, dispatch</i>"]
@@ -39,8 +39,8 @@ graph TB
 
     GS --> BOUND
 
-    subgraph backends["Hardware-Specific - one file per accelerator"]
-        style backends fill:#e8e8f4,stroke:#2d2d7d,stroke-width:2px
+    subgraph backends["Hardware-Specific - One File per Accelerator"]
+        style backends fill:#e8e8f4,stroke:#2d2d7d,stroke-width:2px,color:#1a1a1a
         CPU["CPU Backend<br/><i>OpenMP, tiled GEMM</i>"]
         CUDA["CUDA Backend<br/><i>Hand-written kernels,<br/>NVRTC JIT fusion</i>"]
         CUBLAS["cuBLAS Backend<br/><i>Inherits CUDA,<br/>overrides 3 methods</i>"]
@@ -57,37 +57,14 @@ graph TB
 
 The `Backend` abstract class defines 19 operations across six categories:
 
-#### Memory
-- alloc
-- free
-- copy
-- zero
-
-#### Unary
-- relu
-- neg
-- exp
-- log
-- tanh
-- pow
-
-#### Binary
-- add
-- mul
-
-#### Reduce
-- sum
-
-#### Matrix
-- gemm
-- transpose
-
-
-#### Transformer:
-- softmax
-- rmsnorm
-- embedding
-- slice
+| Memory | Unary | Binary | Reduce | Matrix | Transformer |
+|--------|-------|--------|--------|--------|-------------|
+| alloc | relu | add | sum | gemm | softmax |
+| free | neg | mul | | transpose | rmsnorm |
+| copy | exp | | | | embedding |
+| zero | log | | | | slice |
+| | tanh | | | | |
+| | pow | | | | |
 
 
 Every layer, every loss function, every optimizer step is composed exclusively from these primitives. Softmax is `exp(x - max(x))` normalized via `mul` and `sum`. Cross-entropy composes `log`, `mul`, `neg`, and `sum`.
@@ -145,22 +122,20 @@ My first autograd engine used the textbook approach (mainly inspired by [microgr
 So I replaced it with a flat linear tape:
 
 ```mermaid
-graph LR
+graph TB
     subgraph forward["Forward Pass - appends to tape"]
-        direction LR
-        style forward fill:#e8f4e8,stroke:#2d7d2d
-        F1["1 GEMM<br/>W x input"] --> F2["2 ADD<br/>+ bias"] --> F3["3 RELU"] --> F4["4 GEMM<br/>W2 x hidden"] --> F5["5 SOFTMAX"] --> F6["6 LOSS<br/>MUL+SUM"]
+        style forward fill:#e8f4e8,stroke:#2d7d2d,color:#1a1a1a
+        F1["GEMM<br/>W×input"] --> F2["ADD<br/>+bias"] --> F3["RELU"] --> F4["GEMM<br/>W2×hidden"] --> F5["SOFTMAX"] --> F6["LOSS"]
     end
 
     subgraph tape["Tape - flat array of TapeEntry structs"]
-        style tape fill:#ffeaa7,stroke:#d4a017
-        T1["#91;0#93; GEMM"] --- T2["#91;1#93; ADD"] --- T3["#91;2#93; RELU"] --- T4["#91;3#93; GEMM"] --- T5["#91;4#93; SOFTMAX"] --- T6["#91;5#93; LOSS"]
+        style tape fill:#ffeaa7,stroke:#d4a017,color:#1a1a1a
+        T1["[0] GEMM"] --- T2["[1] ADD"] --- T3["[2] RELU"] --- T4["[3] GEMM"] --- T5["[4] SOFTMAX"] --- T6["[5] LOSS"]
     end
 
     subgraph backward["Backward Pass - reverse iteration"]
-        direction RL
-        style backward fill:#f4e8e8,stroke:#7d2d2d
-        B6["6 d_loss"] --> B5["5 d_softmax"] --> B4["4 d_GEMM"] --> B3["3 d_relu"] --> B2["2 d_add"] --> B1["1 d_GEMM"]
+        style backward fill:#f4e8e8,stroke:#7d2d2d,color:#1a1a1a
+        B6["d_loss"] --> B5["d_softmax"] --> B4["d_GEMM"] --> B3["d_relu"] --> B2["d_add"] --> B1["d_GEMM"]
     end
 
     forward -.-> tape
@@ -176,15 +151,15 @@ The tape also makes diagnostics trivial. I built three features on top of it:
 ```mermaid
 graph TB
     TAPE["Flat Tape - array of TapeEntry"]
-    style TAPE fill:#ffeaa7,stroke:#d4a017,stroke-width:2px
+    style TAPE fill:#ffeaa7,stroke:#d4a017,stroke-width:2px,color:#1a1a1a
 
-    TAPE --> D1["Tape Dump<br/><i>Full forward graph as table:<br/>op type, tensor indices, shapes,<br/>fused status</i>"]
+    TAPE --> D1["Tape Dump<br/><i>Forward graph as table:<br/>op type, tensor indices,<br/>shapes, fused status</i>"]
     TAPE --> D2["Activation Stats<br/><i>mean, variance, min/max,<br/>zero-fraction per intermediate.<br/>Flags dead units and collapse.</i>"]
     TAPE --> D3["Gradient Health<br/><i>L2 norm, max grad magnitude,<br/>dead-gradient fraction.<br/>Detects vanishing/exploding.</i>"]
 
-    style D1 fill:#dfe6e9
-    style D2 fill:#dfe6e9
-    style D3 fill:#dfe6e9
+    style D1 fill:#dfe6e9,stroke:#888,color:#1a1a1a
+    style D2 fill:#dfe6e9,stroke:#888,color:#1a1a1a
+    style D3 fill:#dfe6e9,stroke:#888,color:#1a1a1a
 ```
 
 Each diagnostic is ~50 lines of code reading from a flat list. In PyTorch, this kind of introspection requires hooks and callbacks bolted onto a system not designed for it.
@@ -202,28 +177,34 @@ But here's where it gets interesting. cuBLAS achieves 5,113–7,603 GFLOP/s on t
 ```mermaid
 graph LR
     subgraph cpu["CPU Backend"]
-        style cpu fill:#ffcccc
-        C1["8 threads - Tiled GEMM<br/>32x32 tiles, FP32 scalar ops"]
+        style cpu fill:#ffcccc,stroke:#cc4444,color:#1a1a1a
+        C1["8 threads - Tiled GEMM<br/>32×32 tiles, FP32 scalar ops"]
         C2["1.5 – 4.0 GFLOP/s"]
         C1 --> C2
+        style C1 fill:#ffeeee,color:#1a1a1a
+        style C2 fill:#ffeeee,color:#1a1a1a
     end
 
     subgraph cuda["CUDA Backend"]
-        style cuda fill:#ccddff
-        D1["80 SMs - Tiled GEMM<br/>32x32 shared mem, FP32 FFMA"]
+        style cuda fill:#ccddff,stroke:#4466cc,color:#1a1a1a
+        D1["80 SMs - Tiled GEMM<br/>32×32 shared mem, FP32 FFMA"]
         D2["1,563 – 2,029 GFLOP/s"]
         D1 --> D2
+        style D1 fill:#ddeeff,color:#1a1a1a
+        style D2 fill:#ddeeff,color:#1a1a1a
     end
 
     subgraph cublas["cuBLAS Backend"]
-        style cublas fill:#ccffcc
-        E1["Tensor Cores - WMMA<br/>16x16x16 FP16, auto-tuned"]
+        style cublas fill:#ccffcc,stroke:#44aa44,color:#1a1a1a
+        E1["Tensor Cores - WMMA<br/>16×16×16 FP16, auto-tuned"]
         E2["5,113 – 7,603 GFLOP/s"]
         E1 --> E2
+        style E1 fill:#eeffee,color:#1a1a1a
+        style E2 fill:#eeffee,color:#1a1a1a
     end
 
-    cpu -- "500-1039x" --> cuda
-    cuda -- "3.4-4.2x" --> cublas
+    cpu -- "500–1039×" --> cuda
+    cuda -- "3.4–4.2×" --> cublas
 ```
 
 | Shape | CPU (GFLOP/s) | CUDA (GFLOP/s) | cuBLAS (GFLOP/s) |
@@ -261,17 +242,31 @@ The tape architecture makes operation fusion straightforward. After the forward 
 ```mermaid
 graph TB
     subgraph before["Before Fusion - 4 kernel launches, 3 intermediate buffers"]
-        style before fill:#f4e8e8,stroke:#7d2d2d
+        style before fill:#f4e8e8,stroke:#7d2d2d,color:#1a1a1a
         direction LR
-        I["input"] --> NEG["neg#40;#41;<br/>kernel 1<br/>writes tmp1"] --> EXP["exp#40;#41;<br/>kernel 2<br/>writes tmp2"] --> TANH["tanh#40;#41;<br/>kernel 3<br/>writes tmp3"] --> GELU["gelu#40;#41;<br/>kernel 4<br/>writes output"]
+        I["input"]
+        NEG["<b>neg()</b><br/>kernel 1 · writes tmp1"]
+        EXP["<b>exp()</b><br/>kernel 2 · writes tmp2"]
+        TANH["<b>tanh()</b><br/>kernel 3 · writes tmp3"]
+        GELU["<b>gelu()</b><br/>kernel 4 · writes output"]
+        I --> NEG --> EXP --> TANH --> GELU
+        style I fill:#f9d9d9,color:#1a1a1a
+        style NEG fill:#f9d9d9,color:#1a1a1a
+        style EXP fill:#f9d9d9,color:#1a1a1a
+        style TANH fill:#f9d9d9,color:#1a1a1a
+        style GELU fill:#f9d9d9,color:#1a1a1a
     end
 
     subgraph after["After Fusion - 1 kernel launch, 0 intermediate buffers"]
-        style after fill:#e8f4e8,stroke:#2d7d2d
-        I2["input"] --> FUSED["fused_neg_exp_tanh_gelu#40;#41;<br/>single NVRTC-compiled kernel<br/>writes output directly"]
+        style after fill:#e8f4e8,stroke:#2d7d2d,color:#1a1a1a
+        I2["input"]
+        FUSED["<b>fused_neg_exp_tanh_gelu()</b><br/>single NVRTC-compiled kernel<br/>writes output directly"]
+        I2 --> FUSED
+        style I2 fill:#d9f9d9,color:#1a1a1a
+        style FUSED fill:#d9f9d9,color:#1a1a1a
     end
 
-    before -.->|"Tape::fuse#40;#41;"| after
+    before -.->|"Tape::fuse()"| after
 ```
 
 On the CPU, this means one streaming pass instead of N. On the GPU, the fused chain is JIT-compiled into a single CUDA kernel using NVRTC (NVIDIA's runtime compilation API), eliminating intermediate global memory round-trips.
@@ -299,45 +294,39 @@ The root cause was a double-free hidden behind two independent memory management
 
 ```mermaid
 sequenceDiagram
-    participant Loop as Training Loop
+    participant TL as Training Loop
     participant Tape as Tape Arena
     participant Aux as Aux System
     participant Heap as Heap
 
-    Loop->>Tape: forward - records ops + intermediates
-    Loop->>Aux: make_aux - stores mask, eps, one-hot
+    TL->>Tape: forward - records ops + intermediates
+    TL->>Aux: make_aux - stores mask, eps, one-hot
     Note over Tape,Aux: Some tensors tracked by BOTH systems
+    TL->>Tape: loss.backward
+    TL->>TL: optimizer.step
 
-    Loop->>Tape: loss.backward
-    Loop->>Loop: optimizer.step
-
-    rect rgb(255, 200, 200)
-        Note over Loop: BUG - Original order
-        Loop->>Aux: clear_aux - deletes tensors
-        Loop->>Tape: reset_graph - tries to free same tensors
-        Tape-->>Heap: DOUBLE FREE - corrupted size vs prev_size
-    end
+    Note over TL,Heap: ❌ BUG - Original order
+    TL->>Aux: clear_aux - deletes tensors
+    TL->>Tape: reset_graph - tries to free same tensors
+    Tape-->>Heap: DOUBLE FREE - corrupted size vs prev_size
 ```
 
 ```mermaid
 sequenceDiagram
-    participant Loop as Training Loop
+    participant TL as Training Loop
     participant Tape as Tape Arena
     participant Aux as Aux System
     participant Heap as Heap
 
-    Loop->>Tape: forward - records ops + intermediates
-    Loop->>Aux: make_aux - stores mask, eps, one-hot
+    TL->>Tape: forward - records ops + intermediates
+    TL->>Aux: make_aux - stores mask, eps, one-hot
+    TL->>Tape: loss.backward
+    TL->>TL: optimizer.step
 
-    Loop->>Tape: loss.backward
-    Loop->>Loop: optimizer.step
-
-    rect rgb(200, 255, 200)
-        Note over Loop: FIX - Reversed order
-        Loop->>Tape: reset_graph - releases tape refs first
-        Loop->>Aux: clear_aux - safely deletes, no dangling refs
-        Note over Heap: Clean shutdown, no corruption
-    end
+    Note over TL,Heap: ✅ FIX - Reversed order
+    TL->>Tape: reset_graph - releases tape refs first
+    TL->>Aux: clear_aux - safely deletes, no dangling refs
+    Note over Heap: Clean shutdown, no corruption
 ```
 
 The fix was a one-line reordering. But finding that one line required building with AddressSanitizer, reducing the model to tiny dimensions for fast iteration, and tracing pointer ownership across the tape, the arena, and the auxiliary system.
@@ -347,7 +336,7 @@ This bug reinforced something I already believed but now viscerally understand: 
 ```mermaid
 graph TB
     subgraph ownership["Ownership Model - after fix"]
-        style ownership fill:#e8f4e8,stroke:#2d7d2d
+        style ownership fill:#e8f4e8,stroke:#2d7d2d,color:#1a1a1a
         TAPE["Tape<br/><i>Owns: graph structure<br/>#40;TapeEntry array#41;</i>"]
         TENSORS["Tensors<br/><i>Own: device buffers<br/>#40;GPU/CPU memory#41;</i>"]
         AUX["Aux System<br/><i>Owns: ONLY tensors<br/>not referenced by tape</i>"]
@@ -404,7 +393,7 @@ Performance plateaus at 4 threads on an 8-core node. The 1.2x peak scaling from 
 ```mermaid
 graph LR
     subgraph tests["Test Suite: 886 Tests, 0 Failures"]
-        style tests fill:#e8f4e8,stroke:#2d7d2d
+    style tests fill:#e8f4e8,stroke:#2d7d2d,color:#1a1a1a
         UT["Unit Tests<br/>tensor ops: 124<br/>tape/autograd: 98<br/>fusion: 87<br/>transformer: 112<br/>diagnostics: 64"]
         IT["Integration<br/>MNIST: 48<br/>LM: 61"]
         RT["Regression<br/>fusion bugs: 73<br/>memory safety: 102"]
@@ -415,25 +404,6 @@ graph LR
 ## Why This Matters Beyond the Course
 
 Inference portability is a solved problem. ONNX Runtime, TVM, and llama.cpp handle it well. But *training* portability i.e. running the same training code on different accelerators without framework-level changes is still an open problem. PyTorch's tight CUDA coupling, JAX's XLA dependency, and the fragmented state of AMD/Intel training support all point to the same gap.
-
-```mermaid
-graph TB
-    subgraph solved["Inference Portability - solved"]
-        style solved fill:#e8f4e8,stroke:#2d7d2d
-        ONNX["ONNX Runtime"] ~~~ TVM["TVM"] ~~~ LLAMA["llama.cpp"]
-    end
-
-    subgraph gap["Training Portability - open problem"]
-        style gap fill:#f4e8e8,stroke:#7d2d2d
-        PT["PyTorch<br/><i>CUDA-coupled</i>"]
-        JAX["JAX<br/><i>XLA-dependent</i>"]
-        PG["ParaGrad<br/><i>19-op interface,<br/>backend-agnostic</i>"]
-        style PG fill:#ccffcc,stroke:#2d7d2d,stroke-width:2px
-    end
-
-    gap -->|"ParaGrad demonstrates<br/>the architectural principle"| FUTURE["One file per accelerator.<br/>Everything else is portable."]
-    style FUTURE fill:#ffeaa7,stroke:#d4a017,stroke-width:2px
-```
 
 ParaGrad doesn't solve this at production scale. But it demonstrates the architectural principle that could: a small, clean operation set with a single abstraction boundary, where hardware-specific code is confined to one file per accelerator and everything else, autograd, optimization, diagnostics; is portable by construction.
 

@@ -12,7 +12,7 @@ tags: [python, manim, animation, chess]
 
 I first came across Manim while watching [3blue1brown](https://www.youtube.com/@3blue1brown). His videos were really helpful to help understand some of the key concepts behind machine learning, statistics and the like. The animation engine he uses is also striking, or rather, the way his animations subtly help him explain vivid concepts really stuck with me. I came across a community managed version of his package here: [Manim](https://github.com/ManimCommunity/manim).
 
-While working with Manim is rewarding, the framework’s steep learning curve and its general-purpose nature can make implementing specific use cases challenging. One such niche is animating chess games—an endeavor that led to the creation of the **Manim Chess Plugin**
+While working with Manim is rewarding, the framework’s steep learning curve and its general-purpose nature can make implementing specific use cases challenging. One such niche is animating chess games, an endeavor that led to the creation of the **Manim Chess Plugin**
 
 This article explores the journey of developing the **Manim Chess Plugin**, the challenges faced, and how it serves as both a tool and a case study for working with Manim.
 

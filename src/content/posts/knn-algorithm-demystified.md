@@ -50,12 +50,12 @@ The data consists of two columns, the first one is called the label column. This
 
 Plotting them results in a graph as shown below. Notice how similar animals are grouped “together” in the plot? This property is what kNN uses to perform classification.
 
-![image of a graph showing the data I described](/images/knn_scratch//images1.png)
+![image of a graph showing the data I described](/images/knn_scratch/img1.png)
 
 
 Now that we have our training data, let’s introduce a new unknown animal with the features (2.5, 4). Our model needs to able to determine if the unknown animal is a cat or a dog i.e. which class it belongs to. (Spoiler alert: it’s a cat! But our model doesn’t know that :p)
 
-![image of a graph showing the data I described with an unknown quantity](/images/knn_scratch//images2.png)
+![image of a graph showing the data I described with an unknown quantity](/images/knn_scratch/img2.png)
 
 
 The nearest neighbour algorithm finds the data point that is “closest” to our unknown point. The way we measure this “closeness” can be through common methods, like euclidean or cosine distance. Here, I will be using the euclidean distance equation for the demonstration.
@@ -70,7 +70,7 @@ To address this concern, we employ the K Nearest Neighbor (KNN) algorithm, which
 
 Consider K=3 as an example. In the graph below, the green circle encompasses the points within it. Notably, there are 2 points belonging to the "Cat" class and 1 point belonging to the "Dog" class. By applying the k-nearest neighbors (kNN) model, we correctly predict that the unknown animal is a cat. The green circle in this context is commonly known as the "decision boundary."
 
-![image of a graph showing the included points](/images/knn_scratch//images3.png)
+![image of a graph showing the included points](/images/knn_scratch/img3.png)
 
 The functioning of the kNN model on a simplistic dataset illustrates its mechanics. However, it is essential to recognize that real-world machine learning problems typically involve more complex datasets. Nonetheless, this example serves as a valuable tool for developing our understanding and intuition about how the model operates.[^1]
 
@@ -172,7 +172,7 @@ OUTPUT:
 1.0
 ```
 
-![image of a digit](//images/knn_scratch/visualized_img.png)
+![image of a digit](/images/knn_scratch/visualized_img.png)
 
 That looks pretty good! This means that the 31st vector stored in out test dataset corresponds to this image of the digit '1'. So now we have confirmed that the data is indeed stored and labelled properly. It's time to unleash our kNN model on this dataset! Let us try to predict the result we get for the same test input. If everything goes well, we should get '1' as the predicted output.
 

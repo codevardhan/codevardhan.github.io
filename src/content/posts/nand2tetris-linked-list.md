@@ -1,177 +1,300 @@
 ---
-title: Creating a Linked List in Hack Language - A Nand2Tetris Project Breakdown
+title: Creating a Linked List in Hack Assembly - A Nand2Tetris Project
 date: 2019-11-10 10:05:55 +0530
 author: codevardhan
 image: /images/nand2tetris_linked_list/img_main.jpg
-tags: [programming, beginnner, nand2tetris, hack]
+tags: [programming, nand2tetris, hack]
 ---
 
-# Creating a Linked List in Hack Language: A Nand2Tetris Project Breakdown
+[Nand2Tetris](https://www.nand2tetris.org/) is one of those rare courses that actually delivers on its premise, you build a working computer from NAND gates up, layer by layer, until you're running programs on hardware you designed yourself. By the end you've built the CPU, the assembler, a VM translator, and a compiler. This post is from somewhere in the middle of that journey: implementing a linked list directly in Hack assembly, the native machine language of the Hack computer.
 
-If you're fascinated by the intricacies of computer engineering, then you might have stumbled upon the Nand2Tetris course. This comprehensive program takes you through the journey of building a computer from scratch, delving deep into fundamental concepts like boolean logic, sequential logic, and computer architecture, to name a few. One intriguing aspect is working with the Hack computer, a 16-bit Von Neumann system, and its native Hack language. Today, we're exploring an exciting project from this realm: implementing a linked list using Hack language.
+## The environment
 
-## Understanding Linked Lists and Hack Language
+The Hack computer is a 16-bit Von Neumann machine. It has two registers (`A` and `D`), a program counter, and RAM. That's it. No stack pointer you didn't build yourself, no dynamic allocation, no stdlib. When I say "implementing a linked list", I mean manually tracking pointers and data values in raw RAM addresses.
 
-Before we dive into the project, let's establish what linked lists are. Unlike arrays, linked lists are dynamic data structures, meaning they can easily adapt to data size without extensive memory operations, making them ideal for certain applications.
+The assembler converts Hack assembly into binary. Labels like `(LOOP)` become jump targets. Every instruction either sets the A register (`@value`) or performs a computation on A, D, and M (where M is `RAM[A]`).
+
+## How the linked list is represented
+
+Each node occupies two consecutive memory locations:
+
+```
+RAM[ptr]   = data value
+RAM[ptr+1] = address of next node (or negative if end of list)
+```
+
+There's no `malloc`. You tell the program where to put each node by inputting the address manually. Crude, but it forces you to actually think about what a pointer is.
 
 ![Structure of a simple linked list](/images/nand2tetris_linked_list/linkedlist_figure.png)
 
-*Fig - This diagram represents a basic linked list structure.*
+## Building the list
 
-The Hack language, integral to Nand2Tetris, operates within this Hack computer environment. Developers write software in this machine language, which the built-in assembler then converts into binary code. Our goal? To implement a linked list in this unique setting.
+The program reads input from the keyboard register (`KBD`). The `@48` subtraction converts ASCII digit input to an integer (ASCII `'0'` = 48).
 
-## Breaking Down the Solution
+**Step 1: First node:**
 
-Our strategy is straightforward. We handle linked list nodes as register pairs, one for data and the other for the address of the subsequent node. We use two key variables: 'ptr' for the next node's address and 'data' for the node's data. Both are dynamically updated during the program's execution.
-
-### Inputting Initial Values:
-1. **First Pointer**: We input the initial pointer value and store it in the 'ptr' variable.
-2. **First Data Value**: Similarly, we input the first data value, storing it in the 'data' variable.
-3. **Node Initialization**: The 'data' value is then assigned to the address contained in 'ptr'.
-
-![Updating the first node](/images/nand2tetris_linked_list/linkedlist_first.png)
-
-*Fig - Here, we're updating the first node with new data.*
-
-### Creating the Linked List:
-- The program prompts for the next node's address, with these values inputted through a loop for each new node.
-- The pointer ('ptr') is updated with the new address, and if it's null (i.e., pointing to zero), the loop terminates. Otherwise, it continues, prompting for the next data value.
-
-### Retrieving Data from the List:
-- We employ a loop and four variables ('i' for iterations, 'search' for the list index, 'temp' for the current pointer, and 'ptr1' for the first pointer) to navigate through the linked list.
-- The program asks for the required index and iterates through the nodes until it finds the correct one. If found, the data value from the specified node is copied to a predetermined register (e.g., the 100th register).
-
-![Loop Iteration](/images/nand2tetris_linked_list/linkedlist_second.png)
-
-*Fig - The loop is operating in its second iteration.*
-
-### The Code:
-- The Hack language code includes input handling, loop operations, node updates, and conditions for terminating the loop or copying data. It's a structured yet low-level approach, highlighting the intricacies of working with machine language.
-
-```
-@KBD                        //Input first pointer value.
+```asm
+@KBD          // read address for first node
 D=M
 @48
 D=D-A
-@ptr          
-M=D
+@ptr
+M=D           // ptr = input - 48
 
-@KBD                         //Input first data value.
+@KBD          // read data value
 D=M
 @48
 D=D-A
 @data
-M=D
+M=D           // data = input - 48
 
-@data                        //Assigning data to pointer.
+@data         // store data at address ptr
 D=M
 @ptr
 A=M
 M=D
 
-@ptr                         //Storing value of first pointer.
+@ptr          // save first pointer for later traversal
 D=M
 @ptr1
 M=D
+```
 
+**Step 2: Subsequent nodes (loop):**
+
+Each iteration reads a new address and data value, writes the address into the current node's "next" slot, then updates the current pointer.
+
+```asm
 (LOOP)
-@KBD                          //Input next pointer.
+@KBD          // read next node address
 D=M
 @48
 D=D-A
 
-@ptr                          //Updating node with next pointer value.
+@ptr          // write next address into current node's pointer slot
 A=M
 A=A+1
 M=D
 @ptr
 M=D
 
-@END1                         //Checking if pointer is null.
+@END1         // negative value = end of list
 D;JLT
 
-@KBD                          //Input next data.
+@KBD          // read next data value
 D=M
 @48
 D=D-A
 
-@data                         //Updating new node with data.
+@data
 M=D
-@ptr
+@ptr          // write data into new node
 A=M
 M=D
 
-@LOOP                          //Jump to loop
+@LOOP
 0;JMP
 
 (END1)
+```
 
-@i                             //i variable for iteration
+![Updating the first node](/images/nand2tetris_linked_list/linkedlist_first.png)
+
+## Traversing the list
+
+The search loop uses four variables:
+- `i` - current iteration count
+- `search` - the index we're looking for
+- `temp` - current node pointer
+- `ptr1` - saved head pointer
+
+```asm
+@i
 M=0
 
-@KBD                           //Enter the position of data to be found
+@KBD          // read target index
 D=M
 @48
 D=D-A
 @search
 M=D
 
-@COPY1                         //Checks if the position is zero and jumps to function 'COPY!' 
+@COPY1        // index 0 = first node, skip loop
 D;JEQ
 
-@ptr1                          //Goes to the next pointer location
+@ptr1         // start from head, jump to next pointer slot
 A=M+1
 D=M
 
 (LOOP2)
-@temp                          //Stores the value of the current pointer in the temp variable
+@temp         // store current pointer
 M=D
 @i
 M=M+1
 D=M
 
-@search                        //Checks if the index is equal to ‘i’ and jumps to ‘COPY’ function
+@search       // check if i == search
 D=M-D
 @COPY
 D;JEQ
 
-@temp                          //Goes to the next pointer location
+@temp         // advance to next node
 A=M+1
 D=M
 
-@LOOP2                         //Jumps to beginning of loop.
+@LOOP2
 0;JMP
 
-(COPY)                         //Copies data from required node to 100t register in RAM
-@temp                    
+(COPY)        // found it, copy data to RAM[100]
+@temp
 A=M
 D=M
 @100
 M=D
 
-@END                           //Jumps to end  
+@END
 0;JMP
 
-(COPY1)                        //Copies data from first node to 100th register in RAM
+(COPY1)       // index 0, copy from head directly
 @ptr1
 A=M
 D=M
 @100
 M=D
 
-(END)                           //Jumps to end
+(END)
+@END
+0;JMP
+```
+
+## Full program
+
+```asm
+@KBD
+D=M
+@48
+D=D-A
+@ptr          
+M=D
+
+@KBD
+D=M
+@48
+D=D-A
+@data
+M=D
+
+@data
+D=M
+@ptr
+A=M
+M=D
+
+@ptr
+D=M
+@ptr1
+M=D
+
+(LOOP)
+@KBD
+D=M
+@48
+D=D-A
+
+@ptr
+A=M
+A=A+1
+M=D
+@ptr
+M=D
+
+@END1
+D;JLT
+
+@KBD
+D=M
+@48
+D=D-A
+
+@data
+M=D
+@ptr
+A=M
+M=D
+
+@LOOP
+0;JMP
+
+(END1)
+
+@i
+M=0
+
+@KBD
+D=M
+@48
+D=D-A
+@search
+M=D
+
+@COPY1
+D;JEQ
+
+@ptr1
+A=M+1
+D=M
+
+(LOOP2)
+@temp
+M=D
+@i
+M=M+1
+D=M
+
+@search
+D=M-D
+@COPY
+D;JEQ
+
+@temp
+A=M+1
+D=M
+
+@LOOP2
+0;JMP
+
+(COPY)
+@temp                    
+A=M
+D=M
+@100
+M=D
+
 @END
 0;JMP
 
-```
-## Results: Seeing the Linked List in Action
+(COPY1)
+@ptr1
+A=M
+D=M
+@100
+M=D
 
-After running the program, we can observe the RAM registers' state, which should now reflect the nodes of our linked list with their respective data values and addresses. It's a testament to the successful implementation of a linked list in the Hack language environment.
+(END)
+@END
+0;JMP
+```
+
+## Result
+
+After running the program, RAM shows the linked list nodes with their data and next-pointer values at the addresses you specified. The target index's data ends up in `RAM[100]`.
 
 ![RAM after program execution](/images/nand2tetris_linked_list/linkedlist_third.png)
 
-*Fig - The RAM showing data values at specified nodes, confirming our implementation works.*
+![Loop second iteration](/images/nand2tetris_linked_list/linkedlist_second.png)
 
-## Wrapping Up
+## Limitations worth noting
 
-This project underscores not only the versatility of data structures like linked lists but also the foundational understanding Nand2Tetris promotes. By implementing a linked list in Hack language, we've navigated machine-level operations and data management, essential skills for any budding computer scientist or seasoned software engineer keen on grasping computer operation at its most fundamental level.
+The keyboard input trick (`D=D-A` with `@48`) only works for single-digit inputs. You'd need a proper multi-digit parser for anything realistic. The "negative pointer = end of list" sentinel also means you can't store negative data values, which is a real constraint.
+
+That said, the point of Nand2Tetris isn't to build production software, it's to understand that every abstraction you rely on (dynamic allocation, data structures, even function calls) is something a computer has to physically do in RAM. Building a linked list at this level makes that concrete in a way that no higher-level implementation really can.
