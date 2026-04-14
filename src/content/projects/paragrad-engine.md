@@ -1,7 +1,7 @@
 ---
 title: Paragrad Autograd Engine!
 date: 2026-04-13 12:12:11 +0530
-image: /images/rocket_landing/cover.png
+image: /images/paragrad/paragrad.png
 author: codevardhan
 tags: [autograd, cuda, cpp]
 
@@ -57,33 +57,38 @@ graph TB
 
 The `Backend` abstract class defines 19 operations across six categories:
 
-```mermaid
-graph LR
-    subgraph mem["Memory"]
-        style mem fill:#ffeaa7
-        M1["alloc"] ~~~ M2["free"] ~~~ M3["copy"] ~~~ M4["zero"]
-    end
-    subgraph unary["Unary"]
-        style unary fill:#dfe6e9
-        U1["relu"] ~~~ U2["neg"] ~~~ U3["exp"] ~~~ U4["log"] ~~~ U5["tanh"] ~~~ U6["pow"]
-    end
-    subgraph binary["Binary"]
-        style binary fill:#fab1a0
-        B1["add"] ~~~ B2["mul"]
-    end
-    subgraph reduce["Reduce"]
-        style reduce fill:#81ecec
-        R1["sum"]
-    end
-    subgraph matrix["Matrix"]
-        style matrix fill:#a29bfe
-        X1["gemm"] ~~~ X2["transpose"]
-    end
-    subgraph transformer["Transformer"]
-        style transformer fill:#fd79a8
-        T1["softmax"] ~~~ T2["rmsnorm"] ~~~ T3["embedding"] ~~~ T4["slice"]
-    end
-```
+#### Memory
+- alloc
+- free
+- copy
+- zero
+
+#### Unary
+- relu
+- neg
+- exp
+- log
+- tanh
+- pow
+
+#### Binary
+- add
+- mul
+
+#### Reduce
+- sum
+
+#### Matrix
+- gemm
+- transpose
+
+
+#### Transformer:
+- softmax
+- rmsnorm
+- embedding
+- slice
+
 
 Every layer, every loss function, every optimizer step is composed exclusively from these primitives. Softmax is `exp(x - max(x))` normalized via `mul` and `sum`. Cross-entropy composes `log`, `mul`, `neg`, and `sum`.
 
@@ -299,17 +304,17 @@ sequenceDiagram
     participant Aux as Aux System
     participant Heap as Heap
 
-    Loop->>Tape: forward() records ops + intermediates
-    Loop->>Aux: make_aux() stores mask, eps, one-hot
+    Loop->>Tape: forward - records ops + intermediates
+    Loop->>Aux: make_aux - stores mask, eps, one-hot
     Note over Tape,Aux: Some tensors tracked by BOTH systems
 
-    Loop->>Tape: loss->backward()
-    Loop->>Loop: optimizer.step()
+    Loop->>Tape: loss.backward
+    Loop->>Loop: optimizer.step
 
     rect rgb(255, 200, 200)
         Note over Loop: BUG - Original order
-        Loop->>Aux: clear_aux() deletes tensors
-        Loop->>Tape: reset_graph() tries to free same tensors
+        Loop->>Aux: clear_aux - deletes tensors
+        Loop->>Tape: reset_graph - tries to free same tensors
         Tape-->>Heap: DOUBLE FREE - corrupted size vs prev_size
     end
 ```
@@ -321,27 +326,27 @@ sequenceDiagram
     participant Aux as Aux System
     participant Heap as Heap
 
-    Loop->>Tape: forward() records ops + intermediates
-    Loop->>Aux: make_aux() stores mask, eps, one-hot
+    Loop->>Tape: forward - records ops + intermediates
+    Loop->>Aux: make_aux - stores mask, eps, one-hot
 
-    Loop->>Tape: loss->backward()
-    Loop->>Loop: optimizer.step()
+    Loop->>Tape: loss.backward
+    Loop->>Loop: optimizer.step
 
     rect rgb(200, 255, 200)
         Note over Loop: FIX - Reversed order
-        Loop->>Tape: reset_graph() releases tape refs first
-        Loop->>Aux: clear_aux() safely deletes, no dangling refs
+        Loop->>Tape: reset_graph - releases tape refs first
+        Loop->>Aux: clear_aux - safely deletes, no dangling refs
         Note over Heap: Clean shutdown, no corruption
     end
 ```
 
 The fix was a one-line reordering. But finding that one line required building with AddressSanitizer, reducing the model to tiny dimensions for fast iteration, and tracing pointer ownership across the tape, the arena, and the auxiliary system.
 
-This bug reinforced something I already believed but now viscerally understand: **memory ownership in C++ is a design problem, not a coding problem.** The fix wasn't better code — it was a clearer ownership model:
+This bug reinforced something I already believed but now viscerally understand: **memory ownership in C++ is a design problem, not a coding problem.** The fix wasn't better code, it was a clearer ownership model:
 
 ```mermaid
 graph TB
-    subgraph ownership["Ownership Model — after fix"]
+    subgraph ownership["Ownership Model - after fix"]
         style ownership fill:#e8f4e8,stroke:#2d7d2d
         TAPE["Tape<br/><i>Owns: graph structure<br/>#40;TapeEntry array#41;</i>"]
         TENSORS["Tensors<br/><i>Own: device buffers<br/>#40;GPU/CPU memory#41;</i>"]
@@ -381,7 +386,7 @@ Performance plateaus at 4 threads on an 8-core node. The 1.2x peak scaling from 
 
 ## What I'd Do Differently
 
-**Start with cuBLAS for GEMM from day one.** I spent time optimizing a hand-written tiled GEMM that I knew would never match cuBLAS. The value was educational — I now understand exactly *why* it's slower (Tensor Cores, register blocking, autotuning) — but if I were building for production, I'd use cuBLAS for GEMM and spend the optimization time on memory layout and kernel fusion for the non-GEMM ops.
+**Start with cuBLAS for GEMM from day one.** I spent time optimizing a hand-written tiled GEMM that I knew would never match cuBLAS. The value was educational, I now understand exactly *why* it's slower (Tensor Cores, register blocking, autotuning), but if I were building for production, I'd use cuBLAS for GEMM and spend the optimization time on memory layout and kernel fusion for the non-GEMM ops.
 
 **Design the memory ownership model before writing any ops.** The `make_aux`/`clear_aux` heap corruption cost me two days. An arena allocator with clear epoch-based lifetimes (forward arena, backward arena, optimizer arena) would have prevented the bug entirely and made the code simpler.
 
@@ -389,8 +394,8 @@ Performance plateaus at 4 threads on an 8-core node. The 1.2x peak scaling from 
 
 ## The Numbers
 
-- **886 tests**, 0 failures — unit tests for every op, fusion correctness, cross-backend numerical equivalence, finite-difference gradient verification
-- **19 primitive operations** — the complete compute surface for training neural networks
+- **886 tests**, 0 failures - unit tests for every op, fusion correctness, cross-backend numerical equivalence, finite-difference gradient verification
+- **19 primitive operations** - the complete compute surface for training neural networks
 - **~4,000 lines** of C++17/CUDA, zero external dependencies
 - **500–1,039x** speedup from CPU to CUDA on transformer-shaped GEMMs
 - **3.4–4.2x** additional speedup from cuBLAS via Tensor Cores
@@ -409,16 +414,16 @@ graph LR
 
 ## Why This Matters Beyond the Course
 
-Inference portability is a solved problem. ONNX Runtime, TVM, and llama.cpp handle it well. But *training* portability — running the same training code on different accelerators without framework-level changes — is still an open problem. PyTorch's tight CUDA coupling, JAX's XLA dependency, and the fragmented state of AMD/Intel training support all point to the same gap.
+Inference portability is a solved problem. ONNX Runtime, TVM, and llama.cpp handle it well. But *training* portability i.e. running the same training code on different accelerators without framework-level changes is still an open problem. PyTorch's tight CUDA coupling, JAX's XLA dependency, and the fragmented state of AMD/Intel training support all point to the same gap.
 
 ```mermaid
 graph TB
-    subgraph solved["Inference Portability — solved"]
+    subgraph solved["Inference Portability - solved"]
         style solved fill:#e8f4e8,stroke:#2d7d2d
         ONNX["ONNX Runtime"] ~~~ TVM["TVM"] ~~~ LLAMA["llama.cpp"]
     end
 
-    subgraph gap["Training Portability — open problem"]
+    subgraph gap["Training Portability - open problem"]
         style gap fill:#f4e8e8,stroke:#7d2d2d
         PT["PyTorch<br/><i>CUDA-coupled</i>"]
         JAX["JAX<br/><i>XLA-dependent</i>"]
@@ -430,7 +435,7 @@ graph TB
     style FUTURE fill:#ffeaa7,stroke:#d4a017,stroke-width:2px
 ```
 
-ParaGrad doesn't solve this at production scale. But it demonstrates the architectural principle that could: a small, clean operation set with a single abstraction boundary, where hardware-specific code is confined to one file per accelerator and everything else — autograd, optimization, diagnostics — is portable by construction.
+ParaGrad doesn't solve this at production scale. But it demonstrates the architectural principle that could: a small, clean operation set with a single abstraction boundary, where hardware-specific code is confined to one file per accelerator and everything else, autograd, optimization, diagnostics; is portable by construction.
 
 The codebase is on [GitHub](https://github.com/codevardhan/paragrad). It compiles with `make`, runs on any CUDA-capable GPU, and trains a transformer on Shakespeare. If you're interested in GPU systems, HPC, or the intersection of compiler infrastructure and deep learning, I'd love to talk about it.
 

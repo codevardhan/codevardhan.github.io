@@ -12,7 +12,7 @@ usemathjax: true
 
 # 🚀 Landing Rockets and Losing Our Minds: A Reinforcement Learning Journey
 
-*By Harshavardhan Manohar & [Nivedita Shainaj Nair](https://www.linkedin.com/in/nivedita-nair15/)*
+*By Harshavardhan Manohar & [Nivedita Shainaj Nair](https://www.linkedin.com/in/niveditashainajnair/)*
 
 ---
 
