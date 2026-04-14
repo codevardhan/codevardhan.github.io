@@ -53,7 +53,7 @@
   vertical-align: middle;
 }
 
-/* Prose — for blog / project content */
+/* Prose for blogs/projects */
 .prose {
   @apply text-on-surface-variant leading-relaxed max-w-none;
 }

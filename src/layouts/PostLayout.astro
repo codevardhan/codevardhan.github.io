@@ -13,7 +13,7 @@ const { title, date, image, tags = [], usemathjax = false } = Astro.props;
 const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 const readTime = Math.max(1, Math.ceil((Astro.props as any).minutesRead || 5));
 ---
-<BaseLayout title={`${title} — Harsh`} usemathjax={usemathjax}>
+<BaseLayout title={`${title} - Harsh`} usemathjax={usemathjax}>
   <article class="max-w-3xl mx-auto px-8 py-20">
 
     <!-- Back -->
