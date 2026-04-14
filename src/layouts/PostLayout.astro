@@ -14,33 +14,57 @@ const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long
 const readTime = Math.max(1, Math.ceil((Astro.props as any).minutesRead || 5));
 ---
 <BaseLayout title={`${title} — Harsh`} usemathjax={usemathjax}>
-  <article class="max-w-3xl mx-auto px-6 py-12">
+  <article class="max-w-3xl mx-auto px-8 py-20">
+
+    <!-- Back -->
+    <a href="javascript:history.back()"
+       class="hacker-text text-[10px] text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 mb-12 no-underline">
+      <span class="material-symbols-outlined text-sm">arrow_back</span> ← back
+    </a>
+
     <!-- Header -->
-    <header class="mb-10">
-      {image && <img src={image} alt={title} class="w-full h-64 object-cover rounded-xl mb-6" />}
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-100 leading-tight">{title}</h1>
-      <div class="flex items-center gap-4 mt-4 text-sm text-gray-500">
+    <header class="mb-12">
+      {image && (
+        <div class="w-full h-64 overflow-hidden rounded-xl mb-8" style="border:1px solid rgba(255,255,255,0.05)">
+          <img src={image} alt={title} class="w-full h-full object-cover opacity-90" />
+        </div>
+      )}
+
+      <div class="hacker-text text-primary text-xs mb-4">
+        {(tags[0] || 'ARTICLE').toUpperCase()}
+      </div>
+
+      <h1 class="font-headline text-3xl md:text-5xl font-bold text-on-surface leading-tight">{title}</h1>
+
+      <div class="flex items-center gap-4 mt-5 text-sm text-on-surface-variant font-mono">
         <time datetime={date.toISOString()}>{dateStr}</time>
-        <span>&middot;</span>
+        <span class="opacity-40">·</span>
         <span>{readTime} min read</span>
       </div>
+
       {tags.length > 0 && (
-        <div class="flex flex-wrap gap-2 mt-4">
+        <div class="flex flex-wrap gap-2 mt-5">
           {tags.map(tag => (
-            <span class="px-2.5 py-0.5 text-xs font-medium bg-gray-800 text-purple-300 rounded-full">{tag}</span>
+            <span class="px-3 py-1 text-xs bg-secondary-container text-on-secondary-container font-mono rounded-sm">{tag}</span>
           ))}
         </div>
       )}
     </header>
+
+    <!-- Divider -->
+    <div class="w-full h-px bg-gradient-to-r from-primary/30 via-secondary/20 to-transparent mb-12"></div>
 
     <!-- Content -->
     <div class="prose">
       <slot />
     </div>
 
-    <!-- Back link -->
-    <div class="mt-12 pt-6 border-t border-gray-800">
-      <a href="javascript:history.back()" class="text-sm text-gray-500 hover:text-accent no-underline">&larr; Go back</a>
+    <!-- Footer nav -->
+    <div class="mt-16 pt-8" style="border-top:1px solid rgba(77,67,84,0.3)">
+      <a href="javascript:history.back()"
+         class="hacker-text text-[10px] text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 no-underline">
+        <span class="material-symbols-outlined text-sm">arrow_back</span> GO BACK
+      </a>
     </div>
   </article>
 </BaseLayout>

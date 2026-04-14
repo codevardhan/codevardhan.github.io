@@ -11,156 +11,324 @@ const projects = (await getCollection('projects'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 <BaseLayout>
-  <div class="max-w-5xl mx-auto px-6">
 
-    <!-- ═══ HERO ═══ -->
-    <section class="py-24 md:py-32">
-      <p class="text-accent font-mono text-sm mb-3">Hi, my name is</p>
-      <h1 class="text-5xl md:text-7xl font-bold text-gray-100">Harsh.</h1>
-      <h2 class="text-3xl md:text-5xl font-bold text-gray-500 mt-2">I build AI, and stuff</h2>
-      <p class="text-gray-400 max-w-xl mt-6 text-lg leading-relaxed">
-        A passionate software engineer who dabbles in Machine Learning. 🤖
-      </p>
-      <div class="flex gap-4 mt-8">
-        <a href="/posts" class="inline-flex items-center px-6 py-3 bg-accent/10 text-accent border border-accent/30 rounded-lg hover:bg-accent/20 transition no-underline text-sm font-medium">
-          Read my blogs!
-        </a>
-      </div>
-      <div class="flex gap-4 mt-6">
-        <a href="https://github.com/codevardhan" class="text-gray-500 hover:text-gray-200 text-xl"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/codevardhan" class="text-gray-500 hover:text-gray-200 text-xl"><i class="fab fa-linkedin"></i></a>
-      </div>
-    </section>
+  <!-- ═══ HERO ═══ -->
+  <header class="relative min-h-screen flex flex-col items-center justify-center pt-16 overflow-hidden">
+    <!-- Neural network SVG bg -->
+    <div class="absolute inset-0 z-0 opacity-30 pointer-events-none">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:rgba(183,109,255,0.2);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgba(0,0,0,0);stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <path d="M0,100 Q150,50 300,100 T600,100 T900,100" fill="none" stroke="url(#grad1)" stroke-width="1">
+          <animate attributeName="d" dur="10s" repeatCount="indefinite"
+            values="M0,100 Q150,50 300,100 T600,100 T900,100;
+                    M0,100 Q150,150 300,100 T600,100 T900,100;
+                    M0,100 Q150,50 300,100 T600,100 T900,100" />
+        </path>
+        <path d="M0,200 Q200,150 400,200 T800,200" fill="none" stroke="rgba(173,198,255,0.1)" stroke-width="1">
+          <animate attributeName="d" dur="15s" repeatCount="indefinite"
+            values="M0,200 Q200,150 400,200 T800,200;
+                    M0,200 Q200,250 400,200 T800,200;
+                    M0,200 Q200,150 400,200 T800,200" />
+        </path>
+      </svg>
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary opacity-20 blur-[120px] rounded-full"></div>
+    </div>
 
-    <!-- ═══ ABOUT ═══ -->
-    <section id="about" class="py-16 border-t border-gray-800">
-      <h2 class="text-2xl font-bold mb-8 text-gray-100">About Me</h2>
-      <div class="grid md:grid-cols-3 gap-10">
-        <div class="md:col-span-2 text-gray-400 leading-relaxed space-y-4">
-          <p>I'm a software engineer whose passion lies in the realms of machine learning, deep learning, and web and app development. During my leisure time, I indulge in the immersive world of video games, with a particular fondness for Rainbow Six Siege.</p>
-          <p>I'm totally hooked on the idea of Artificial Intelligence — it's like the coolest thing ever in my academic adventure! Just think about it: we're trying to give consciousness to machine. It's like we're on a quest to copy the brain's amazing abilities, and I find that incredible!</p>
-          <div class="mt-6">
-            <p class="text-gray-300 font-medium mb-3">Technologies I've been working with recently 🚀💡</p>
-            <div class="grid grid-cols-2 gap-1 text-sm">
-              {['CUDA/C++', 'PyTorch', 'LLM Agents', 'TypeScript', 'Docker', 'Flask/FastAPI', 'Flutter', 'SQL'].map(s => (
-                <span class="flex items-center gap-2 text-gray-400"><span class="text-accent text-xs">▹</span> {s}</span>
-              ))}
-            </div>
+    <div class="relative z-10 max-w-5xl px-8 text-center flex flex-col items-center">
+      <!-- Avatar -->
+      <div class="mb-8 relative">
+        <div class="w-32 h-32 rounded-full p-1 bg-surface-container-low shadow-[0_0_30px_rgba(183,109,255,0.2)]"
+             style="border:2px solid rgba(221,183,255,0.4)">
+          <div class="w-full h-full rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+            <img src="/images/dp.jpg" alt="Harsh" class="w-full h-full object-cover rounded-full" />
           </div>
         </div>
-        <div class="flex justify-center">
-          <img src="/images/dp.jpg" alt="Harsh" class="w-48 h-48 rounded-xl object-cover border-2 border-gray-800" />
+        <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg">
+          <span class="material-symbols-outlined text-on-primary text-sm" style="font-variation-settings:'FILL' 1">verified</span>
         </div>
       </div>
-    </section>
 
-    <!-- ═══ EXPERIENCE ═══ -->
-    <section id="experience" class="py-16 border-t border-gray-800">
-      <h2 class="text-2xl font-bold mb-8 text-gray-100">Experience</h2>
-      <div class="space-y-10">
-        <!-- BeSuperhuman -->
-        <div class="relative pl-6 border-l-2 border-gray-800">
-          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-accent"></div>
-          <h3 class="text-lg font-semibold text-gray-100">Lead Machine Learning Engineer</h3>
-          <p class="text-accent text-sm"><a href="https://www.besuperhuman.ai/" class="no-underline">BeSuperhuman.ai</a> &middot; June 2023 – August 2024</p>
-          <ul class="mt-3 text-gray-400 text-sm space-y-2 list-disc pl-4">
-            <li>Built an LLM-driven agent system from 0→1 with the founder: tool-calling orchestration that generates and executes browser actions with guardrails, validation, and structured error handling.</li>
-            <li>Reduced LLM inference and ops costs by 88% through caching layers, pipeline optimization, and SQL tuning.</li>
-            <li>Shipped cross-platform desktop app (Electron) and backend services (Python/Flask) with monitoring hooks and run analytics.</li>
-          </ul>
-        </div>
-        <!-- MGH / Harvard -->
-        <div class="relative pl-6 border-l-2 border-gray-800">
-          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-accent"></div>
-          <h3 class="text-lg font-semibold text-gray-100">AI Research Assistant</h3>
-          <p class="text-accent text-sm">Massachusetts General Hospital / Harvard Medical School &middot; May 2025 – Aug 2025</p>
-          <ul class="mt-3 text-gray-400 text-sm space-y-2 list-disc pl-4">
-            <li>Built an end-to-end deep learning pipeline for CT radiation dose estimation on ~12k DICOM scans — from raw data ingestion through preprocessing, training, and evaluation.</li>
-            <li>Achieved 12.3% error reduction vs. baseline through model iteration, experiment tracking, and reproducible evaluation for clinical stakeholders.</li>
-          </ul>
-        </div>
-        <!-- AmritaCREATE -->
-        <div class="relative pl-6 border-l-2 border-gray-800">
-          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-700"></div>
-          <h3 class="text-lg font-semibold text-gray-100">Deep Learning Research Intern</h3>
-          <p class="text-gray-500 text-sm"><a href="https://www.amrita.edu/" class="no-underline text-gray-400">AmritaCREATE Labs</a> &middot; June 2022 – January 2023</p>
-          <ul class="mt-3 text-gray-400 text-sm space-y-2 list-disc pl-4">
-            <li>Developed a PyTorch transformer-based system for continuous sign language recognition from noisy, unstructured video.</li>
-            <li>Iterated on preprocessing and architecture to improve robustness to low-fidelity inputs across e-governance teams.</li>
-          </ul>
-        </div>
-        <!-- Agrisoft -->
-        <div class="relative pl-6 border-l-2 border-gray-800">
-          <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-700"></div>
-          <h3 class="text-lg font-semibold text-gray-100">Full Stack Developer Intern</h3>
-          <p class="text-gray-500 text-sm">Agrisoft Dairy &middot; Jan 2022 – April 2022</p>
-          <ul class="mt-3 text-gray-400 text-sm space-y-2 list-disc pl-4">
-            <li>Built mobile and backend features using Flutter and REST APIs in a fast-moving small team.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      <div class="hacker-text text-primary text-xs mb-6">// caffeinated and building</div>
 
-    <!-- ═══ PROJECTS (from content collection) ═══ -->
-    <section id="projects" class="py-16 border-t border-gray-800">
-      <h2 class="text-2xl font-bold mb-8 text-gray-100">Projects</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        {projects.map(project => (
-          <a href={`/projects/${project.slug}`} class="group block bg-gray-900 border border-gray-800 rounded-xl overflow-hidden hover:border-accent/40 transition no-underline">
-            {project.data.image && (
-              <img src={project.data.image} alt={project.data.title} class="w-full h-40 object-cover" />
-            )}
-            <div class="p-5">
-              <h3 class="text-lg font-semibold text-gray-100 group-hover:text-accent transition">{project.data.title}</h3>
-              <div class="flex flex-wrap gap-1.5 mt-2">
-                {(project.data.tags || []).map(tag => (
-                  <span class="px-2 py-0.5 text-xs bg-gray-800 text-gray-400 rounded">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
+      <h1 class="font-headline text-5xl md:text-8xl font-bold tracking-tighter text-on-surface mb-8">
+        Harsh - <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary animate-flow bg-[length:200%_200%]">AI person, mostly</span>
+      </h1>
 
-    <!-- ═══ RECENT POSTS ═══ -->
-    <section class="py-16 border-t border-gray-800">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-2xl font-bold text-gray-100">Recent Posts</h2>
-        <a href="/posts" class="text-sm text-accent no-underline">View all &rarr;</a>
-      </div>
-      <div class="space-y-6">
-        {posts.map(post => (
-          <a href={`/posts/${post.slug}`} class="group flex gap-6 items-start p-4 -mx-4 rounded-lg hover:bg-gray-900/50 transition no-underline">
-            {post.data.image && (
-              <img src={post.data.image} alt={post.data.title} class="w-24 h-24 object-cover rounded-lg flex-shrink-0 hidden sm:block" />
-            )}
-            <div>
-              <h3 class="text-gray-100 font-medium group-hover:text-accent transition">{post.data.title}</h3>
-              <time class="text-sm text-gray-500" datetime={post.data.date.toISOString()}>
-                {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-              </time>
-              <div class="flex flex-wrap gap-1.5 mt-2">
-                {(post.data.tags || []).slice(0, 3).map(tag => (
-                  <span class="px-2 py-0.5 text-xs bg-gray-800 text-gray-500 rounded">{tag}</span>
-                ))}
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
-
-    <!-- ═══ CONTACT ═══ -->
-    <section id="contact" class="py-16 border-t border-gray-800 text-center">
-      <h2 class="text-2xl font-bold mb-4 text-gray-100">Get In Touch</h2>
-      <p class="text-gray-400 max-w-md mx-auto mb-6">
-        My inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+      <p class="max-w-2xl mx-auto text-on-surface-variant text-lg md:text-xl leading-relaxed mb-12 font-body">
+        I write Python for a living, train neural nets for fun, and occasionally ship things that actually work. MS in AI at Boston; graduated April 2026 and very much open to what's next.
       </p>
-      <a href="mailto:harsha7vardhan@gmail.com" class="inline-flex items-center px-6 py-3 bg-accent/10 text-accent border border-accent/30 rounded-lg hover:bg-accent/20 transition no-underline text-sm font-medium">
-        Mail me
-      </a>
-    </section>
 
-  </div>
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="#projects"
+           class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 group transition-all duration-300 hover:shadow-[0_0_30px_rgba(183,109,255,0.4)] no-underline">
+          See what I've built
+          <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </a>
+        <a href="#experience"
+           class="text-on-surface px-8 py-4 rounded-xl font-mono transition-all duration-300 flex items-center justify-center gap-2 no-underline hover:bg-surface-variant/30"
+           style="border:1px solid rgba(77,67,84,0.6)">
+          <span class="material-symbols-outlined text-sm">history_edu</span> How I got here
+        </a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-on-surface-variant">
+      <span class="text-[10px] font-mono mb-2 uppercase tracking-widest">scroll, it gets better</span>
+      <span class="material-symbols-outlined">expand_more</span>
+    </div>
+  </header>
+
+  <!-- ═══ TECHNICAL ARSENAL (Skills Bento) ═══ -->
+  <section class="py-24 px-8 max-w-7xl mx-auto">
+    <div class="mb-16">
+      <span class="hacker-text text-primary text-xs">// things i actually know</span>
+      <h2 class="font-headline text-4xl font-bold mt-2 text-on-surface">My Toolkit</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="md:col-span-2 bg-surface-container-low p-8 rounded-xl group hover:bg-surface-container transition-all duration-500"
+           style="border:1px solid rgba(255,255,255,0.05)" onmouseenter="this.style.borderColor='rgba(221,183,255,0.2)'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.05)'">
+        <div class="flex justify-between items-start mb-12">
+          <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings:'FILL' 1">neurology</span>
+          <span class="font-mono text-xs text-on-surface-variant">01</span>
+        </div>
+        <h3 class="font-headline text-2xl font-bold mb-4 text-white">AI &amp; Deep Learning</h3>
+        <div class="flex flex-wrap gap-2">
+          {['PyTorch', 'TensorFlow', 'LLM Agents', 'Computer Vision', 'CUDA/C++', 'MLflow'].map(s => (
+            <span class="px-3 py-1 bg-surface-container-highest text-secondary text-xs font-mono rounded-md" style="border:1px solid rgba(255,255,255,0.05)">{s}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="bg-surface-container-low p-8 rounded-xl group hover:bg-surface-container transition-all duration-500"
+           style="border:1px solid rgba(255,255,255,0.05)" onmouseenter="this.style.borderColor='rgba(173,198,255,0.2)'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.05)'">
+        <div class="flex justify-between items-start mb-12">
+          <span class="material-symbols-outlined text-secondary text-4xl">code</span>
+          <span class="font-mono text-xs text-on-surface-variant">02</span>
+        </div>
+        <h3 class="font-headline text-2xl font-bold mb-4 text-white">Frontend &amp; Mobile</h3>
+        <div class="flex flex-wrap gap-2">
+          {['TypeScript', 'Astro', 'React', 'Flutter'].map(s => (
+            <span class="px-3 py-1 bg-surface-container-highest text-primary text-xs font-mono rounded-md" style="border:1px solid rgba(255,255,255,0.05)">{s}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="bg-surface-container-low p-8 rounded-xl group hover:bg-surface-container transition-all duration-500"
+           style="border:1px solid rgba(255,255,255,0.05)" onmouseenter="this.style.borderColor='rgba(255,175,211,0.2)'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.05)'">
+        <div class="flex justify-between items-start mb-12">
+          <span class="material-symbols-outlined text-tertiary text-4xl">terminal</span>
+          <span class="font-mono text-xs text-on-surface-variant">03</span>
+        </div>
+        <h3 class="font-headline text-2xl font-bold mb-4 text-white">Infrastructure</h3>
+        <div class="flex flex-wrap gap-2">
+          {['Docker', 'PostgreSQL', 'Flask/FastAPI', 'SQL', 'Airflow'].map(s => (
+            <span class="px-3 py-1 bg-surface-container-highest text-tertiary text-xs font-mono rounded-md" style="border:1px solid rgba(255,255,255,0.05)">{s}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROJECTS ═══ -->
+  <section id="projects" class="py-24 bg-surface-container-low relative" style="border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div>
+          <span class="hacker-text text-primary text-xs">// stuff i'm proud of</span>
+          <h2 class="font-headline text-4xl md:text-5xl font-bold mt-2 text-on-surface">Projects</h2>
+        </div>
+        <div class="text-on-surface-variant max-w-md text-sm md:text-base pl-6 font-mono" style="border-left:2px solid #b76dff">
+          A mix of things I built to learn, things I built because someone needed it, and one thing I built at 2am just to see if it would work.
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        {projects.map((project, i) => (
+          <a href={`/projects/${project.slug}`} class="group relative no-underline block">
+            <div class="aspect-video w-full overflow-hidden rounded-xl bg-surface-container-highest mb-6 shadow-2xl" style="border:1px solid rgba(255,255,255,0.05)">
+              {project.data.image
+                ? <img src={project.data.image} alt={project.data.title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-80 group-hover:opacity-100" />
+                : <div class="w-full h-full flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-on-surface-variant opacity-30">memory</span></div>
+              }
+            </div>
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-headline text-2xl font-bold text-white group-hover:text-primary transition-colors">{project.data.title}</h3>
+              <span class="font-mono text-primary text-sm">{project.data.date.getFullYear()}</span>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              {(project.data.tags || []).map(tag => (
+                <span class="px-2 py-0.5 text-xs bg-secondary-container text-on-secondary-container font-mono rounded-sm">{tag}</span>
+              ))}
+            </div>
+            <div class="flex gap-4">
+              <span class="hacker-text text-[10px] text-primary flex items-center gap-2 px-4 py-2 rounded transition-all" style="border:1px solid rgba(221,183,255,0.2)">
+                View Project <span class="material-symbols-outlined text-sm">north_east</span>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RECENT POSTS ═══ -->
+  <section id="blogs" class="py-24 px-8 max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+      <div>
+        <span class="hacker-text text-primary text-xs">// thoughts, unfiltered</span>
+        <h2 class="font-headline text-4xl md:text-5xl font-bold mt-2 text-on-surface">From the Blog</h2>
+      </div>
+      <a href="/posts" class="hacker-text text-[10px] text-on-surface-variant hover:text-white transition-colors flex items-center gap-2 no-underline">
+        Read all posts <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {posts.map((post, i) => {
+        const accentColors = ['text-primary', 'text-secondary', 'text-tertiary'];
+        const borderColors = ['rgba(221,183,255,0.4)', 'rgba(173,198,255,0.4)', 'rgba(255,175,211,0.4)'];
+        const accent = accentColors[i % 3];
+        const border = borderColors[i % 3];
+        return (
+          <a href={`/posts/${post.slug}`}
+             class={`group bg-surface-container-lowest p-6 rounded-xl transition-all duration-300 no-underline block`}
+             style={`border:1px solid rgba(255,255,255,0.05)`}
+             onmouseenter={`this.style.borderColor='${border}'`}
+             onmouseleave={`this.style.borderColor='rgba(255,255,255,0.05)'`}>
+            <div class="font-mono text-[10px] mb-4 flex justify-between items-center">
+              <span class={`${accent} opacity-60`}>{(post.data.tags || ['TECH'])[0].toUpperCase()}</span>
+              <span class="text-on-surface-variant opacity-60">
+                {post.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }).toUpperCase()}
+              </span>
+            </div>
+            <h4 class={`font-headline text-xl font-bold mb-3 text-white group-hover:${accent} transition-colors`}>{post.data.title}</h4>
+            <div class={`flex items-center gap-2 text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity ${accent}`}>
+              open → <span class="material-symbols-outlined text-xs">keyboard_arrow_right</span>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- ═══ EXPERIENCE ═══ -->
+  <section id="experience" class="py-24 px-8 max-w-4xl mx-auto">
+    <div class="mb-20 text-center">
+      <span class="hacker-text text-primary text-xs">// how i got here</span>
+      <h2 class="font-headline text-4xl font-bold mt-2 text-on-surface">Where I've Worked</h2>
+    </div>
+
+    <div class="space-y-16">
+      <!-- MGH / Harvard -->
+      <div class="relative pl-12 md:pl-0">
+        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white opacity-10 -translate-x-1/2"></div>
+        <div class="flex flex-col md:flex-row items-start md:items-center md:justify-between w-full gap-6">
+          <div class="md:w-5/12 md:text-right">
+            <span class="font-mono text-primary text-sm">May 2025 — Aug 2025</span>
+            <h3 class="font-headline text-xl font-bold text-white mt-1">AI Research Assistant</h3>
+            <p class="text-on-surface-variant text-sm mt-1 font-mono">Massachusetts General Hospital / Harvard Medical School</p>
+          </div>
+          <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-primary -translate-x-1/2 z-10 shadow-[0_0_15px_rgba(221,183,255,0.6)]"></div>
+          <div class="md:w-5/12">
+            <p class="text-on-surface-variant text-sm leading-relaxed font-body">
+              Built an end-to-end deep learning pipeline for CT radiation dose estimation on ~12k DICOM scans. Achieved 12.3% error reduction vs. baseline through model iteration and reproducible evaluation for clinical stakeholders.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BeSuperhuman -->
+      <div class="relative pl-12 md:pl-0">
+        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white opacity-10 -translate-x-1/2"></div>
+        <div class="flex flex-col md:flex-row items-start md:items-center md:justify-between w-full gap-6">
+          <div class="md:w-5/12 order-1 md:order-2">
+            <span class="font-mono text-secondary text-sm">June 2023 — Aug 2024</span>
+            <h3 class="font-headline text-xl font-bold text-white mt-1">Lead Machine Learning Engineer</h3>
+            <p class="text-on-surface-variant text-sm mt-1 font-mono">BeSuperhuman.ai</p>
+          </div>
+          <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-secondary -translate-x-1/2 z-10"></div>
+          <div class="md:w-5/12 order-2 md:order-1 md:text-right">
+            <p class="text-on-surface-variant text-sm leading-relaxed font-body">
+              Built an LLM-driven agent system 0→1 with tool-calling orchestration, browser action generation, and validation. Reduced LLM inference and ops costs by 88% through caching layers and pipeline optimization.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AmritaCREATE -->
+      <div class="relative pl-12 md:pl-0">
+        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white opacity-10 -translate-x-1/2"></div>
+        <div class="flex flex-col md:flex-row items-start md:items-center md:justify-between w-full gap-6">
+          <div class="md:w-5/12 md:text-right">
+            <span class="font-mono text-tertiary text-sm">June 2022 — Jan 2023</span>
+            <h3 class="font-headline text-xl font-bold text-white mt-1">Deep Learning Research Intern</h3>
+            <p class="text-on-surface-variant text-sm mt-1 font-mono">AmritaCREATE Labs</p>
+          </div>
+          <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-tertiary -translate-x-1/2 z-10 opacity-60"></div>
+          <div class="md:w-5/12">
+            <p class="text-on-surface-variant text-sm leading-relaxed font-body">
+              Developed a PyTorch transformer-based system for continuous sign language recognition from noisy, unstructured video. Iterated on preprocessing and architecture to improve robustness for e-governance teams.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agrisoft -->
+      <div class="relative pl-12 md:pl-0">
+        <div class="flex flex-col md:flex-row items-start md:items-center md:justify-between w-full gap-6">
+          <div class="md:w-5/12 order-1 md:order-2">
+            <span class="font-mono text-on-surface-variant text-sm">Jan 2022 — April 2022</span>
+            <h3 class="font-headline text-xl font-bold text-white mt-1">Full Stack Developer Intern</h3>
+            <p class="text-on-surface-variant text-sm mt-1 font-mono">Agrisoft Dairy</p>
+          </div>
+          <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-surface-container-high border-2 border-outline-variant -translate-x-1/2 z-10 opacity-50"></div>
+          <div class="md:w-5/12 order-2 md:order-1 md:text-right">
+            <p class="text-on-surface-variant text-sm leading-relaxed font-body">
+              Built mobile and backend features using Flutter and REST APIs in a fast-moving small team.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT CTA ═══ -->
+  <section id="contact" class="py-24 px-8">
+    <div class="max-w-5xl mx-auto bg-gradient-to-br from-surface-container-low to-surface-container p-12 md:p-20 rounded-2xl relative overflow-hidden text-center" style="border:1px solid rgba(255,255,255,0.08)">
+      <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary opacity-10 blur-[80px] rounded-full"></div>
+      <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary opacity-10 blur-[80px] rounded-full"></div>
+
+      <h2 class="font-headline text-4xl md:text-6xl font-bold mb-8 relative z-10 text-on-surface">
+        Got something <span class="text-primary italic">interesting?</span> Let's talk.
+      </h2>
+      <p class="text-on-surface-variant text-lg mb-12 max-w-2xl mx-auto relative z-10 font-body">
+        Open to research collabs, interesting engineering problems, and the occasional wild idea. I respond to most emails — no recruiters pitching Java roles, please.
+      </p>
+      <div class="flex flex-wrap justify-center gap-6 relative z-10">
+        <a href="mailto:harsha7vardhan@gmail.com"
+           class="bg-white text-surface px-8 py-4 rounded-xl font-bold flex items-center gap-3 hover:bg-primary transition-colors group no-underline">
+          <span class="material-symbols-outlined group-hover:rotate-12 transition-transform">mail</span>
+          Say hello
+        </a>
+        <div class="flex gap-4 items-center">
+          <a href="https://github.com/codevardhan"
+             class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary hover:border-primary transition-all no-underline"
+             style="border:1px solid rgba(255,255,255,0.1)">
+            <span class="material-symbols-outlined">terminal</span>
+          </a>
+          <a href="https://linkedin.com/in/codevardhan"
+             class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary hover:border-primary transition-all no-underline"
+             style="border:1px solid rgba(255,255,255,0.1)">
+            <span class="material-symbols-outlined">share</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>

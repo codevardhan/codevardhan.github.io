@@ -5,29 +5,54 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('posts'))
   .filter(p => !p.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const accentColors = ['text-primary', 'text-secondary', 'text-tertiary'];
+const borderHover  = ['rgba(221,183,255,0.4)', 'rgba(173,198,255,0.4)', 'rgba(255,175,211,0.4)'];
 ---
-<BaseLayout title="Blog — Harsh">
-  <div class="max-w-3xl mx-auto px-6 py-12">
-    <h1 class="text-3xl font-bold mb-8 text-gray-100">Blog</h1>
-    <div class="space-y-8">
-      {posts.map(post => (
-        <a href={`/posts/${post.slug}`} class="group flex gap-6 items-start no-underline">
-          {post.data.image && (
-            <img src={post.data.image} alt={post.data.title} class="w-32 h-24 object-cover rounded-lg flex-shrink-0 hidden sm:block" />
-          )}
-          <div>
-            <h2 class="text-xl font-semibold text-gray-100 group-hover:text-accent transition">{post.data.title}</h2>
-            <time class="text-sm text-gray-500 mt-1 block" datetime={post.data.date.toISOString()}>
-              {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-            </time>
-            <div class="flex flex-wrap gap-1.5 mt-2">
+<BaseLayout title="Insights — Harsh">
+  <div class="max-w-5xl mx-auto px-8 py-20">
+    <!-- Header -->
+    <div class="mb-16">
+      <span class="hacker-text text-primary text-xs">// thoughts, unfiltered</span>
+      <h1 class="font-headline text-5xl font-bold mt-2 text-on-surface">The Blog</h1>
+      <p class="text-on-surface-variant mt-4 max-w-lg font-body">
+        Things I figured out, rabbit holes I fell into, and the occasional opinion on AI, systems, and software.
+      </p>
+    </div>
+
+    <!-- Posts grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {posts.map((post, i) => {
+        const accent = accentColors[i % 3];
+        const border = borderHover[i % 3];
+        return (
+          <a href={`/posts/${post.slug}`}
+             class={`group bg-surface-container-lowest p-6 rounded-xl transition-all duration-300 no-underline block hover:-translate-y-0.5`}
+             style="border:1px solid rgba(255,255,255,0.05)"
+             onmouseenter={`this.style.borderColor='${border}'`}
+             onmouseleave={`this.style.borderColor='rgba(255,255,255,0.05)'`}>
+            {post.data.image && (
+              <img src={post.data.image} alt={post.data.title}
+                   class="w-full h-36 object-cover rounded-lg mb-5 opacity-80 group-hover:opacity-100 transition-opacity" />
+            )}
+            <div class="font-mono text-[10px] mb-3 flex justify-between items-center">
+              <span class={`${accent} opacity-70`}>{(post.data.tags || ['TECH'])[0].toUpperCase()}</span>
+              <span class="text-on-surface-variant opacity-50">
+                {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase()}
+              </span>
+            </div>
+            <h2 class={`font-headline text-xl font-bold mb-2 text-white group-hover:${accent} transition-colors leading-snug`}>{post.data.title}</h2>
+            <div class="flex flex-wrap gap-1.5 mt-3">
               {(post.data.tags || []).map(tag => (
-                <span class="px-2 py-0.5 text-xs bg-gray-800 text-gray-500 rounded">{tag}</span>
+                <span class="px-2 py-0.5 text-xs bg-surface-container-high text-on-surface-variant font-mono rounded-sm">{tag}</span>
               ))}
             </div>
-          </div>
-        </a>
-      ))}
+            <div class={`flex items-center gap-2 text-xs font-mono mt-4 opacity-0 group-hover:opacity-100 transition-opacity ${accent}`}>
+              open → <span class="material-symbols-outlined text-xs">keyboard_arrow_right</span>
+            </div>
+          </a>
+        );
+      })}
     </div>
   </div>
 </BaseLayout>

@@ -4,79 +4,96 @@
 
 @layer base {
   body {
-    @apply bg-gray-950 text-gray-200 antialiased;
+    @apply bg-surface text-on-surface antialiased font-body;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply text-gray-100 font-semibold;
+    @apply text-on-surface font-headline;
   }
   a {
-    @apply text-accent hover:text-purple-400 transition-colors;
+    @apply text-primary transition-colors;
+  }
+  ::selection {
+    background: rgba(221, 183, 255, 0.25);
   }
 }
 
-/* Prose styling for blog/project content */
-.prose {
-  @apply text-gray-300 leading-relaxed max-w-none;
+/* Neural dot grid background */
+.ai-grid {
+  background-image: radial-gradient(rgba(183, 109, 255, 0.08) 1px, transparent 1px);
+  background-size: 30px 30px;
 }
-.prose h1 { @apply text-3xl font-bold mt-10 mb-4 text-gray-100; }
-.prose h2 { @apply text-2xl font-bold mt-8 mb-3 text-gray-100 border-b border-gray-800 pb-2; }
-.prose h3 { @apply text-xl font-semibold mt-6 mb-2 text-gray-100; }
-.prose h4 { @apply text-lg font-semibold mt-4 mb-2 text-gray-200; }
-.prose p { @apply my-4; }
+
+/* Glassmorphism */
+.glass-card {
+  background: rgba(45, 52, 73, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Hacker / mono label text */
+.hacker-text {
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* Animated gradient flow */
+@keyframes flow {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+.animate-flow {
+  animation: flow 20s linear infinite;
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Prose — for blog / project content */
+.prose {
+  @apply text-on-surface-variant leading-relaxed max-w-none;
+}
+.prose h1 { @apply text-3xl font-bold mt-10 mb-4 text-on-surface font-headline; }
+.prose h2 { @apply text-2xl font-bold mt-8 mb-3 text-on-surface font-headline pb-2; border-bottom: 1px solid rgba(77,67,84,0.4); }
+.prose h3 { @apply text-xl font-semibold mt-6 mb-2 text-on-surface font-headline; }
+.prose h4 { @apply text-lg font-semibold mt-4 mb-2 text-on-surface-variant; }
+.prose p  { @apply my-4; }
 .prose ul { @apply list-disc pl-6 my-4 space-y-1; }
 .prose ol { @apply list-decimal pl-6 my-4 space-y-1; }
-.prose li { @apply text-gray-300; }
+.prose li { @apply text-on-surface-variant; }
 .prose blockquote {
-  @apply border-l-4 border-accent pl-4 italic text-gray-400 my-4;
+  border-left: 4px solid #b76dff;
+  @apply pl-4 italic text-on-surface-variant my-4 bg-surface-container-low rounded-r-xl py-2;
 }
 .prose code {
-  @apply bg-gray-800 text-purple-300 px-1.5 py-0.5 rounded text-sm font-mono;
+  @apply bg-surface-container-lowest text-secondary px-1.5 py-0.5 rounded text-sm font-mono;
 }
 .prose pre {
-  @apply bg-gray-900 border border-gray-800 rounded-lg p-4 overflow-x-auto my-6;
+  @apply bg-surface-container-lowest rounded-xl p-4 overflow-x-auto my-6 relative;
+  border-left: 4px solid #adc6ff;
 }
-.prose pre code {
-  @apply bg-transparent p-0 text-sm;
-}
-.prose img {
-  @apply rounded-lg my-6 max-w-full;
-}
-.prose table {
-  @apply w-full my-6 text-sm;
-}
-.prose th {
-  @apply bg-gray-800 text-gray-200 px-4 py-2 text-left font-semibold border border-gray-700;
-}
-.prose td {
-  @apply px-4 py-2 border border-gray-800;
-}
-.prose a {
-  @apply text-accent hover:text-purple-400 underline underline-offset-2;
-}
-.prose hr {
-  @apply border-gray-800 my-8;
-}
-.prose .footnotes {
-  @apply text-sm text-gray-500 border-t border-gray-800 mt-8 pt-4;
-}
+.prose pre code { @apply bg-transparent p-0 text-sm text-on-surface-variant; }
+.prose img  { @apply rounded-xl my-6 max-w-full; }
+.prose table { @apply w-full my-6 text-sm; }
+.prose th { @apply bg-surface-container text-on-surface px-4 py-2 text-left font-semibold; border: 1px solid rgba(77,67,84,0.3); }
+.prose td { @apply px-4 py-2; border: 1px solid rgba(77,67,84,0.2); }
+.prose a  { @apply text-primary underline underline-offset-2 font-mono; }
+.prose hr { @apply my-8; border-color: rgba(77,67,84,0.3); }
+.prose .footnotes { @apply text-sm text-on-surface-variant mt-8 pt-4; border-top: 1px solid rgba(77,67,84,0.3); }
 
-/* Mermaid diagrams */
-.mermaid {
-  @apply my-6 flex justify-center;
-}
-.mermaid svg {
-  max-width: 100%;
-  height: auto;
-}
+/* Mermaid */
+.mermaid { @apply my-6 flex justify-center; }
+.mermaid svg { max-width: 100%; height: auto; }
 
-/* Gist embeds */
-.gist .gist-data {
-  max-height: 400px;
-  overflow: auto;
-}
+/* Gist */
+.gist .gist-data { max-height: 400px; overflow: auto; }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { @apply bg-gray-900; }
-::-webkit-scrollbar-thumb { @apply bg-gray-700 rounded-full; }
-::-webkit-scrollbar-thumb:hover { @apply bg-gray-600; }
+::-webkit-scrollbar-track { background: #0b1326; }
+::-webkit-scrollbar-thumb { background: #2d3449; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #4d4354; }

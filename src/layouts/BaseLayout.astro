@@ -6,7 +6,7 @@ interface Props {
   description?: string;
   usemathjax?: boolean;
 }
-const { title = "Harsh's Portfolio", description = "Portfolio website", usemathjax = false } = Astro.props;
+const { title = "codevardhan", description = "My portfolio - AI engineer & software tinkerer", usemathjax = false } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -18,54 +18,62 @@ const { title = "Harsh's Portfolio", description = "Portfolio website", usemathj
   <link rel="icon" type="image/png" href="/images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
   {usemathjax && (
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" is:inline></script>
   )}
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-surface text-on-surface font-body ai-grid">
+
   <!-- Navigation -->
-  <nav class="sticky top-0 z-50 bg-gray-950/80 backdrop-blur-lg border-b border-gray-800">
-    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="text-xl font-bold text-gray-100 hover:text-accent no-underline">Harsh.</a>
-      <div class="flex items-center gap-6 text-sm">
-        <a href="/#about" class="text-gray-400 hover:text-gray-100 no-underline">About</a>
-        <a href="/#experience" class="text-gray-400 hover:text-gray-100 no-underline">Experience</a>
-        <a href="/#projects" class="text-gray-400 hover:text-gray-100 no-underline">Projects</a>
-        <a href="/posts" class="text-gray-400 hover:text-gray-100 no-underline">Blog</a>
-        <a href="/resume" class="text-gray-400 hover:text-gray-100 no-underline">Resume</a>
-        <a href="/#contact" class="text-gray-400 hover:text-gray-100 no-underline">Contact</a>
+  <nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-[0_20px_40px_rgba(173,198,255,0.04)]" style="border-bottom:1px solid rgba(255,255,255,0.05)">
+    <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+      <a href="/" class="text-xl font-bold tracking-tighter text-white uppercase font-headline flex items-center gap-2 no-underline hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1">terminal</span>
+        Codevardhan
+      </a>
+      <div class="hidden md:flex items-center gap-8 font-headline tracking-tight text-sm">
+        <a href="/#projects" class="text-on-surface-variant hover:text-white transition-colors no-underline">Projects</a>
+        <a href="/posts" class="text-on-surface-variant hover:text-white transition-colors no-underline">Blog</a>
+        <a href="/#experience" class="text-on-surface-variant hover:text-white transition-colors no-underline">Experience</a>
+        <a href="/#contact" class="text-on-surface-variant hover:text-white transition-colors no-underline">Contact</a>
+        <a href="/resume" class="text-on-surface-variant hover:text-white transition-colors no-underline">Resume</a>
       </div>
+      <a href="mailto:harsha7vardhan@gmail.com"
+         class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-5 py-2 rounded-md font-bold text-sm no-underline
+                hover:shadow-[0_0_20px_rgba(221,183,255,0.3)] active:scale-95 transition-all">
+        Hire Me
+      </a>
     </div>
   </nav>
 
   <!-- Main content -->
-  <main class="flex-1">
+  <main class="flex-1 pt-16">
     <slot />
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-gray-800 mt-20">
-    <div class="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between text-sm text-gray-500">
-      <span>&copy; {new Date().getFullYear()} Harshavardhan Manohar. All rights reserved.</span>
-      <div class="flex gap-4">
-        <a href="https://github.com/codevardhan" class="hover:text-gray-300"><i class="fab fa-github text-lg"></i></a>
-        <a href="https://linkedin.com/in/codevardhan" class="hover:text-gray-300"><i class="fab fa-linkedin text-lg"></i></a>
-        <a href="https://instagram.com/h_v_m_" class="hover:text-gray-300"><i class="fab fa-instagram text-lg"></i></a>
+  <footer class="w-full py-12 px-8 bg-surface-container-lowest" style="border-top:1px solid rgba(255,255,255,0.05)">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+      <div class="hacker-text text-xs text-on-surface-variant opacity-50">
+        © {new Date().getFullYear()} HARSHAVARDHAN. YES_I_WROTE_THIS_MYSELF.SYS
+      </div>
+      <div class="flex gap-8 font-mono text-xs uppercase tracking-widest">
+        <a href="https://github.com/codevardhan" class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 no-underline">GitHub</a>
+        <a href="https://linkedin.com/in/codevardhan" class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 no-underline">LinkedIn</a>
+        <a href="https://instagram.com/h_v_m_" class="text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100 no-underline">Instagram</a>
       </div>
     </div>
   </footer>
 
-  <!-- Mermaid (lazy-load on pages that have diagrams) -->
+  <!-- Mermaid lazy-load -->
   <script is:inline>
     document.addEventListener('DOMContentLoaded', function() {
       var KW = /^\s*(graph |flowchart |sequenceDiagram|classDiagram|stateDiagram|erDiagram|gantt|pie |quadrantChart|xychart|mindmap|timeline|gitGraph|sankey)/;
       var pres = document.querySelectorAll('pre');
       var targets = [];
-      pres.forEach(function(pre) {
-        if (KW.test(pre.textContent)) targets.push(pre);
-      });
+      pres.forEach(function(pre) { if (KW.test(pre.textContent)) targets.push(pre); });
       if (targets.length === 0) return;
       var s = document.createElement('script');
       s.src = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js';
@@ -76,7 +84,7 @@ const { title = "Harsh's Portfolio", description = "Portfolio website", usemathj
           div.textContent = pre.textContent;
           pre.replaceWith(div);
         });
-        mermaid.initialize({ startOnLoad: true, theme: 'dark', themeVariables: { primaryColor: '#6d28d9', primaryTextColor: '#e5e7eb', lineColor: '#6b7280', secondaryColor: '#1f2937' }});
+        mermaid.initialize({ startOnLoad: true, theme: 'dark', themeVariables: { primaryColor: '#b76dff', primaryTextColor: '#dae2fd', lineColor: '#4d4354', secondaryColor: '#131b2e' }});
         mermaid.run();
       };
       document.head.appendChild(s);
