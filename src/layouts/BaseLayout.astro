@@ -23,6 +23,16 @@ const { title = "codevardhan", description = "My portfolio - AI engineer & softw
   {usemathjax && (
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" is:inline></script>
   )}
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQHSEQGZGF"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZQHSEQGZGF');
+  </script>
+
 </head>
 <body class="min-h-screen flex flex-col bg-surface text-on-surface font-body ai-grid">
 

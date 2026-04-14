@@ -77,10 +77,11 @@ const projects = (await getCollection('projects'))
       </div>
     </div>
 
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-on-surface-variant">
-      <span class="text-[10px] font-mono mb-2 uppercase tracking-widest">scroll, it gets better</span>
-      <span class="material-symbols-outlined">expand_more</span>
-    </div>
+  <a href="#projects"
+    class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-on-surface-variant hover:text-primary transition-colors no-underline">
+    <span class="text-[10px] font-mono mb-2 uppercase tracking-widest">scroll, it gets better</span>
+    <span class="material-symbols-outlined">expand_more</span>
+  </a>
   </header>
 
   <!-- ═══ TECHNICAL ARSENAL (Skills Bento) ═══ -->
@@ -267,12 +268,21 @@ const projects = (await getCollection('projects'))
           <div class="md:w-5/12 md:text-right">
             <span class="font-mono text-tertiary text-sm">June 2022 - Jan 2023</span>
             <h3 class="font-headline text-xl font-bold text-white mt-1">Deep Learning Research Intern</h3>
-            <p class="text-on-surface-variant text-sm mt-1 font-mono">AmritaCREATE Labs</p>
+            <p class="text-on-surface-variant text-sm mt-1 font-mono">
+              <a href="https://www.amrita.edu/project/sign-language-accessibility-for-e-governance-services/" 
+                class="hover:text-tertiary transition-colors no-underline" target="_blank">
+                AmritaCREATE Labs ↗
+              </a>
+            </p>
           </div>
           <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-tertiary -translate-x-1/2 z-10 opacity-60"></div>
           <div class="md:w-5/12">
             <p class="text-on-surface-variant text-sm leading-relaxed font-body">
-              Developed a PyTorch transformer-based system for continuous sign language recognition from noisy, unstructured video. Iterated on preprocessing and architecture to improve robustness for e-governance teams.
+              Built a custom SignBERT variant for continuous sign language recognition as
+              part of a Government of India e-governance initiative; making public services
+              accessible to the deaf community. Trained entirely on in-house ISL video data
+              captured in real-world conditions: low light, poor camera quality, uncontrolled
+              backgrounds. The model had to work in the field, not just on clean benchmarks.
             </p>
           </div>
         </div>
@@ -282,19 +292,18 @@ const projects = (await getCollection('projects'))
       <div class="relative pl-12 md:pl-0">
         <div class="flex flex-col md:flex-row items-start md:items-center md:justify-between w-full gap-6">
           <div class="md:w-5/12 order-1 md:order-2">
-            <span class="font-mono text-on-surface-variant text-sm">Jan 2022 - April 2022</span>
+            <span class="font-mono text-on-surface-variant text-sm">Jan 2022 - Apr 2022</span>
             <h3 class="font-headline text-xl font-bold text-white mt-1">Full Stack Developer Intern</h3>
             <p class="text-on-surface-variant text-sm mt-1 font-mono">Agrisoft Dairy</p>
           </div>
           <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-surface-container-high border-2 border-outline-variant -translate-x-1/2 z-10 opacity-50"></div>
           <div class="md:w-5/12 order-2 md:order-1 md:text-right">
             <p class="text-on-surface-variant text-sm leading-relaxed font-body">
-              Built mobile and backend features using Flutter and REST APIs in a fast-moving small team.
+              Built a full ERP system for dairy delivery logistics - a Flutter customer app, a separate driver app with route tracking, and an admin backend to tie it together. First time shipping something real people actually used.
             </p>
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- ═══ CONTACT CTA ═══ -->
