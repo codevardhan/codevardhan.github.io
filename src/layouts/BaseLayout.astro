@@ -6,7 +6,7 @@ interface Props {
   description?: string;
   usemathjax?: boolean;
 }
-const { title = "codevardhan", description = "My portfolio - AI engineer & software tinkerer", usemathjax = false } = Astro.props;
+const { title = "Harsh Vardhan", description = "Portfolio of Harsh — AI engineer & software tinkerer", usemathjax = false } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en" class="dark">
@@ -23,26 +23,17 @@ const { title = "codevardhan", description = "My portfolio - AI engineer & softw
   {usemathjax && (
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" is:inline></script>
   )}
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQHSEQGZGF"></script>
-  <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ZQHSEQGZGF');
-  </script>
-
 </head>
 <body class="min-h-screen flex flex-col bg-surface text-on-surface font-body ai-grid">
 
   <!-- Navigation -->
   <nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-[0_20px_40px_rgba(173,198,255,0.04)]" style="border-bottom:1px solid rgba(255,255,255,0.05)">
-    <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+    <div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
       <a href="/" class="text-xl font-bold tracking-tighter text-white uppercase font-headline flex items-center gap-2 no-underline hover:text-primary transition-colors">
         <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1">terminal</span>
         Codevardhan
       </a>
+      <!-- Desktop links -->
       <div class="hidden md:flex items-center gap-8 font-headline tracking-tight text-sm">
         <a href="/#projects" class="text-on-surface-variant hover:text-white transition-colors no-underline">Projects</a>
         <a href="/posts" class="text-on-surface-variant hover:text-white transition-colors no-underline">Blog</a>
@@ -51,12 +42,46 @@ const { title = "codevardhan", description = "My portfolio - AI engineer & softw
         <a href="/resume" class="text-on-surface-variant hover:text-white transition-colors no-underline">Resume</a>
       </div>
       <a href="mailto:harsha7vardhan@gmail.com"
-         class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-5 py-2 rounded-md font-bold text-sm no-underline
+         class="hidden md:inline-flex bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-5 py-2 rounded-md font-bold text-sm no-underline
                 hover:shadow-[0_0_20px_rgba(221,183,255,0.3)] active:scale-95 transition-all">
+        Hire Me
+      </a>
+      <!-- Mobile hamburger -->
+      <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 p-2 text-on-surface-variant hover:text-white transition-colors" aria-label="Toggle menu">
+        <span class="block w-6 h-0.5 bg-current transition-all duration-300" id="bar1"></span>
+        <span class="block w-6 h-0.5 bg-current transition-all duration-300" id="bar2"></span>
+        <span class="block w-4 h-0.5 bg-current transition-all duration-300" id="bar3"></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 flex flex-col gap-4 font-headline text-sm" style="border-top:1px solid rgba(255,255,255,0.05)">
+      <a href="/#projects" class="text-on-surface-variant hover:text-white transition-colors no-underline pt-4">Projects</a>
+      <a href="/posts" class="text-on-surface-variant hover:text-white transition-colors no-underline">Blog</a>
+      <a href="/#experience" class="text-on-surface-variant hover:text-white transition-colors no-underline">Experience</a>
+      <a href="/#contact" class="text-on-surface-variant hover:text-white transition-colors no-underline">Contact</a>
+      <a href="/resume" class="text-on-surface-variant hover:text-white transition-colors no-underline">Resume</a>
+      <a href="mailto:harsha7vardhan@gmail.com"
+         class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-5 py-3 rounded-md font-bold text-sm no-underline text-center mt-2 active:scale-95 transition-all">
         Hire Me
       </a>
     </div>
   </nav>
+
+  <script is:inline>
+    var toggle = document.getElementById('menu-toggle');
+    var menu = document.getElementById('mobile-menu');
+    var bar3 = document.getElementById('bar3');
+    toggle.addEventListener('click', function() {
+      var open = menu.classList.toggle('hidden');
+      bar3.style.width = open ? '1rem' : '1.5rem';
+    });
+    menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        menu.classList.add('hidden');
+        bar3.style.width = '1rem';
+      });
+    });
+  </script>
 
   <!-- Main content -->
   <main class="flex-1 pt-16">

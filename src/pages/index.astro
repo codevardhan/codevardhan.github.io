@@ -60,7 +60,7 @@ const projects = (await getCollection('projects'))
       </h1>
 
       <p class="max-w-2xl mx-auto text-on-surface-variant text-lg md:text-xl leading-relaxed mb-12 font-body">
-        I write Python for a living, train neural nets for fun, and occasionally ship things that actually work. MS in AI at Boston; graduated April 2026 and very much open to what's next.
+        I write Python/CUDA for a living, train neural nets for fun, and occasionally ship things that actually work. MS in AI at Boston; graduated April 2026 and very much open to what's next.
       </p>
 
       <div class="flex flex-col md:flex-row gap-4 justify-center">
@@ -77,16 +77,16 @@ const projects = (await getCollection('projects'))
       </div>
     </div>
 
-  <a href="#projects"
-    class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-on-surface-variant hover:text-primary transition-colors no-underline">
-    <span class="text-[10px] font-mono mb-2 uppercase tracking-widest">scroll, it gets better</span>
-    <span class="material-symbols-outlined">expand_more</span>
-  </a>
+    <a href="#projects"
+       class="absolute bottom-10 inset-x-0 flex flex-col items-center animate-bounce text-on-surface-variant hover:text-primary transition-colors no-underline">
+      <span class="text-[10px] font-mono mb-2 uppercase tracking-widest whitespace-nowrap">scroll, it gets better</span>
+      <span class="material-symbols-outlined">expand_more</span>
+    </a>
   </header>
 
   <!-- ═══ TECHNICAL ARSENAL (Skills Bento) ═══ -->
-  <section class="py-24 px-8 max-w-7xl mx-auto">
-    <div class="mb-16">
+  <section class="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto">
+    <div class="mb-10 md:mb-16">
       <span class="hacker-text text-primary text-xs">// things i actually know</span>
       <h2 class="font-headline text-4xl font-bold mt-2 text-on-surface">My Toolkit</h2>
     </div>
@@ -136,9 +136,9 @@ const projects = (await getCollection('projects'))
   </section>
 
   <!-- ═══ PROJECTS ═══ -->
-  <section id="projects" class="py-24 bg-surface-container-low relative" style="border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+  <section id="projects" class="py-16 md:py-24 bg-surface-container-low relative" style="border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-16 gap-6 md:gap-8">
         <div>
           <span class="hacker-text text-primary text-xs">// stuff i'm proud of</span>
           <h2 class="font-headline text-4xl md:text-5xl font-bold mt-2 text-on-surface">Projects</h2>
@@ -178,8 +178,8 @@ const projects = (await getCollection('projects'))
   </section>
 
   <!-- ═══ RECENT POSTS ═══ -->
-  <section id="blogs" class="py-24 px-8 max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+  <section id="blogs" class="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-16 gap-6 md:gap-8">
       <div>
         <span class="hacker-text text-primary text-xs">// thoughts, unfiltered</span>
         <h2 class="font-headline text-4xl md:text-5xl font-bold mt-2 text-on-surface">From the Blog</h2>
@@ -218,8 +218,8 @@ const projects = (await getCollection('projects'))
   </section>
 
   <!-- ═══ EXPERIENCE ═══ -->
-  <section id="experience" class="py-24 px-8 max-w-4xl mx-auto">
-    <div class="mb-20 text-center">
+  <section id="experience" class="py-16 md:py-24 px-4 md:px-8 max-w-4xl mx-auto">
+    <div class="mb-12 md:mb-20 text-center">
       <span class="hacker-text text-primary text-xs">// how i got here</span>
       <h2 class="font-headline text-4xl font-bold mt-2 text-on-surface">Where I've Worked</h2>
     </div>
@@ -230,7 +230,7 @@ const projects = (await getCollection('projects'))
         <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white opacity-10 -translate-x-1/2"></div>
         <div class="flex flex-col md:flex-row items-start md:items-center md:justify-between w-full gap-6">
           <div class="md:w-5/12 md:text-right">
-            <span class="font-mono text-primary text-sm">May 2025 - Aug 2025</span>
+            <span class="font-mono text-primary text-sm">May 2025 — Aug 2025</span>
             <h3 class="font-headline text-xl font-bold text-white mt-1">AI Research Assistant</h3>
             <p class="text-on-surface-variant text-sm mt-1 font-mono">Massachusetts General Hospital / Harvard Medical School</p>
           </div>
@@ -248,7 +248,7 @@ const projects = (await getCollection('projects'))
         <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white opacity-10 -translate-x-1/2"></div>
         <div class="flex flex-col md:flex-row items-start md:items-center md:justify-between w-full gap-6">
           <div class="md:w-5/12 order-1 md:order-2">
-            <span class="font-mono text-secondary text-sm">June 2023 - Aug 2024</span>
+            <span class="font-mono text-secondary text-sm">June 2023 — Aug 2024</span>
             <h3 class="font-headline text-xl font-bold text-white mt-1">Lead Machine Learning Engineer</h3>
             <p class="text-on-surface-variant text-sm mt-1 font-mono">BeSuperhuman.ai</p>
           </div>
@@ -266,23 +266,14 @@ const projects = (await getCollection('projects'))
         <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white opacity-10 -translate-x-1/2"></div>
         <div class="flex flex-col md:flex-row items-start md:items-center md:justify-between w-full gap-6">
           <div class="md:w-5/12 md:text-right">
-            <span class="font-mono text-tertiary text-sm">June 2022 - Jan 2023</span>
+            <span class="font-mono text-tertiary text-sm">June 2022 — Jan 2023</span>
             <h3 class="font-headline text-xl font-bold text-white mt-1">Deep Learning Research Intern</h3>
-            <p class="text-on-surface-variant text-sm mt-1 font-mono">
-              <a href="https://www.amrita.edu/project/sign-language-accessibility-for-e-governance-services/" 
-                class="hover:text-tertiary transition-colors no-underline" target="_blank">
-                AmritaCREATE Labs ↗
-              </a>
-            </p>
+            <p class="text-on-surface-variant text-sm mt-1 font-mono">AmritaCREATE Labs</p>
           </div>
           <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-surface-container-highest border-2 border-tertiary -translate-x-1/2 z-10 opacity-60"></div>
           <div class="md:w-5/12">
             <p class="text-on-surface-variant text-sm leading-relaxed font-body">
-              Built a custom SignBERT variant for continuous sign language recognition as
-              part of a Government of India e-governance initiative; making public services
-              accessible to the deaf community. Trained entirely on in-house ISL video data
-              captured in real-world conditions: low light, poor camera quality, uncontrolled
-              backgrounds. The model had to work in the field, not just on clean benchmarks.
+              Developed a PyTorch transformer-based system for continuous sign language recognition from noisy, unstructured video. Iterated on preprocessing and architecture to improve robustness for e-governance teams.
             </p>
           </div>
         </div>
@@ -292,23 +283,24 @@ const projects = (await getCollection('projects'))
       <div class="relative pl-12 md:pl-0">
         <div class="flex flex-col md:flex-row items-start md:items-center md:justify-between w-full gap-6">
           <div class="md:w-5/12 order-1 md:order-2">
-            <span class="font-mono text-on-surface-variant text-sm">Jan 2022 - Apr 2022</span>
+            <span class="font-mono text-on-surface-variant text-sm">Jan 2022 — April 2022</span>
             <h3 class="font-headline text-xl font-bold text-white mt-1">Full Stack Developer Intern</h3>
             <p class="text-on-surface-variant text-sm mt-1 font-mono">Agrisoft Dairy</p>
           </div>
           <div class="absolute left-4 md:left-1/2 top-2 w-4 h-4 rounded-full bg-surface-container-high border-2 border-outline-variant -translate-x-1/2 z-10 opacity-50"></div>
           <div class="md:w-5/12 order-2 md:order-1 md:text-right">
             <p class="text-on-surface-variant text-sm leading-relaxed font-body">
-              Built a full ERP system for dairy delivery logistics - a Flutter customer app, a separate driver app with route tracking, and an admin backend to tie it together. First time shipping something real people actually used.
+              Built mobile and backend features using Flutter and REST APIs in a fast-moving small team.
             </p>
           </div>
         </div>
       </div>
+    </div>
   </section>
 
   <!-- ═══ CONTACT CTA ═══ -->
-  <section id="contact" class="py-24 px-8">
-    <div class="max-w-5xl mx-auto bg-gradient-to-br from-surface-container-low to-surface-container p-12 md:p-20 rounded-2xl relative overflow-hidden text-center" style="border:1px solid rgba(255,255,255,0.08)">
+  <section id="contact" class="py-16 md:py-24 px-4 md:px-8">
+    <div class="max-w-5xl mx-auto bg-gradient-to-br from-surface-container-low to-surface-container p-8 md:p-20 rounded-2xl relative overflow-hidden text-center" style="border:1px solid rgba(255,255,255,0.08)">
       <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary opacity-10 blur-[80px] rounded-full"></div>
       <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary opacity-10 blur-[80px] rounded-full"></div>
 
@@ -316,7 +308,7 @@ const projects = (await getCollection('projects'))
         Got something <span class="text-primary italic">interesting?</span> Let's talk.
       </h2>
       <p class="text-on-surface-variant text-lg mb-12 max-w-2xl mx-auto relative z-10 font-body">
-        Open to research collabs, interesting engineering problems, and the occasional wild idea. I respond to most emails - no recruiters pitching Java roles, please.
+        Open to research collabs, interesting engineering problems, and the occasional wild idea. I respond to most emails — no recruiters pitching Java roles, please.
       </p>
       <div class="flex flex-wrap justify-center gap-6 relative z-10">
         <a href="mailto:harsha7vardhan@gmail.com"
@@ -326,14 +318,14 @@ const projects = (await getCollection('projects'))
         </a>
         <div class="flex gap-4 items-center">
           <a href="https://github.com/codevardhan"
-            class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary transition-all no-underline"
-            style="border:1px solid rgba(255,255,255,0.1)">
-            <i class="fab fa-github text-lg"></i>
+             class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary hover:border-primary transition-all no-underline"
+             style="border:1px solid rgba(255,255,255,0.1)">
+            <span class="material-symbols-outlined">terminal</span>
           </a>
           <a href="https://linkedin.com/in/codevardhan"
-            class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary transition-all no-underline"
-            style="border:1px solid rgba(255,255,255,0.1)">
-            <i class="fab fa-linkedin text-lg"></i>
+             class="w-12 h-12 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface-variant hover:text-primary hover:border-primary transition-all no-underline"
+             style="border:1px solid rgba(255,255,255,0.1)">
+            <span class="material-symbols-outlined">share</span>
           </a>
         </div>
       </div>
