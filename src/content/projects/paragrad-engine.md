@@ -12,8 +12,6 @@ usemathjax: true
 
 *4,000 lines of C++17. 19 primitive operations. Three backends. Zero dependencies. One month.*
 
----
-
 Most people learn CUDA by writing a matrix multiply kernel and calling it a day. I wanted to understand the full stack in a machine learning context, from how `loss.backward()` actually works, down to why cuBLAS is 4x faster than anything I could write by hand. So I built [ParaGrad](https://github.com/codevardhan/paragrad): a complete autograd engine and deep learning framework in C++17/CUDA, designed around one architectural bet that turned out to be the most interesting part of the project.
 
 The bet: you can express the entire compute layer of neural network training in ~19 primitive tensor operations. Everything else, the autograd engine, the optimizer, the training loop, the diagnostics, lives above a single abstraction boundary and never touches hardware-specific code. Swapping from CPU to GPU is one build flag. Adding a new accelerator means writing one file.
@@ -409,6 +407,6 @@ ParaGrad doesn't solve this at production scale. But it demonstrates the archite
 
 The codebase is on [GitHub](https://github.com/codevardhan/paragrad). It compiles with `make`, runs on any CUDA-capable GPU, and trains a transformer on Shakespeare. If you're interested in GPU systems, HPC, or the intersection of compiler infrastructure and deep learning, I'd love to talk about it.
 
----
+
 
 *Built for EECE5640 (High Performance Computing) at Northeastern University, Prof. David R. Kaeli. All benchmarks collected on the MGHPCC Explorer cluster (Tesla V100-SXM2-32GB, 8-core Cascade Lake CPU node).*
